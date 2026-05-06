@@ -21,8 +21,6 @@ body {
     line-height: 1.7;
 }
 
-
-
 .container {
     max-width: 700px;
     margin: 0 auto;
@@ -32,22 +30,50 @@ body {
 header {
     background: #003366;
     border-bottom: 2px solid var(--accent);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.2rem 0;
 }
 
 .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
     max-width: 900px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    transition: color 0.2s, opacity 0.2s;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: var(--accent);
+    opacity: 0.9;
 }
 
 .profile-photo-large {
@@ -66,42 +92,6 @@ header {
     border: 3px solid var(--border);
     background: #f4f4f4;
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
-}
-
-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--primary);
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 500;
-    transition: all 0.2s;
-    padding: 0.5em 0.75em;
-    border-radius: 5px;
-    display: block;
-    font-size: 0.95rem;
-}
-
-nav a:hover {
-    color: var(--accent);
-    background: rgba(255,255,255,0.1);
-    transform: translateY(-2px);
 }
 
 main {
@@ -200,6 +190,7 @@ h3 {
     font-size: 0.95em;
     margin-left: 0.5em;
 }
+
 .connect-section {
     text-align: center;
     margin-top: 3rem;
@@ -255,45 +246,78 @@ footer {
     margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        white-space: normal;
+    }
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+    }
+}
+
 @media (max-width: 600px) {
     .header-container {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
-        justify-content: flex-start;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
     }
+
     header h1 {
         font-size: 1.3rem;
-        margin-bottom: 0.5rem;
     }
+
     nav ul {
-        flex-direction: row; 
-        gap: 0.5rem;
-        margin: 0;
+        gap: 0.8rem;
         flex-wrap: wrap;
-        justify-content: flex-start;
     }
+
     nav a {
         font-size: 0.85rem;
-        padding: 0.4em 0.6em;
+        padding: 0.3rem 0;
     }
+
+    header {
+        padding: 0.8rem 0;
+    }
+
     .profile-photo-large {
         justify-content: center;
         margin: 1.5rem 0 1rem 0;
     }
+
     .profile-photo-large img {
         width: 180px;
         height: 180px;
     }
+
     .container {
         padding: 0 0.5rem;
     }
+
     section {
         padding: 1rem 0.5rem;
     }
+
     .connect-section {
         padding: 1.2rem 0.5rem;
     }
+
     .connect-icons {
         gap: 1.2rem;
     }
