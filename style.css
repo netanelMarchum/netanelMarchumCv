@@ -13,6 +13,48 @@
     box-sizing: border-box;
 }
 
+
+/* ===== HEADER FIX ===== */
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap; /* חשוב מאוד - לא נשבר לשורות */
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* הדגשת השם הפרטי */
+.highlight {
+    color: #4da3ff; /* כחול חזק ומודרני */
+    font-weight: 800;
+}
+
+/* יישור ניווט בשורה אחת */
+nav ul {
+    display: flex;
+    flex-wrap: nowrap; /* מונע שבירה */
+    gap: 1.8rem;
+}
+
+/* ===== HERO IMAGE FIX ===== */
+
+.profile-photo-large img {
+    width: 320px;   /* במקום 450 - יותר מאוזן */
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+/* מרכז את התמונה יותר יפה */
+.profile-photo-large {
+    justify-content: center;
+}
+
 body {
     margin: 0;
     font-family: var(--font);
