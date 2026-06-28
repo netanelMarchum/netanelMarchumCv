@@ -5,7 +5,6 @@
 export const EASE = [0.22, 1, 0.36, 1]; // expo-ish slow-in/slow-out
 
 export const spring = { type: "spring", stiffness: 260, damping: 26, mass: 0.9 };
-export const springSoft = { type: "spring", stiffness: 140, damping: 20 };
 
 // Section / element reveal on scroll.
 // Slow-in/slow-out (ease-out) reveal at ~600ms so it settles into place
