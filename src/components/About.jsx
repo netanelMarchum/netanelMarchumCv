@@ -25,8 +25,8 @@ export default function About() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="section-num">01 — About</span>
-          <h2>A student who likes to understand things all the way down.</h2>
+          <span className="section-num">01 / About</span>
+          <h2>A developer who likes to understand things all the way down.</h2>
         </motion.div>
 
         <div className="about-grid">

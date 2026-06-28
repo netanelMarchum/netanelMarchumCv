@@ -42,8 +42,7 @@ export default function Nav() {
     >
       <div className="container nav-inner">
         <a href="#top" className="brand" aria-label="Netanel Marchum — home">
-          <span className="brand-mark">NM</span>
-          <span className="brand-name">Netanel <b>Marchum</b></span>
+          <span className="brand-sig">Netanel Marchum</span>
         </a>
 
         <nav aria-label="Primary">

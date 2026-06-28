@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <span className="brand-mark" style={{ width: 34, height: 34, fontSize: "0.9rem" }}>NM</span>
-        <p>© {year} Netanel Marchum · Designed &amp; built with care.</p>
+        <span className="brand-sig footer-sig">Netanel Marchum</span>
+        <p>© {year} Netanel Marchum</p>
         <a className="to-top" href="#top"><Icon.up /> Back to top</a>
       </div>
     </footer>

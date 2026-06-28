@@ -1,7 +1,6 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
-import Strip from "./components/Strip.jsx";
 import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
@@ -19,7 +18,6 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Strip />
         <About />
         <Skills />
         <Projects />

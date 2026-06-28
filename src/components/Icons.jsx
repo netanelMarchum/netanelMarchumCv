@@ -8,33 +8,6 @@ const s = {
 };
 
 export const Icon = {
-  code: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" {...s} {...p}>
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
-    </svg>
-  ),
-  terminal: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" {...s} {...p}>
-      <polyline points="4 17 10 11 4 5" />
-      <line x1="12" y1="19" x2="20" y2="19" />
-    </svg>
-  ),
-  cpu: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" {...s} {...p}>
-      <rect x="4" y="4" width="16" height="16" rx="2" />
-      <rect x="9" y="9" width="6" height="6" />
-      <line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" />
-      <line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" />
-      <line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" />
-      <line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" />
-    </svg>
-  ),
-  tool: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" {...s} {...p}>
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-    </svg>
-  ),
   arrow: (p) => (
     <svg viewBox="0 0 24 24" width="20" height="20" {...s} {...p}>
       <line x1="5" y1="12" x2="19" y2="12" />

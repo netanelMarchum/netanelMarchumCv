@@ -4,28 +4,24 @@
 export const profile = {
   name: "Netanel Marchum",
   firstName: "Netanel",
-  roles: [
-    "Software Engineer",
-    "Computer Science Student",
-    "Systems Programmer",
-    "Java & C Developer",
-  ],
-  email: "netanelmarchum@gmail.com",
+  title: "Software Engineer & Computer Science Student",
+  email: "N040846@gmail.com",
   github: "https://github.com/netanelMarchum",
   linkedin: "https://www.linkedin.com/in/netanel-marchum/",
   resume: "/resume.pdf",
   photo: "/profile-opt.jpg",
+  location: "Israel",
 };
 
 export const stats = [
-  { value: 85, suffix: "", label: "GPA Average" },
-  { value: 3, suffix: "+", label: "Shipped Projects" },
-  { value: 114, suffix: "", label: "HS Excellence Score" },
-  { value: 2027, suffix: "", label: "Graduation Year", plain: true },
+  { value: 85, suffix: "", label: "GPA average" },
+  { value: 3, suffix: "+", label: "Projects shipped" },
+  { value: 114, suffix: "", label: "HS excellence score" },
+  { value: 2027, suffix: "", label: "Graduating", plain: true },
 ];
 
 export const facts = [
-  ["Role", "CS Student / SW Engineer"],
+  ["Role", "SW Engineer / CS Student"],
   ["Degree", "B.Sc. Computer Science"],
   ["University", "The Open University of Israel"],
   ["Focus", "Systems · Algorithms"],
@@ -40,38 +36,75 @@ export const aboutPoints = [
   "Bilingual: Hebrew (native) & English (fluent)",
 ];
 
-export const skills = [
-  { title: "Languages", icon: "code", chips: [["Java", true], ["C", true], ["Python", false]] },
-  { title: "Systems & OS", icon: "terminal", chips: [["Linux"], ["Windows"], ["System calls"], ["Memory mgmt"]] },
-  { title: "Core CS", icon: "cpu", chips: [["Data Structures"], ["Algorithms"], ["OOP"], ["Networking"]] },
-  { title: "Workflow", icon: "tool", chips: [["Makefile"], ["Unit Testing"], ["Git"], ["Debugging"]] },
+// Tools & tech shown as brand-logo icons (self-hosted in public/icons).
+export const tools = [
+  { name: "Java", icon: "/icons/java.svg" },
+  { name: "C", icon: "/icons/c.svg" },
+  { name: "Python", icon: "/icons/python.svg" },
+  { name: "Linux", icon: "/icons/linux.svg" },
+  { name: "Git", icon: "/icons/git.svg" },
+  { name: "GitHub", icon: "/icons/github.svg" },
+  { name: "VS Code", icon: "/icons/vscode.svg" },
+  { name: "Photoshop", icon: "/icons/photoshop.svg" },
+  { name: "After Effects", icon: "/icons/aftereffects.svg" },
+  { name: "Premiere Pro", icon: "/icons/premiere.svg" },
+  { name: "Figma", icon: "/icons/figma.svg" },
+  { name: "WordPress", icon: "/icons/wordpress.svg" },
+  { name: "Jira", icon: "/icons/jira.svg" },
 ];
 
+// Certificates shown as a rotating gallery (images render full cert; click opens PDF).
+export const certificates = [
+  { title: "Excellence — Israel Ministry of Education", img: "/certs/my-cer.jpg", href: "/MY-cer.pdf" },
+  { title: "Dean's List — 2023", img: "/certs/deans-list-2023.jpg", href: "/deans-list-2023.pdf" },
+];
+
+// Conceptual skills (no brand logo) shown as chips.
+export const coreCS = [
+  "Data Structures", "Algorithms", "OOP", "Networking", "Memory mgmt", "Makefile", "Unit Testing",
+];
+
+// Projects as compact case studies: context + problem / approach / impact.
 export const projects = [
   {
-    title: "Project Tikshuv — Check Point",
-    desc: "Security and checkpoint management project developed as part of professional experience at Check Point, focused on robust, real-world security tooling.",
+    title: "Project Tikshuv",
+    context: "Professional · Check Point",
+    tagline: "Security & checkpoint management tooling.",
+    problem: "Security checkpoints needed dependable management tooling fit for real-world deployment.",
+    approach: "Built and maintained checkpoint-management functionality as part of the team at Check Point.",
+    impact: "Hands-on experience shipping security software in a production environment.",
     tech: ["Security", "Networking", "Check Point"],
     link: "https://www.linkedin.com/in/netanel-marchum/details/projects/",
+    linkLabel: "View on LinkedIn",
   },
   {
     title: "Homy",
-    desc: "A smart-home management solution designed to streamline home automation and control, with a focus on a simple, dependable user experience.",
+    context: "Personal project",
+    tagline: "A smart-home control experience.",
+    problem: "Home automation is fragmented and hard for non-technical users to control.",
+    approach: "Designed a smart-home management solution centred on a simple, dependable user experience.",
+    impact: "One approachable interface that streamlines everyday home control.",
     tech: ["Smart Home", "Automation", "UX"],
     link: "https://github.com/netanelMarchum",
+    linkLabel: "View on GitHub",
   },
   {
     title: "Assembler for Linux",
-    desc: "A complete assembler written in C that parses, processes and translates assembly code — working with symbol tables, memory management and Linux system calls, built with Makefiles and unit testing.",
+    context: "Academic · C",
+    tagline: "A complete two-pass assembler in C.",
+    problem: "Translate two-pass assembly source into machine code on Linux.",
+    approach: "Implemented parsing, symbol tables, memory management and system calls — built with a Makefile and unit tests.",
+    impact: "A complete, tested assembler that demonstrates low-level systems mastery.",
     tech: ["C", "Linux", "Makefile", "Unit Testing"],
     link: "https://github.com/netanelMarchum",
+    linkLabel: "View on GitHub",
   },
 ];
 
 export const education = [
   {
     date: "2023 — 2027 (expected)",
-    badge: "🏆 Dean's List 2023",
+    badge: "Dean's List 2023",
     title: "B.Sc. in Computer Science",
     org: "The Open University of Israel",
     detail: "GPA: 85 · Strong focus on systems, algorithms and data structures.",
@@ -97,15 +130,15 @@ export const languages = [
 ];
 
 export const documents = [
-  { label: "Dean's List Certificate — 2023", href: "/deans-list-2023.pdf", emoji: "🏅" },
-  { label: "Certificate", href: "/MY-cer.pdf", emoji: "📜" },
-  { label: "Full Resume", href: "/resume.pdf", emoji: "📄" },
+  { label: "Dean's List Certificate — 2023", href: "/deans-list-2023.pdf" },
+  { label: "Certificate", href: "/MY-cer.pdf" },
+  { label: "Full Résumé", href: "/resume.pdf" },
 ];
 
 export const navItems = [
   ["About", "about"],
   ["Skills", "skills"],
-  ["Projects", "projects"],
+  ["Work", "projects"],
   ["Education", "education"],
   ["Contact", "contact"],
 ];

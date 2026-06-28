@@ -14,23 +14,30 @@ export default function Contact() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="eyebrow"><span className="dash" /> 05 — Contact</span>
-          <h2>Let's build <em>something</em>.</h2>
+          <span className="eyebrow"><span className="dash" /> 05 / Contact</span>
+          <h2 className="contact-title">Let's work together</h2>
           <p className="contact-sub">
             I'm open to internships, junior software roles and interesting
-            collaborations. The fastest way to reach me is email — I usually reply
-            within a day.
+            collaborations. The fastest way to reach me is email — I usually
+            reply within a day.
           </p>
 
-          <motion.a
-            className="contact-email"
-            href={`mailto:${profile.email}`}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.99 }}
-            transition={spring}
-          >
-            <Icon.mail width="22" height="22" /> {profile.email}
-          </motion.a>
+          <div className="contact-actions">
+            <motion.a
+              className="btn btn-primary btn-lg"
+              href={`mailto:${profile.email}`}
+              whileHover={{ y: -2 }}
+              whileTap={{ y: 0 }}
+              transition={spring}
+            >
+              <Icon.mail /> Email me
+            </motion.a>
+            <a className="btn btn-outline btn-lg" href={profile.resume} download>
+              <Icon.download /> Résumé
+            </a>
+          </div>
+
+          <p className="contact-email-line">{profile.email}</p>
 
           <div className="contact-socials">
             <a className="icon-btn" href={profile.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon.github /></a>

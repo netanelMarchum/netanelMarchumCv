@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { skills } from "../data.js";
-import { Icon } from "./Icons.jsx";
+import { tools, coreCS } from "../data.js";
 import { reveal, stagger, viewport, spring } from "../motion.js";
 
 export default function Skills() {
   return (
-    <section className="section" id="skills" style={{ background: "var(--bg-2)" }}>
+    <section className="section section--alt" id="skills">
       <div className="container">
         <motion.div
           className="section-head"
@@ -14,38 +13,39 @@ export default function Skills() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="section-num">02 — Skills &amp; tools</span>
-          <h2>The toolkit I build with.</h2>
-          <p>Strongest in low-level and systems work, with the fundamentals to back it up.</p>
+          <span className="section-num">02 / Skills</span>
+          <h2>What I work with</h2>
+          <p>Strongest in low-level and systems work, with the computer-science fundamentals to back it up.</p>
         </motion.div>
 
         <motion.div
-          className="skills-grid"
-          variants={stagger(0, 0.1)}
+          className="tools-grid"
+          variants={stagger(0, 0.07)}
           initial="hidden"
           whileInView="show"
           viewport={viewport}
         >
-          {skills.map((cat) => {
-            const Glyph = Icon[cat.icon];
-            return (
-              <motion.article
-                className="skill-card"
-                key={cat.title}
-                variants={reveal}
-                whileHover={{ y: -6 }}
-                transition={spring}
-              >
-                <div className="skill-icon">{Glyph && <Glyph />}</div>
-                <h3>{cat.title}</h3>
-                <div className="chips">
-                  {cat.chips.map(([name, lead]) => (
-                    <span className={`chip ${lead ? "lead" : ""}`} key={name}>{name}</span>
-                  ))}
-                </div>
-              </motion.article>
-            );
-          })}
+          {tools.map((t) => (
+            <motion.div className="tool" key={t.name} variants={reveal} whileHover={{ y: -4 }} transition={spring}>
+              <div className="tool-ic">
+                <img src={t.icon} alt={`${t.name} logo`} width="40" height="40" loading="lazy" />
+              </div>
+              <span>{t.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="core-cs"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
+          <span className="core-label">Core CS</span>
+          <div className="chips">
+            {coreCS.map((c) => <span className="chip" key={c}>{c}</span>)}
+          </div>
         </motion.div>
       </div>
     </section>

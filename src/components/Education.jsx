@@ -5,7 +5,7 @@ import { reveal, stagger, viewport } from "../motion.js";
 
 export default function Education() {
   return (
-    <section className="section" id="education" style={{ background: "var(--bg-2)" }}>
+    <section className="section section--alt" id="education">
       <div className="container">
         <motion.div
           className="section-head"
@@ -14,8 +14,8 @@ export default function Education() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="section-num">04 — Education &amp; honors</span>
-          <h2>Where I've studied.</h2>
+          <span className="section-num">04 / Education</span>
+          <h2>Education &amp; honors</h2>
         </motion.div>
 
         <motion.div
@@ -86,7 +86,7 @@ export default function Education() {
               {documents.map((d) => (
                 <li key={d.label}>
                   <a href={d.href} target="_blank" rel="noopener">
-                    <span>{d.emoji}</span> {d.label} <Icon.arrowUpRight width="15" height="15" />
+                    {d.label} <Icon.arrowUpRight width="15" height="15" />
                   </a>
                 </li>
               ))}
