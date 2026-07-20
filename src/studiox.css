@@ -83,7 +83,14 @@ html.sx-root, html.sx-root body { background: #050505; }
 
 .sx-gallery { column-count: 3; column-gap: 12px; padding: 0 12px clamp(3rem, 6vw, 5rem); }
 .sx-tile { break-inside: avoid; margin-bottom: 12px; position: relative; overflow: hidden; background: #0a0a0a; display: block; }
-.sx-tile img { width: 100%; height: auto; display: block; filter: grayscale(1) contrast(1.05); transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s; }
+.sx-tile img {
+  width: 100%; height: auto; display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s;
+  user-select: none; -webkit-user-select: none; -webkit-user-drag: none;
+  pointer-events: auto; -webkit-touch-callout: none;
+}
+.sx-tile img::after { content: ""; }
 .sx-tile:hover img { transform: scale(1.05); filter: grayscale(0) contrast(1); }
 .sx-tile::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07); pointer-events: none; }
 .sx-tile-n { position: absolute; top: 12px; left: 14px; font-family: var(--sx-mono); font-size: 0.7rem; color: #fff; mix-blend-mode: difference; opacity: 0; transition: opacity 0.3s; }

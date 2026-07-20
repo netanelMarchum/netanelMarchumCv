@@ -40,7 +40,7 @@ export const projects = [
     context: "Production - Web",
     desc: "Built and deployed a live production website with automated lead-generation workflows, actively used for customer acquisition across NJ and NYC.",
     tech: ["WordPress", "Automation", "HTML / CSS"],
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80&fit=crop&crop=entropy",
+    image: "/src/assets/work/PROJECT/yalla-booth.png",
     links: [{ label: "Visit site", href: "https://yallabooth.net" }],
   },
   {
@@ -48,7 +48,7 @@ export const projects = [
     context: "Academic - Network & Security",
     desc: "Designed and hardened a 3-branch enterprise network · OSPF routing, VLAN segmentation, Port Security and full services per branch.",
     tech: ["Cisco Packet Tracer", "OSPF", "VLANs", "Hardening"],
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop&crop=entropy",
+    image: "/src/assets/work/PROJECT/cisco.png",
     links: [{ label: "Details", href: "https://www.linkedin.com/in/netanel-marchum/details/projects/" }],
   },
   {
@@ -56,7 +56,7 @@ export const projects = [
     context: "Academic - Machine Learning",
     desc: "A K-Nearest-Neighbors model predicting medical insurance costs, with preprocessing, feature scaling and model evaluation.",
     tech: ["Python", "scikit-learn", "KNN"],
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop&crop=entropy",
+    image: "/src/assets/work/PROJECT/medical-cost.png",
     links: [{ label: "Google Colab", href: "https://colab.research.google.com/drive/13wQ2kYXzx-4ppXbn-iesHoXLxtQKYHIE?usp=share_link" }],
   },
   {
@@ -64,7 +64,7 @@ export const projects = [
     context: "Personal Project - Game Development",
     desc: "Conceptualized and developed an interactive arcade game at age 15. Designed a reverse-narrative mechanic where the player acts as the virus collecting face masks, demonstrating early proficiency in game logic, creative problem-solving, and out-of-the-box digital design.",
     tech: ["Game Development", "Programming"],
-    image: "https://images.unsplash.com/photo-1535869452e2-d9bce5a721d7?w=600&q=80&fit=crop&crop=entropy",
+    image: "/src/assets/work/PROJECT/car-race.jpg",
     links: [{ label: "View Project", href: "https://drive.google.com/drive/u/1/folders/1dPoy_lZa2VCucJttlYFJCQoK2cQSKFtz" }],
   },
   {
@@ -72,16 +72,8 @@ export const projects = [
     context: "Professional - Design",
     desc: "A comprehensive cover design studio providing professional design services for publications, albums, and creative projects.",
     tech: ["Design", "Adobe Suite", "Creative Services"],
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80&fit=crop&crop=entropy",
+    image: "/src/assets/work/PROJECT/cover-design-studio.png",
     links: [{ label: "Visit Studio", href: "http://studiocoverdesign.com/" }],
-  },
-  {
-    title: "Assembler in C",
-    context: "Academic - Low-level",
-    desc: "A fully functional two-pass assembler translating custom assembly to machine code, with symbol tables and careful memory management.",
-    tech: ["C", "Assembly", "Linux", "Makefile"],
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80&fit=crop&crop=entropy",
-    links: [{ label: "GitHub", href: "https://github.com/netanelMarchum/project_assembly" }],
   },
 ];
 

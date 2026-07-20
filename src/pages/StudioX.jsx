@@ -46,7 +46,28 @@ export default function StudioX() {
   useEffect(() => {
     document.documentElement.classList.add("sx-root");
     const t = setTimeout(() => setLoaded(true), reduce ? 0 : 1300);
-    return () => { document.documentElement.classList.remove("sx-root"); clearTimeout(t); };
+
+    const preventImageDownload = (e) => {
+      if (e.target.tagName === "IMG") {
+        e.preventDefault();
+      }
+    };
+
+    const preventImageDrag = (e) => {
+      if (e.target.tagName === "IMG") {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", preventImageDownload);
+    document.addEventListener("dragstart", preventImageDrag);
+
+    return () => {
+      document.documentElement.classList.remove("sx-root");
+      clearTimeout(t);
+      document.removeEventListener("contextmenu", preventImageDownload);
+      document.removeEventListener("dragstart", preventImageDrag);
+    };
   }, [reduce]);
 
   return (

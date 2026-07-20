@@ -1,9 +1,36 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { projects } from "../data.js";
 import { Icon } from "./Icons.jsx";
 import { reveal, viewport } from "../motion.js";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    cardsRef.current.forEach((card, idx) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        delay: idx * 0.1,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 0.5,
+          once: true
+        }
+      });
+    });
+
+    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+  }, []);
+
   return (
     <section className="section" id="projects">
       <div className="container">
@@ -26,11 +53,15 @@ export default function Projects() {
           viewport={viewport}
         >
           <div className="carousel">
-            {projects.map((p) => (
+            {projects.map((p, idx) => (
               <motion.article
+                ref={(el) => (cardsRef.current[idx] = el)}
                 className="carousel-card"
                 key={p.title}
                 variants={reveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={viewport}
               >
                 <div className="carousel-image-wrapper">
                   <img src={p.image} alt={p.title} className="carousel-image" />

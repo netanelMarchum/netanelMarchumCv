@@ -35,16 +35,15 @@ export default function CustomCursor() {
 
     const handleMouseEnter = (e) => {
       const target = e.target;
-      if (
-        target.tagName === "A" ||
-        target.tagName === "BUTTON" ||
-        target.closest("button") ||
-        target.closest("a") ||
-        target.classList.contains("interactive") ||
-        target.classList.contains("btn") ||
-        target.closest("[data-cursor]")
-      ) {
-        setIsHovering(true);
+      if (target && target.tagName) {
+        if (
+          target.tagName === "A" ||
+          target.tagName === "BUTTON" ||
+          (target.closest && (target.closest("button") || target.closest("a") || target.closest("[data-cursor]"))) ||
+          (target.classList && (target.classList.contains("interactive") || target.classList.contains("btn")))
+        ) {
+          setIsHovering(true);
+        }
       }
     };
 
