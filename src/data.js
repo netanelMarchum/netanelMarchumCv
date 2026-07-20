@@ -1,6 +1,12 @@
 // Single source of truth for site content.
 // Edit here to update the site — components read from this file.
 
+import yallaBooth from './assets/work/PROJECT/yalla-booth.png';
+import cisco from './assets/work/PROJECT/cisco.png';
+import medicalCost from './assets/work/PROJECT/medical-cost.png';
+import carRace from './assets/work/PROJECT/car-race.jpg';
+import coverDesign from './assets/work/PROJECT/cover-design-studio.png';
+
 export const profile = {
   name: "Netanel Marchum",
   firstName: "Netanel",
@@ -38,41 +44,46 @@ export const projects = [
   {
     title: "Yalla Booth",
     context: "Production - Web",
-    desc: "Built and deployed a live production website with automated lead-generation workflows, actively used for customer acquisition across NJ and NYC.",
+    desc: "Live production website with automated lead-generation workflows for customer acquisition.",
+    type: "web",
     tech: ["WordPress", "Automation", "HTML / CSS"],
-    image: "/src/assets/work/PROJECT/yalla-booth.png",
+    image: yallaBooth,
     links: [{ label: "Visit site", href: "https://yallabooth.net" }],
   },
   {
     title: "Project Tikshuv",
     context: "Academic - Network & Security",
-    desc: "Designed and hardened a 3-branch enterprise network · OSPF routing, VLAN segmentation, Port Security and full services per branch.",
-    tech: ["Cisco Packet Tracer", "OSPF", "VLANs", "Hardening"],
-    image: "/src/assets/work/PROJECT/cisco.png",
+    desc: "Enterprise 3-branch network with OSPF routing, VLAN segmentation, and hardening.",
+    type: "network",
+    tech: ["Cisco Packet Tracer", "OSPF", "VLANs"],
+    image: cisco,
     links: [{ label: "Details", href: "https://www.linkedin.com/in/netanel-marchum/details/projects/" }],
   },
   {
     title: "Medical Cost Prediction",
     context: "Academic - Machine Learning",
-    desc: "A K-Nearest-Neighbors model predicting medical insurance costs, with preprocessing, feature scaling and model evaluation.",
+    desc: "K-Nearest-Neighbors model predicting insurance costs with feature scaling and evaluation.",
+    type: "ml",
     tech: ["Python", "scikit-learn", "KNN"],
-    image: "/src/assets/work/PROJECT/medical-cost.png",
+    image: medicalCost,
     links: [{ label: "Google Colab", href: "https://colab.research.google.com/drive/13wQ2kYXzx-4ppXbn-iesHoXLxtQKYHIE?usp=share_link" }],
   },
   {
     title: "CarRace",
     context: "Personal Project - Game Development",
-    desc: "Conceptualized and developed an interactive arcade game at age 15. Designed a reverse-narrative mechanic where the player acts as the virus collecting face masks, demonstrating early proficiency in game logic, creative problem-solving, and out-of-the-box digital design.",
+    desc: "Interactive arcade game with reverse-narrative mechanic and custom game logic.",
+    type: "game",
     tech: ["Game Development", "Programming"],
-    image: "/src/assets/work/PROJECT/car-race.jpg",
+    image: carRace,
     links: [{ label: "View Project", href: "https://drive.google.com/drive/u/1/folders/1dPoy_lZa2VCucJttlYFJCQoK2cQSKFtz" }],
   },
   {
     title: "Studio Cover Design",
     context: "Professional - Design",
-    desc: "A comprehensive cover design studio providing professional design services for publications, albums, and creative projects.",
-    tech: ["Design", "Adobe Suite", "Creative Services"],
-    image: "/src/assets/work/PROJECT/cover-design-studio.png",
+    desc: "Professional cover design studio for publications, albums, and creative projects.",
+    type: "design",
+    tech: ["Design", "Adobe Suite"],
+    image: coverDesign,
     links: [{ label: "Visit Studio", href: "http://studiocoverdesign.com/" }],
   },
 ];

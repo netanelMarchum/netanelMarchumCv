@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Lenis from "lenis";
 import Nav from "./components/Nav.jsx";
 import Footer from "./components/Footer.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
@@ -14,6 +15,16 @@ export default function App() {
   const path = useRoute();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
+
+  useEffect(() => {
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, smoothTouch: false });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowLoading(false), 4000);
