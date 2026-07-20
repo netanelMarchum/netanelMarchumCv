@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netanel Marchum</title>
+    <script>
+      // SPA fallback for GitHub Pages: encode the requested path and redirect
+      // to the app root, where the router restores it. (rafgraph/spa-github-pages)
+      var l = window.location;
+      l.replace(
+        l.protocol + "//" + l.host + "/?/" +
+        l.pathname.slice(1).replace(/&/g, "~and~") +
+        (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
