@@ -17,7 +17,7 @@ export default function Projects() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="section-num">04 / Work</span>
+          <span className="section-num">03 / Work</span>
           <h2>PROJECT</h2>
           <p>Explore premium works across production, academia, and personal projects.</p>
         </motion.header>

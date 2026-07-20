@@ -14,7 +14,7 @@ export default function Education() {
           whileInView="show"
           viewport={viewport}
         >
-          <span className="section-num">05 / Education</span>
+          <span className="section-num">04 / Education</span>
           <h2>Education &amp; honors</h2>
         </motion.div>
 
