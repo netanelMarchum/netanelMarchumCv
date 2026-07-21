@@ -1,0 +1,90 @@
+[     226ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:21550
+[     307ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://localhost:5179/node_modules/.vite/deps/framer-motion.js?v=32ef9d52:695
+[   99582ms] ReferenceError: gridRef is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592785335:53:178)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3674:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3699:24)
+    at invokeGuardedCallback (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3733:39)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19765:15)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+[   99583ms] ReferenceError: gridRef is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592785335:53:178)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3674:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3699:24)
+    at invokeGuardedCallback (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3733:39)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19765:15)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+[   99587ms] [ERROR] The above error occurred in the <Education> component:
+
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592785335:25:19)
+    at Developer
+    at main
+    at App (http://localhost:5179/src/App.jsx?t=1784592668349:31:41)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14031
+[   99586ms] TypeError: Cannot read properties of null (reading 'style')
+    at animate (http://localhost:5179/src/components/CustomCursor.jsx:75:25)
+[   99589ms] ReferenceError: gridRef is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592785335:53:178)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19753:22)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+    at renderRootSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19116:15)
+    at recoverFromConcurrentError (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:18736:28)
+    at performSyncWorkOnRoot (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:18879:28)
+[  104219ms] ReferenceError: Certificates is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592789957:171:30)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3674:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3699:24)
+    at invokeGuardedCallback (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3733:39)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19765:15)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+[  104228ms] ReferenceError: Certificates is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592789957:171:30)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3674:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3699:24)
+    at invokeGuardedCallback (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:3733:39)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19765:15)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+[  104231ms] [ERROR] The above error occurred in the <Education> component:
+
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592789957:25:19)
+    at Developer
+    at main
+    at App (http://localhost:5179/src/App.jsx?t=1784592668349:31:41)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14031
+[  104231ms] ReferenceError: Certificates is not defined
+    at Education (http://localhost:5179/src/components/Education.jsx?t=1784592789957:171:30)
+    at renderWithHooks (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:11548:26)
+    at mountIndeterminateComponent (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:14926:21)
+    at beginWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:15914:22)
+    at beginWork$1 (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19753:22)
+    at performUnitOfWork (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19198:20)
+    at workLoopSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19137:13)
+    at renderRootSync (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:19116:15)
+    at recoverFromConcurrentError (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:18736:28)
+    at performSyncWorkOnRoot (http://localhost:5179/node_modules/.vite/deps/chunk-NUMECXU6.js?v=32ef9d52:18879:28)
+[  124122ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5179/src/components/Certificates.jsx?t=1784592809868:0
+[  124123ms] [ERROR] [hmr] Failed to reload /src/components/Certificates.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5179/@vite/client:175

@@ -1,0 +1,387 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: <
+      - generic [ref=e7]: ">"
+      - generic [ref=e8]: "{"
+      - generic [ref=e9]: "}"
+      - generic [ref=e10]: /
+      - generic [ref=e11]: ()
+    - generic [ref=e12]:
+      - heading "Netanel Marchum Resume" [level=1] [ref=e13]
+      - paragraph [ref=e14]: Loading Experience...
+      - paragraph [ref=e16]: 0%
+  - banner [ref=e17]:
+    - generic [ref=e18]:
+      - link "Netanel Marchum home" [ref=e19] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e20]: Netanel Marchum
+      - navigation "Primary" [ref=e22]:
+        - list [ref=e23]:
+          - listitem [ref=e24]:
+            - link "About" [ref=e25] [cursor=pointer]:
+              - /url: "#about"
+          - listitem [ref=e26]:
+            - link "Skills" [ref=e27] [cursor=pointer]:
+              - /url: "#skills"
+          - listitem [ref=e28]:
+            - link "Work" [ref=e29] [cursor=pointer]:
+              - /url: "#projects"
+          - listitem [ref=e30]:
+            - link "Education" [ref=e31] [cursor=pointer]:
+              - /url: "#education"
+          - listitem [ref=e32]:
+            - link "Contact" [ref=e33] [cursor=pointer]:
+              - /url: "#contact"
+      - generic [ref=e34]:
+        - link "Visit GitHub profile" [ref=e35] [cursor=pointer]:
+          - /url: https://github.com/netanelMarchum
+        - link "Resume" [ref=e38] [cursor=pointer]:
+          - /url: /resume.pdf
+  - main [ref=e42]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - heading "Computer Science Student & Graphic Designer." [level=1] [ref=e47]
+        - paragraph [ref=e48]: Passionate about software engineering, cybersecurity and digital design. I combine technical knowledge with creative thinking to build modern web experiences, develop software projects and create visual identities that are both functional and engaging.
+        - paragraph [ref=e49]: Currently pursuing a B.Sc. in Computer Science (Cybersecurity) at The Open University of Israel, while continuously expanding my skills through personal projects, hands-on development and creative work.
+        - generic [ref=e50]:
+          - link "See my work" [ref=e51] [cursor=pointer]:
+            - /url: "#projects"
+          - link "Resume" [ref=e54] [cursor=pointer]:
+            - /url: /resume.pdf
+          - link "Get in touch" [ref=e58] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e59]:
+          - link "GitHub" [ref=e60] [cursor=pointer]:
+            - /url: https://github.com/netanelMarchum
+          - link "LinkedIn" [ref=e63] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/netanel-marchum/
+          - link "Email" [ref=e66] [cursor=pointer]:
+            - /url: mailto:n040846@gmail.com
+      - img "Netanel Marchum" [ref=e72]
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]: 01 / Software Engineering & Cybersecurity
+        - heading "Driven by curiosity. Focused on building technology." [level=2] [ref=e78]
+      - paragraph [ref=e81]:
+        - generic [ref=e82]: My
+        - generic [ref=e83]: name
+        - generic [ref=e84]: is
+        - generic [ref=e85]: Netanel
+        - generic [ref=e86]: Marchum,
+        - generic [ref=e87]: a
+        - generic [ref=e88]: B.Sc.
+        - generic [ref=e89]: Computer
+        - generic [ref=e90]: Science
+        - generic [ref=e91]: student
+        - generic [ref=e92]: with
+        - generic [ref=e93]: a
+        - generic [ref=e94]: growing
+        - generic [ref=e95]: interest
+        - generic [ref=e96]: in
+        - generic [ref=e97]: Cybersecurity.
+        - generic [ref=e98]: I'm
+        - generic [ref=e99]: passionate
+        - generic [ref=e100]: about
+        - generic [ref=e101]: understanding
+        - generic [ref=e102]: how
+        - generic [ref=e103]: software,
+        - generic [ref=e104]: networks
+        - generic [ref=e105]: and
+        - generic [ref=e106]: modern
+        - generic [ref=e107]: technologies
+        - generic [ref=e108]: work,
+        - generic [ref=e109]: and
+        - generic [ref=e110]: I
+        - generic [ref=e111]: enjoy
+        - generic [ref=e112]: turning
+        - generic [ref=e113]: ideas
+        - generic [ref=e114]: into
+        - generic [ref=e115]: practical,
+        - generic [ref=e116]: well-designed
+        - generic [ref=e117]: solutions.
+    - generic [ref=e118]:
+      - generic [ref=e120]:
+        - generic [ref=e121]: 02 / Skills
+        - heading "What I work with" [level=2] [ref=e122]
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - heading "/ Development" [level=3] [ref=e126]
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - generic [ref=e130]: C
+              - generic [ref=e131]: Python
+              - generic [ref=e132]: HTML / CSS
+              - generic [ref=e133]: Git
+              - generic [ref=e134]: GitHub
+              - generic [ref=e135]: Linux
+              - generic [ref=e136]: C
+              - generic [ref=e137]: Python
+              - generic [ref=e138]: HTML / CSS
+              - generic [ref=e139]: Git
+              - generic [ref=e140]: GitHub
+              - generic [ref=e141]: Linux
+              - generic [ref=e142]: C
+              - generic [ref=e143]: Python
+              - generic [ref=e144]: HTML / CSS
+              - generic [ref=e145]: Git
+              - generic [ref=e146]: GitHub
+              - generic [ref=e147]: Linux
+            - generic [ref=e148]:
+              - generic [ref=e149]: C
+              - generic [ref=e150]: Python
+              - generic [ref=e151]: HTML / CSS
+              - generic [ref=e152]: Git
+              - generic [ref=e153]: GitHub
+              - generic [ref=e154]: Linux
+              - generic [ref=e155]: C
+              - generic [ref=e156]: Python
+              - generic [ref=e157]: HTML / CSS
+              - generic [ref=e158]: Git
+              - generic [ref=e159]: GitHub
+              - generic [ref=e160]: Linux
+              - generic [ref=e161]: C
+              - generic [ref=e162]: Python
+              - generic [ref=e163]: HTML / CSS
+              - generic [ref=e164]: Git
+              - generic [ref=e165]: GitHub
+              - generic [ref=e166]: Linux
+        - generic [ref=e167]:
+          - heading "/ Network" [level=3] [ref=e169]
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e173]: Network Security
+              - generic [ref=e174]: VLANs
+              - generic [ref=e175]: OSPF
+              - generic [ref=e176]: Hardening
+              - generic [ref=e177]: Cisco Packet Tracer
+              - generic [ref=e178]: Network Security
+              - generic [ref=e179]: VLANs
+              - generic [ref=e180]: OSPF
+              - generic [ref=e181]: Hardening
+              - generic [ref=e182]: Cisco Packet Tracer
+              - generic [ref=e183]: Network Security
+              - generic [ref=e184]: VLANs
+              - generic [ref=e185]: OSPF
+              - generic [ref=e186]: Hardening
+              - generic [ref=e187]: Cisco Packet Tracer
+            - generic [ref=e188]:
+              - generic [ref=e189]: Network Security
+              - generic [ref=e190]: VLANs
+              - generic [ref=e191]: OSPF
+              - generic [ref=e192]: Hardening
+              - generic [ref=e193]: Cisco Packet Tracer
+              - generic [ref=e194]: Network Security
+              - generic [ref=e195]: VLANs
+              - generic [ref=e196]: OSPF
+              - generic [ref=e197]: Hardening
+              - generic [ref=e198]: Cisco Packet Tracer
+              - generic [ref=e199]: Network Security
+              - generic [ref=e200]: VLANs
+              - generic [ref=e201]: OSPF
+              - generic [ref=e202]: Hardening
+              - generic [ref=e203]: Cisco Packet Tracer
+        - generic [ref=e204]:
+          - heading "/ Computer Science" [level=3] [ref=e206]
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - generic [ref=e210]: Data Structures
+              - generic [ref=e211]: Algorithms
+              - generic [ref=e212]: Operating Systems
+              - generic [ref=e213]: Assembly
+              - generic [ref=e214]: Machine Learning
+              - generic [ref=e215]: Data Structures
+              - generic [ref=e216]: Algorithms
+              - generic [ref=e217]: Operating Systems
+              - generic [ref=e218]: Assembly
+              - generic [ref=e219]: Machine Learning
+              - generic [ref=e220]: Data Structures
+              - generic [ref=e221]: Algorithms
+              - generic [ref=e222]: Operating Systems
+              - generic [ref=e223]: Assembly
+              - generic [ref=e224]: Machine Learning
+            - generic [ref=e225]:
+              - generic [ref=e226]: Data Structures
+              - generic [ref=e227]: Algorithms
+              - generic [ref=e228]: Operating Systems
+              - generic [ref=e229]: Assembly
+              - generic [ref=e230]: Machine Learning
+              - generic [ref=e231]: Data Structures
+              - generic [ref=e232]: Algorithms
+              - generic [ref=e233]: Operating Systems
+              - generic [ref=e234]: Assembly
+              - generic [ref=e235]: Machine Learning
+              - generic [ref=e236]: Data Structures
+              - generic [ref=e237]: Algorithms
+              - generic [ref=e238]: Operating Systems
+              - generic [ref=e239]: Assembly
+              - generic [ref=e240]: Machine Learning
+    - generic [ref=e242]:
+      - generic [ref=e244]:
+        - generic [ref=e245]: 03 / Work
+        - heading "PROJECT" [level=2] [ref=e246]
+        - paragraph [ref=e247]: Explore premium works across production, academia, and personal projects.
+      - generic [ref=e249]:
+        - article [ref=e250]:
+          - generic [ref=e251]:
+            - img "Yalla Booth" [ref=e252]
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - generic [ref=e255]: Production - Web
+                - heading "Yalla Booth" [level=3] [ref=e256]
+              - link "Visit site" [ref=e258] [cursor=pointer]:
+                - /url: https://yallabooth.net
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - generic [ref=e264]: Production - Web
+              - heading "Yalla Booth" [level=3] [ref=e267]
+              - paragraph [ref=e268]: Live production website with automated lead-generation workflows for customer acquisition.
+            - list [ref=e269]:
+              - listitem [ref=e270]: WordPress
+              - listitem [ref=e271]: Automation
+              - listitem [ref=e272]: HTML / CSS
+        - article [ref=e273]:
+          - generic [ref=e274]:
+            - img "Project Tikshuv" [ref=e275]
+            - generic [ref=e276]:
+              - generic [ref=e277]:
+                - generic [ref=e278]: Academic - Network & Security
+                - heading "Project Tikshuv" [level=3] [ref=e279]
+              - link "Details" [ref=e281] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/netanel-marchum/details/projects/
+          - generic [ref=e285]:
+            - generic [ref=e286]:
+              - generic [ref=e287]: Academic - Network & Security
+              - heading "Project Tikshuv" [level=3] [ref=e290]
+              - paragraph [ref=e291]: Enterprise 3-branch network with OSPF routing, VLAN segmentation, and hardening.
+            - list [ref=e292]:
+              - listitem [ref=e293]: Cisco Packet Tracer
+              - listitem [ref=e294]: OSPF
+              - listitem [ref=e295]: VLANs
+        - article [ref=e296]:
+          - generic [ref=e297]:
+            - img "Medical Cost Prediction" [ref=e298]
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - generic [ref=e301]: Academic - Machine Learning
+                - heading "Medical Cost Prediction" [level=3] [ref=e302]
+              - link "Google Colab" [ref=e304] [cursor=pointer]:
+                - /url: https://colab.research.google.com/drive/13wQ2kYXzx-4ppXbn-iesHoXLxtQKYHIE?usp=share_link
+          - generic [ref=e308]:
+            - generic [ref=e309]:
+              - generic [ref=e310]: Academic - Machine Learning
+              - heading "Medical Cost Prediction" [level=3] [ref=e313]
+              - paragraph [ref=e314]: K-Nearest-Neighbors model predicting insurance costs with feature scaling and evaluation.
+            - list [ref=e315]:
+              - listitem [ref=e316]: Python
+              - listitem [ref=e317]: scikit-learn
+              - listitem [ref=e318]: KNN
+        - article [ref=e319]:
+          - generic [ref=e320]:
+            - img "CarRace" [ref=e321]
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - generic [ref=e324]: Personal Project - Game Development
+                - heading "CarRace" [level=3] [ref=e325]
+              - link "View Project" [ref=e327] [cursor=pointer]:
+                - /url: https://drive.google.com/drive/u/1/folders/1dPoy_lZa2VCucJttlYFJCQoK2cQSKFtz
+          - generic [ref=e331]:
+            - generic [ref=e332]:
+              - generic [ref=e333]: Personal Project - Game Development
+              - heading "CarRace" [level=3] [ref=e336]
+              - paragraph [ref=e337]: Interactive arcade game with reverse-narrative mechanic and custom game logic.
+            - list [ref=e338]:
+              - listitem [ref=e339]: Game Development
+              - listitem [ref=e340]: Programming
+        - article [ref=e341]:
+          - generic [ref=e342]:
+            - img "Studio Cover Design" [ref=e343]
+            - generic [ref=e344]:
+              - generic [ref=e345]:
+                - generic [ref=e346]: Professional - Design
+                - heading "Studio Cover Design" [level=3] [ref=e347]
+              - link "Visit Studio" [ref=e349] [cursor=pointer]:
+                - /url: http://studiocoverdesign.com/
+          - generic [ref=e353]:
+            - generic [ref=e354]:
+              - generic [ref=e355]: Professional - Design
+              - heading "Studio Cover Design" [level=3] [ref=e358]
+              - paragraph [ref=e359]: Professional cover design studio for publications, albums, and creative projects.
+            - list [ref=e360]:
+              - listitem [ref=e361]: Design
+              - listitem [ref=e362]: Adobe Suite
+    - generic [ref=e365]:
+      - generic [ref=e367]:
+        - generic [ref=e368]: 04 / Education
+        - heading "Education & honors" [level=2] [ref=e369]
+      - generic [ref=e372]:
+        - generic [ref=e375]:
+          - generic [ref=e376]:
+            - generic [ref=e377]: Oct 2022 - Expected early 2027
+            - generic [ref=e378]: Cybersecurity Track
+          - heading "B.Sc. Computer Science" [level=3] [ref=e379]
+          - paragraph [ref=e380]: The Open University of Israel
+          - paragraph [ref=e381]: Focused on networks, security, systems and algorithms.
+          - generic [ref=e382]:
+            - generic [ref=e383] [cursor=pointer]: Networks
+            - generic [ref=e384] [cursor=pointer]: Security
+            - generic [ref=e385] [cursor=pointer]: Systems
+            - generic [ref=e386] [cursor=pointer]: Algorithms
+        - generic [ref=e389]:
+          - generic [ref=e390]:
+            - generic [ref=e391]: 2019 - 2022
+            - generic [ref=e392]: Excellence - 114/120
+          - heading "Technological Diploma" [level=3] [ref=e393]
+          - paragraph [ref=e394]: Sitrin Technological College
+          - paragraph [ref=e395]: Graduated with Honors - Ministry of Education Excellence Award.
+          - generic [ref=e396]:
+            - generic [ref=e397] [cursor=pointer]: Mathematics - 5u
+            - generic [ref=e398] [cursor=pointer]: English - 5u
+            - generic [ref=e399] [cursor=pointer]: Computer Science - 5u
+            - generic [ref=e400] [cursor=pointer]: Computer Networks - 10u
+    - generic [ref=e402]:
+      - generic [ref=e403]: Recognition
+      - heading "Certificates" [level=3] [ref=e404]
+      - link [ref=e406] [cursor=pointer]:
+        - /url: /MY-cer.pdf
+        - img "Excellence - Israel Ministry of Education" [ref=e407]
+      - paragraph [ref=e412]: Excellence - Israel Ministry of Education
+      - tablist "Certificates" [ref=e413]:
+        - tab "Excellence - Israel Ministry of Education" [selected] [ref=e414] [cursor=pointer]
+        - tab "Dean's List - 2023" [ref=e415] [cursor=pointer]
+    - generic [ref=e417]:
+      - generic [ref=e418]: Contact
+      - heading "Let's build something." [level=2] [ref=e420]
+      - paragraph [ref=e421]: I'm open to internships, junior engineering roles and freelance work. The fastest way to reach me is email. I usually reply within a day.
+      - link "n040846@gmail.com" [ref=e422] [cursor=pointer]:
+        - /url: mailto:n040846@gmail.com
+      - generic [ref=e423]:
+        - link "Email me" [ref=e424] [cursor=pointer]:
+          - /url: mailto:n040846@gmail.com
+        - link "Resume" [ref=e428] [cursor=pointer]:
+          - /url: /resume.pdf
+      - paragraph [ref=e432]:
+        - text: 055-257-4171·
+        - link "netanel.online" [ref=e433] [cursor=pointer]:
+          - /url: https://netanel.online/
+      - generic [ref=e434]:
+        - link "GitHub" [ref=e435] [cursor=pointer]:
+          - /url: https://github.com/netanelMarchum
+        - link "LinkedIn" [ref=e438] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/netanel-marchum/
+        - link "Email" [ref=e441] [cursor=pointer]:
+          - /url: mailto:n040846@gmail.com
+      - generic [ref=e445]: Netanel Marchum
+    - 'link "Contact via WhatsApp: +972552574171" [ref=e448] [cursor=pointer]':
+      - /url: https://wa.me/972552574171
+  - contentinfo [ref=e451]:
+    - generic [ref=e452]:
+      - generic [ref=e453]: Netanel Marchum
+      - paragraph [ref=e456]: © 2026 Netanel Marchum
+      - generic [ref=e457]:
+        - link "Creative Studio ↗" [ref=e458] [cursor=pointer]:
+          - /url: /studio
+        - link "Back to top" [ref=e459] [cursor=pointer]:
+          - /url: "#top"
+  - 'link "Contact via WhatsApp: +972552574171" [ref=e462] [cursor=pointer]':
+    - /url: https://wa.me/972552574171

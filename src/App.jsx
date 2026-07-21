@@ -1,6 +1,10 @@
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import Nav from "./components/Nav.jsx";
 import Footer from "./components/Footer.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
@@ -18,12 +22,15 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, smoothTouch: false });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
+    // Drive Lenis from GSAP's ticker and keep ScrollTrigger in sync so pins/scrubs track smooth scroll.
+    lenis.on("scroll", ScrollTrigger.update);
+    const raf = (time) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
+    return () => {
+      gsap.ticker.remove(raf);
+      lenis.destroy();
+    };
   }, []);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { certificates } from "../data.js";
 import { Icon } from "./Icons.jsx";
-import { reveal, viewport } from "../motion.js";
+import { viewport } from "../motion.js";
 
 export default function Certificates() {
   const reduce = useReducedMotion();
@@ -20,18 +20,20 @@ export default function Certificates() {
   const cert = certificates[i];
 
   return (
-    <motion.div
-      className="certs"
-      variants={reveal}
-      initial="hidden"
-      whileInView="show"
-      viewport={viewport}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <h3 className="certs-title">Certificates</h3>
+    <section className="section certs-section" id="certificates">
+      <motion.div
+        className="container certs"
+        initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        viewport={viewport}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <span className="certs-eyebrow">Recognition</span>
+        <h3 className="certs-title">Certificates</h3>
 
-      <div className="cert-stage">
+        <div className="cert-stage">
         <AnimatePresence mode="wait">
           <motion.a
             key={i}
@@ -64,7 +66,8 @@ export default function Certificates() {
             aria-label={c.title}
           />
         ))}
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

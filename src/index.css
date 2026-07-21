@@ -289,6 +289,14 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: var(--
 .about-body .first b, .about-slide .first b { color: var(--accent-ink); }
 .about-body p, .about-slide p { font-size: 1.08rem; color: var(--ink-2); margin-bottom: 1.2rem; max-width: 70ch; }
 
+/* Scroll-highlight: words start dim, brighten (keywords → accent) as they read in (GSAP, About.jsx). */
+.hl-word { color: var(--muted); }
+.hl-key { font-weight: 700; }
+@media (prefers-reduced-motion: reduce) {
+  .hl-word { color: var(--ink); }
+  .hl-key { color: var(--accent-ink); }
+}
+
 /* Larger text inside the sticky slides for the pinned full-page effect. */
 .about-slides.pinned .about-slide .first { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: var(--lh-snug); }
 .about-slides.pinned .about-slide p { font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: var(--lh-snug); }
@@ -495,6 +503,24 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: var(--
 }
 
 /* ---------- Education timeline ---------- */
+/* Education: sticky heading beside a GSAP-built scrolling timeline. */
+/* `clip` (not `hidden`) keeps the glow clipped without breaking `position: sticky`. */
+#education { overflow: clip; }
+.edu-grid { display: grid; grid-template-columns: 300px 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.edu-sticky { align-self: start; display: flex; flex-direction: column; gap: 1.6rem; }
+.edu-sticky .section-head { margin-bottom: 0; }
+.edu-progress { position: relative; width: 3px; height: clamp(120px, 22vh, 220px); background: var(--line-2); border-radius: 2px; overflow: hidden; }
+.edu-progress-fill {
+  position: absolute; inset: 0; transform-origin: top center; transform: scaleY(0);
+  background: linear-gradient(var(--accent-ink), var(--accent));
+  box-shadow: 0 0 12px rgba(159, 184, 201, 0.5);
+}
+.edu-flow { display: grid; gap: clamp(1.6rem, 4vw, 2.4rem); }
+@media (max-width: 860px) {
+  .edu-grid { grid-template-columns: 1fr; }
+  .edu-progress { display: none; }
+}
+
 .timeline { position: relative; display: grid; gap: 1.4rem; }
 .tl-item { position: relative; padding-left: 2.2rem; }
 .tl-item::before { content: ""; position: absolute; left: 6px; top: 12px; bottom: -1.4rem; width: 2px; background: var(--line-2); }
@@ -539,7 +565,17 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: var(--
 .exp-link:hover { gap: 0.6rem; }
 
 /* ---------- Certificates carousel ---------- */
-.certs { margin-top: 2.2rem; text-align: center; }
+/* Certificates: own section with a spotlight + scale-in reveal (see Certificates.jsx). */
+.certs-section { position: relative; overflow: hidden; }
+.certs-section::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(620px 420px at 50% 0%, var(--clay-wash), transparent 70%);
+}
+.certs { position: relative; z-index: 1; text-align: center; }
+.certs-eyebrow {
+  display: inline-block; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent-ink); margin-bottom: 0.8rem;
+}
 .certs-title { font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 1.6rem; }
 .cert-stage { position: relative; height: 480px; display: grid; place-items: center; }
 .cert-slide { position: relative; display: inline-block; max-height: 100%; }
@@ -643,7 +679,6 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: var(--
   .carousel-content { padding: 1rem; }
   .carousel-desc { font-size: 0.85rem; line-height: 1.4; }
   .carousel-tech li { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
-}
   .stat:last-child { border-bottom: none; }
 }
 
@@ -926,15 +961,18 @@ html { cursor: none; }
 }
 
 .floating-element {
-  font-family: var(--mono); font-size: 1.8rem; color: #8ebeff;
+  font-family: var(--mono); font-size: 1.8rem; color: var(--accent-ink);
   font-weight: 700; opacity: 0.8;
+  text-shadow: 0 0 18px rgba(159, 184, 201, 0.35);
 }
 
 .loading-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 
 .loading-title {
-  font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem);
-  letter-spacing: -0.03em; color: var(--ink); margin: 0;
+  font-family: var(--display-condensed); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: 0.02em; line-height: 0.95; margin: 0;
+  background: linear-gradient(120deg, var(--ink) 0%, var(--accent-ink) 55%, var(--accent) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
 .loading-subtitle {
@@ -948,7 +986,9 @@ html { cursor: none; }
 }
 
 .loading-progress-bar {
-  height: 100%; background: var(--accent); border-radius: 2px;
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-ink));
+  box-shadow: 0 0 12px rgba(159, 184, 201, 0.6);
 }
 
 .loading-percent {
