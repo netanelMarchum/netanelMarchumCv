@@ -1,14 +1,48 @@
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { projects } from "../data.js";
 import { Icon } from "./Icons.jsx";
 import { reveal, viewport } from "../motion.js";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Duplicated once so the CSS marquee can loop seamlessly at -50%.
-const ticker = [...projects, ...projects];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
+  const reduce = useReducedMotion();
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    if (reduce || !sectionRef.current || !trackRef.current) return;
+
+    // Pin the section and translate the track sideways as the user scrolls,
+    // so each project passes through center to be seen and read.
+    const track = trackRef.current;
+    const distance = () => track.scrollWidth - window.innerWidth;
+
+    const tween = gsap.to(track, {
+      x: () => -distance(),
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: () => `+=${distance()}`,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, [reduce]);
+
   return (
-    <section className="section" id="projects">
+    <section className="section projects-scroll" id="projects" ref={sectionRef}>
       <div className="container">
         <motion.header
           className="section-head"
@@ -24,9 +58,9 @@ export default function Projects() {
       </div>
 
       <div className="carousel-wrapper">
-        <div className="ticker-track">
-          {ticker.map((p, idx) => (
-            <article className="carousel-card" key={`${p.title}-${idx}`} aria-hidden={idx >= projects.length}>
+        <div className="projects-track" ref={trackRef}>
+          {projects.map((p) => (
+            <article className="carousel-card" key={p.title}>
               <div className="carousel-image-wrapper">
                 <img src={p.image} alt={p.title} className="carousel-image" loading="lazy" />
                 <div className="carousel-overlay">

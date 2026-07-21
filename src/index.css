@@ -50,6 +50,16 @@
   --mono: "JetBrains Mono", "Consolas", monospace;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Type rhythm — unified line-heights & tracking */
+  --lh-tight: 1.1;        /* all display headings */
+  --lh-snug: 1.35;        /* large lead paragraphs */
+  --lh-body: 1.6;         /* body copy */
+  --track-tight: -0.02em; /* single tracking value for headings */
+
+  /* Strict 4-based spacing scale for section margins & paddings */
+  --s1: 4px;  --s2: 8px;  --s3: 16px; --s4: 24px;
+  --s5: 32px; --s6: 48px; --s7: 64px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +71,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-size: 17px;
-  line-height: 1.7;
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
@@ -83,11 +93,11 @@ button { font-family: inherit; }
 
 :focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 6px; }
 
-.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.6rem; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s4); }
 .mono { font-family: var(--mono); }
 
 /* ---------- Typography primitives ---------- */
-h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: var(--track-tight); line-height: var(--lh-tight); }
 
 .eyebrow, .section-num {
   font-family: var(--mono);
@@ -211,7 +221,7 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .mobile-menu a { display: block; padding: 0.85rem 0.5rem; font-size: 1.05rem; font-weight: 600; border-bottom: 1px solid var(--line); }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5rem); }
+.hero { position: relative; padding: clamp(var(--s6), 9vw, var(--s7)) 0 clamp(var(--s5), 6vw, var(--s6)); }
 .hero-brandline { display: flex; justify-content: center; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
 .hero-inner { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
 .pill {
@@ -226,8 +236,8 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .hero-kicker { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.14em; color: var(--accent-ink); margin: 1.5rem 0 0.8rem; text-transform: uppercase; }
 .hero-h1 {
   font-family: var(--display); font-weight: 800;
-  font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.04; letter-spacing: -0.035em;
-  margin-bottom: 1.4rem; max-width: 16ch;
+  font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: var(--lh-tight); letter-spacing: var(--track-tight);
+  margin-bottom: var(--s4); max-width: 16ch;
 }
 .hero-h1 .hl { color: var(--accent-ink); }
 .hero-sub { font-size: 1.18rem; color: var(--ink-2); max-width: 50ch; margin-bottom: 1rem; }
@@ -259,19 +269,19 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---------- Section scaffolding ---------- */
-.section { position: relative; padding: clamp(4.5rem, 10vw, 8rem) 0; }
+.section { position: relative; padding: clamp(var(--s6), 8vw, var(--s7)) 0; }
 .section--alt { background: var(--bg-2); border-block: 1px solid var(--line); overflow: hidden; }
 .section--alt::before {
   content: ""; position: absolute; top: -20%; right: -10%; width: 560px; height: 560px; border-radius: 50%;
   background: radial-gradient(circle, var(--glow-blue), transparent 65%); filter: blur(30px); pointer-events: none;
 }
 .section--alt > .container { position: relative; z-index: 1; }
-.section-head { max-width: 720px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-head { max-width: 720px; margin-bottom: clamp(var(--s5), 5vw, var(--s6)); }
 .section-head h2 {
   font-family: var(--display); font-weight: 800;
-  font-size: clamp(1.9rem, 4.5vw, 3rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0.9rem 0 0.7rem;
+  font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: var(--track-tight); line-height: var(--lh-tight); margin: var(--s3) 0 var(--s2);
 }
-.section-head p { color: var(--muted); font-size: 1.1rem; }
+.section-head p { color: var(--muted); font-size: 1.1rem; line-height: var(--lh-body); }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
@@ -279,9 +289,13 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .about-body .first b, .about-slide .first b { color: var(--accent-ink); }
 .about-body p, .about-slide p { font-size: 1.08rem; color: var(--ink-2); margin-bottom: 1.2rem; max-width: 70ch; }
 
+/* Larger text inside the sticky slides for the pinned full-page effect. */
+.about-slides.pinned .about-slide .first { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: var(--lh-snug); }
+.about-slides.pinned .about-slide p { font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: var(--lh-snug); }
+
 /* Sticky full-page slides (About). Falls back to normal stacked flow when JS/motion is off. */
 .about-slides { position: relative; }
-.about-slides.pinned { min-height: 42vh; }
+.about-slides.pinned { min-height: 58vh; }
 .about-slides.pinned .about-slide { position: absolute; inset: 0; }
 .about-slide { display: flex; flex-direction: column; justify-content: center; }
 .about-sticky { min-height: 100vh; display: flex; align-items: center; }
@@ -309,7 +323,7 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 }
 .stat { padding: 1.7rem 1.4rem; border-right: 1px solid var(--line); background: var(--card); }
 .stat:last-child { border-right: none; }
-.stat .num { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+.stat .num { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: var(--track-tight); color: var(--ink); line-height: 1; }
 .stat .label { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
 
 /* ---------- Skills: category tickers ---------- */
@@ -376,7 +390,7 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
   margin-left: 0;
   overflow: hidden;
   background: var(--bg-2);
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  padding: clamp(var(--s5), 6vw, var(--s6)) 0;
   display: flex;
   align-items: center;
 }
@@ -416,18 +430,17 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .carousel-card:nth-child(4) { z-index: 2; }
 .carousel-card:nth-child(5) { z-index: 1; }
 
-/* Ticker: continuous full-width horizontal marquee of cards. */
-.ticker-track {
+/* Projects: scroll-driven horizontal gallery (pinned via GSAP, see Projects.jsx). */
+.projects-track {
   display: flex; gap: 2rem; width: max-content;
-  animation: ticker 60s linear infinite;
+  padding: 0 clamp(1rem, 5vw, 4rem);
+  will-change: transform;
 }
-.carousel-wrapper:hover .ticker-track { animation-play-state: paused; }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+/* No-JS / reduced-motion fallback: plain horizontal swipe, nothing pinned. */
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track { animation: none; }
+  .carousel-wrapper { overflow-x: auto; scroll-snap-type: x mandatory; }
+  .projects-track { padding-bottom: 1rem; }
+  .projects-track .carousel-card { scroll-snap-align: center; }
 }
 
 .carousel-card:hover {
@@ -543,7 +556,7 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
   position: relative; overflow: hidden; text-align: center;
   background: linear-gradient(165deg, #0d1320, #090b11);
   border-top: 1px solid var(--line);
-  padding: clamp(4.5rem, 11vw, 9rem) 0 clamp(3.5rem, 8vw, 6rem);
+  padding: clamp(var(--s6), 11vw, var(--s7)) 0 clamp(var(--s5), 8vw, var(--s6));
 }
 .contact-full::after {
   content: ""; position: absolute; width: 900px; height: 900px; border-radius: 50%;
@@ -554,7 +567,7 @@ h1, h2, h3 { font-family: var(--sans); color: var(--ink); letter-spacing: -0.02e
 .contact-full .eyebrow { color: var(--accent-ink); }
 .contact-big {
   font-family: var(--display); font-weight: 800;
-  color: #fff; font-size: clamp(2.8rem, 9vw, 6.5rem); letter-spacing: -0.035em; line-height: 1.02; margin: 1.2rem 0 1.3rem;
+  color: #fff; font-size: clamp(2.5rem, 8vw, 5.5rem); letter-spacing: var(--track-tight); line-height: var(--lh-tight); margin: var(--s4) 0 var(--s4);
 }
 .contact-big .hl { color: var(--accent-ink); }
 .contact-sub { color: var(--ink-2); max-width: 52ch; margin: 0 auto 2.4rem; font-size: clamp(1.05rem, 2vw, 1.25rem); }

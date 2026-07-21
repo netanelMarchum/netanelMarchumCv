@@ -20,8 +20,8 @@ export default function About() {
 
     // Switch from normal flow to stacked "slides" and pin the section full-page.
     slidesRef.current.classList.add("pinned");
-    gsap.set(slides, { autoAlpha: 0, y: 60 });
-    gsap.set(slides[0], { autoAlpha: 1, y: 0 });
+    gsap.set(slides, { autoAlpha: 0, y: 60, scale: 0.9 });
+    gsap.set(slides[0], { autoAlpha: 1, y: 0, scale: 1 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -36,8 +36,8 @@ export default function About() {
 
     slides.forEach((slide, i) => {
       if (i === 0) return;
-      tl.to(slides[i - 1], { autoAlpha: 0, y: -60, duration: 0.5 })
-        .fromTo(slide, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.5 }, "<0.15");
+      tl.to(slides[i - 1], { autoAlpha: 0, y: -60, scale: 0.9, duration: 0.5 })
+        .fromTo(slide, { autoAlpha: 0, y: 60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, "<0.15");
     });
 
     return () => {
