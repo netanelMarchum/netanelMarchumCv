@@ -5,12 +5,14 @@ const experience = [
   {
     role: "Graphic Designer & Creative",
     company: "Cover Design Studio",
+    href: "https://studiocoverdesign.com/index.html",
     dates: "Apr 2023 – Present",
     description: "Graphic design, visual identities, music artwork, branding, web design, and digital marketing.",
   },
   {
     role: "Web Designer & Digital Marketing",
     company: "Yalla Booth",
+    href: "https://yallabooth.net",
     dates: "Aug 2025 – Present",
     description: "Website development, branding, social media content, digital campaigns, and lead-generation workflows.",
   },
@@ -35,7 +37,7 @@ export default function StudioExperience() {
       <span className="sx-num">/ Experience</span>
       <h2 className="sx-huge" id="studio-experience-title">Creative <em>experience</em></h2>
       <ol className="sx-experience-list">
-        {experience.map(({ role, company, dates, description }, i) => (
+        {experience.map(({ role, company, href, dates, description }, i) => (
           <motion.li className="sx-experience-row" key={company}
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }}
@@ -43,7 +45,7 @@ export default function StudioExperience() {
             <span className="sx-experience-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
             <div className="sx-experience-role">
               <h3>{role}</h3>
-              <p className="sx-experience-company">{company}</p>
+              <p className="sx-experience-company">{href ? <a href={href} target="_blank" rel="noopener noreferrer">{company}</a> : company}</p>
               <p className="sx-experience-dates">{dates}</p>
             </div>
             <p className="sx-experience-description">{description}</p>
