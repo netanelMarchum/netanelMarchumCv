@@ -67,10 +67,10 @@ html.sx-root, html.sx-root body { background: #050505; }
 /* header */
 .sx-head { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem var(--sx-pad); }
 .sx-logo { font-family: var(--sx-display); text-transform: uppercase; font-size: clamp(0.85rem, 1.4vw, 1.1rem); letter-spacing: 0.05em; white-space: nowrap; }
-.sx-logo span { color: var(--sx-mut); }
+.sx-logo span { color: var(--sx-ac); }
 .sx-nav { display: flex; gap: 1.6rem; font-family: var(--sx-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
-.sx-nav a { color: var(--sx-mut); transition: color 0.25s; }
-.sx-nav a:hover { color: var(--sx-fg); }
+.sx-nav a { color: var(--sx-mut); transition: var(--interaction-transition); }
+.sx-nav a:hover { color: var(--sx-ac); }
 .sx-back { font-family: var(--sx-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sx-fg); }
 .sx-back:hover { color: var(--sx-ac); }
 
@@ -172,10 +172,10 @@ html.sx-root, html.sx-root body { background: #050505; }
 .sx-contact-title { font-size: clamp(3rem, 13vw, 12rem); }
 .sx-cta-wrap { display: inline-block; margin: clamp(2rem, 5vw, 3.2rem) 0 1.5rem; }
 .sx-magnetic { display: inline-block; transition: transform 0.2s ease; }
-.sx-cta { display: inline-block; font-family: var(--sx-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.95rem; padding: 1.3rem 2.6rem; border: 1px solid var(--sx-fg); border-radius: 100px; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+.sx-cta { display: inline-block; font-family: var(--sx-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.95rem; padding: 1.3rem 2.6rem; border: 1px solid var(--sx-fg); border-radius: 100px; transition: var(--interaction-transition); }
 .sx-cta:hover { background: var(--sx-ac); color: #050505; border-color: var(--sx-ac); }
 .sx-contact-links { display: flex; gap: 2rem; flex-wrap: wrap; font-family: var(--sx-mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; }
-.sx-contact-links a { color: var(--sx-mut); transition: color 0.3s; }
+.sx-contact-links a { color: var(--sx-mut); transition: var(--interaction-transition); }
 .sx-contact-links a:hover { color: var(--sx-ac); }
 
 /* about (editorial, roomy) */
@@ -219,11 +219,11 @@ html.sx-root, html.sx-root body { background: #050505; }
 .sx-contact2-title { font-size: clamp(2.6rem, 9.5vw, 8rem); line-height: 0.92; margin-bottom: clamp(3rem, 8vw, 6rem); }
 .sx-contact2-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2.5rem, 6vw, 5rem); border-top: 1px solid var(--sx-line); padding-top: clamp(2.5rem, 5vw, 4rem); }
 .sx-contact2-lbl { font-family: var(--sx-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sx-mut); display: block; margin-bottom: 1.4rem; }
-.sx-contact2-mail { font-family: var(--sx-serif); font-size: clamp(1.7rem, 4vw, 3rem); color: var(--sx-fg); display: block; margin-bottom: 2.2rem; transition: color 0.3s; width: max-content; max-width: 100%; }
+.sx-contact2-mail { font-family: var(--sx-serif); font-size: clamp(1.7rem, 4vw, 3rem); color: var(--sx-fg); display: block; margin-bottom: 2.2rem; transition: var(--interaction-transition); width: max-content; max-width: 100%; }
 .sx-contact2-mail:hover { color: var(--sx-ac); }
 .sx-contact2-social { display: flex; flex-direction: column; gap: 1.1rem; }
-.sx-contact2-social a { font-family: var(--sx-display); text-transform: uppercase; font-size: clamp(1.5rem, 3.2vw, 2.4rem); color: var(--sx-fg); width: max-content; display: inline-flex; align-items: baseline; gap: 0.6rem; transition: color 0.3s; }
-.sx-contact2-social a i { font-family: var(--sx-sans); font-style: normal; color: var(--sx-mut); font-size: 0.5em; transition: color 0.3s; }
+.sx-contact2-social a { font-family: var(--sx-display); text-transform: uppercase; font-size: clamp(1.5rem, 3.2vw, 2.4rem); color: var(--sx-fg); width: max-content; display: inline-flex; align-items: baseline; gap: 0.6rem; transition: var(--interaction-transition); }
+.sx-contact2-social a i { font-family: var(--sx-sans); font-style: normal; color: var(--sx-mut); font-size: 0.5em; transition: var(--interaction-transition); }
 .sx-contact2-social a:hover, .sx-contact2-social a:hover i { color: var(--sx-ac); }
 
 @media (max-width: 900px) {
@@ -265,7 +265,7 @@ html.sx-root, html.sx-root body { background: #050505; }
   color: var(--sx-ac); background: var(--sx-bg);
   border: 1px solid var(--sx-ac); border-radius: 50%;
   animation: none; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transition: background 0.2s, transform 0.2s;
+  transition: var(--interaction-transition);
 }
 .studiox .whatsapp-button svg { display: block; width: 28px; height: 28px; flex-shrink: 0; fill: currentColor; stroke: none; filter: none; box-shadow: none; }
 .studiox .whatsapp-button:hover { background: #152033; transform: translateY(-2px); }
@@ -306,11 +306,11 @@ html.sx-root, html.sx-root body { background: #050505; }
     display: flex; align-items: baseline; gap: 1rem; min-height: 44px; padding: 0;
     border: 0; color: var(--sx-fg); font-family: var(--sx-display); font-weight: 400;
     font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1.1; text-transform: uppercase; letter-spacing: 0.01em;
-    transition: color 0.2s, transform 0.2s;
+    transition: var(--interaction-transition);
   }
   .sx-mobile-menu .sx-mobile-links a span { font-family: var(--sx-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--sx-ac); }
   .sx-mobile-menu .sx-menu-social { display: flex; flex: 0 0 auto; align-items: center; gap: 1rem; padding-top: 1.25rem; }
-  .sx-mobile-menu .sx-menu-social a { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; color: var(--sx-fg); transition: color 0.2s, opacity 0.2s; }
+  .sx-mobile-menu .sx-menu-social a { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; color: var(--sx-fg); transition: var(--interaction-transition); }
   .sx-mobile-menu .sx-mobile-links a:hover, .sx-mobile-menu .sx-menu-social a:hover { color: var(--sx-ac); }
   .sx-mobile-menu .sx-mobile-links a:active { color: var(--sx-ac); transform: translateX(4px); }
   .sx-mobile-menu .sx-menu-social a:active { color: var(--sx-ac); opacity: 0.65; }
@@ -326,4 +326,9 @@ html.sx-root, html.sx-root body { background: #050505; }
 }
 @media (min-width: 641px) and (hover: hover) {
   .sx-mobile-menu { display: none; }
+}
+
+.sx-contact2-social a:hover i { transform: translate(2px, -2px); }
+@media (prefers-reduced-motion: reduce) {
+  .sx-contact2-social a:hover i, .sx-mobile-menu .sx-mobile-links a:active { transform: none; }
 }
