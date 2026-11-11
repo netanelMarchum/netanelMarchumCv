@@ -247,6 +247,6 @@ html.sx-root, html.sx-root body { background: #050505; }
   animation: none; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: background 0.2s, transform 0.2s;
 }
-.studiox .whatsapp-button svg { display: block; width: 28px; height: 28px; flex-shrink: 0; fill: currentColor; }
+.studiox .whatsapp-button svg { display: block; width: 28px; height: 28px; flex-shrink: 0; fill: currentColor; stroke: none; filter: none; box-shadow: none; }
 .studiox .whatsapp-button:hover { background: #152033; transform: translateY(-2px); }
 .studiox .whatsapp-button:focus-visible { outline: 2px solid var(--sx-ac); outline-offset: 4px; }
