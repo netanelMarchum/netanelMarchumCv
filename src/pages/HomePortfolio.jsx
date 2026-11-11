@@ -83,7 +83,6 @@ export default function HomePortfolio() {
             <div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><SocialLinks /></div>
             <p className="hp-study-note">B.Sc. in progress · The Open University of Israel · Cybersecurity track</p>
           </div>
-          <figure className="hp-portrait"><img src="/netanel-developer-960.webp" srcSet="/netanel-developer-480.webp 480w, /netanel-developer-960.webp 960w" sizes="(max-width: 700px) 90vw, (max-width: 960px) 34vw, 34vw" alt="Netanel Marchum working at a laptop" width="960" height="1026" fetchPriority="high" decoding="async" /><figcaption><span aria-hidden="true">&lt; / &gt;</span> Engineering × creativity</figcaption></figure>
         </section>
 
         <section className="hp-section hp-wrap" id="projects">
@@ -125,7 +124,7 @@ export default function HomePortfolio() {
           </div>
         </section>
 
-        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><p className="hp-section-label">05 / Contact</p><h2>Let’s build<br /><span>what’s next.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a><p className="hp-location">{profile.location}</p></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
+        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><p className="hp-section-label">05 / Contact</p><h2>Let’s build<br /><span>what’s next.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
       </main>
       <footer className="hp-footer hp-wrap"><p>© {new Date().getFullYear()} Netanel Marchum</p><a href="/studio" onClick={(event) => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate("/studio"); }}>Creative Studio <Arrow /></a></footer>
     </div>

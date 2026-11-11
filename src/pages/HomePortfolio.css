@@ -33,7 +33,8 @@
 .home-portfolio .hp-menu { position: absolute; inset: 100% 0 auto; background: #fff; border-bottom: 1px solid var(--hp-line); max-height: calc(100dvh - 72px - env(safe-area-inset-top)); overflow-y: auto; overscroll-behavior: contain; padding-block: 12px max(20px,env(safe-area-inset-bottom)); }
 .home-portfolio .hp-menu nav { display: grid; }
 .home-portfolio .hp-menu a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding-block: 10px; font-size: 18px; }
-.home-portfolio .hp-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: clamp(24px,4vw,64px); align-items: center; padding-block: 72px 88px; position: relative; background: radial-gradient(ellipse at 65% 95%,#edf3ff,transparent 65%); }
+.home-portfolio .hp-hero { display: grid; grid-template-columns: minmax(0,1fr); gap: clamp(24px,4vw,64px); align-items: center; padding-block: 72px 88px; position: relative; background: radial-gradient(ellipse at 65% 95%,#edf3ff,transparent 65%); }
+.home-portfolio .hp-hero-copy { max-width: 760px; }
 .home-portfolio .hp-intro-label, .home-portfolio .hp-section-label, .home-portfolio .hp-project-number { font: 11px/1.6 'HP Mono', monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--hp-muted); }
 .home-portfolio .hp-intro-label { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
 .home-portfolio .hp-intro-label > span { color: var(--hp-accent); font-size: 20px; letter-spacing: -.12em; }
@@ -47,11 +48,6 @@
 .home-portfolio .hp-actions .hp-button { padding: 10px 16px; background: var(--hp-ink); color: white; }
 .home-portfolio .hp-actions .hp-button:hover { background: var(--hp-accent); }
 .home-portfolio .hp-study-note { color: var(--hp-muted); font-size: 12px; margin-top: 20px; max-width: 48ch; }
-.home-portfolio .hp-portrait { position: relative; align-self: center; padding-top: 24px; }
-.home-portfolio .hp-portrait::before { content: ''; position: absolute; top: 0; right: -10px; width: 66px; height: 66px; background: linear-gradient(135deg,#214bea,#8ebeff); border-radius: 3px; }
-.home-portfolio .hp-portrait img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 960/1026; object-fit: cover; border-radius: 2px 2px 72px 2px; }
-.home-portfolio .hp-portrait figcaption { display: flex; align-items: center; gap: 10px; padding-top: 16px; font: 11px/1.6 'HP Mono',monospace; color: var(--hp-muted); }
-.home-portfolio .hp-portrait figcaption span { color: var(--hp-accent); }
 .home-portfolio .hp-section { padding-block: 56px; }
 .home-portfolio .hp-section-label { margin-bottom: 16px; }
 .home-portfolio h2 { font-size: clamp(2.25rem,4vw,4rem); font-weight: 500; line-height: 1.08; letter-spacing: -.06em; margin-bottom: 40px; }
@@ -106,7 +102,6 @@
 .home-portfolio .hp-contact-grid > div > p:not(.hp-section-label) { color: #c1cbe0; font-size: 15px; }
 .home-portfolio .hp-contact-email { display: inline-flex; align-items: center; gap: 16px; color: #8ebeff; font-size: clamp(1.1rem,2.5vw,1.8rem); min-height: 44px; margin-top: 14px; overflow-wrap: anywhere; }
 .home-portfolio .hp-contact a:hover { color: #8ebeff; }
-.home-portfolio .hp-contact-grid .hp-location { font-size: 13px; margin-top: 12px; }
 .home-portfolio .hp-contact-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .home-portfolio .hp-contact-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; }
 .home-portfolio .hp-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; padding-block: 24px max(24px,env(safe-area-inset-bottom)); color: var(--hp-muted); font-size: 12px; }
@@ -130,9 +125,6 @@
   .home-portfolio .hp-hero h1 { font-size: clamp(4rem,17vw,6rem); }
   .home-portfolio .hp-hero-role { font-size: 18px; }
   .home-portfolio .hp-hero-intro { font-size: 16px; }
-  .home-portfolio .hp-portrait { max-width: 440px; width: 100%; padding-top: 16px; margin-inline: auto; }
-  .home-portfolio .hp-portrait img { aspect-ratio: 960/1026; }
-  .home-portfolio .hp-portrait::before { right: 0; width: 48px; height: 48px; }
   .home-portfolio .hp-section { padding-block: 40px; }
   .home-portfolio h2 { font-size: clamp(2.3rem,10vw,3rem); margin-bottom: 28px; }
   .home-portfolio .hp-project, .home-portfolio .hp-project:nth-child(2) { grid-template-columns: minmax(0,1fr); gap: 20px; }
