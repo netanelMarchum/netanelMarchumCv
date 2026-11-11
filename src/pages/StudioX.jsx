@@ -97,7 +97,7 @@ export default function StudioX() {
         {IMAGES.length === 0 ? (
           <p className="sx-empty">Add images to <code>src/assets/work/</code>. They appear here automatically.</p>
         ) : (
-          IMAGES.map((src, i) => (
+          IMAGES.map((src, i) => ![8, 9, 10, 11, 12, 14].includes(i + 1) && (
             <motion.figure className="sx-tile" key={i} data-cursor
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -6% 0px" }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
@@ -171,7 +171,7 @@ export default function StudioX() {
             <span className="sx-contact2-lbl">Elsewhere</span>
             <nav className="sx-contact2-social">
               <a href={profile.linkedin} target="_blank" rel="noopener" data-cursor>LinkedIn <i>↗</i></a>
-              <a href={profile.instagram || "https://www.instagram.com/"} target="_blank" rel="noopener" data-cursor>Instagram <i>↗</i></a>
+              <a href="https://www.instagram.com/cover_design.studio/" target="_blank" rel="noopener" data-cursor>Instagram <i>↗</i></a>
             </nav>
           </div>
         </div>
