@@ -57,46 +57,17 @@ export default function HomePortfolio() {
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver((entries) => {
+      if (document.getElementById("top")?.getBoundingClientRect().bottom > innerHeight * .35) { setActive("about"); return; }
       for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id === "top" ? "about" : entry.target.id);
     }, { rootMargin: "-15% 0px -60% 0px" });
     document.querySelectorAll(".home-portfolio main > section").forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
-    const motion = matchMedia("(prefers-reduced-motion: reduce)");
-    if (!("IntersectionObserver" in window) || !Element.prototype.animate) return;
-    const animations = new Set();
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        observer.unobserve(entry.target);
-        if (motion.matches || entry.boundingClientRect.top < 0 || entry.target.contains(document.activeElement)) continue;
-        const animation = entry.target.animate([
-          { opacity: 0, transform: "translateY(12px)" },
-          { opacity: 1, transform: "translateY(0)" },
-        ], { duration: 320, easing: "cubic-bezier(.22,1,.36,1)" });
-        animations.add(animation);
-        animation.onfinish = () => animations.delete(animation);
-      }
-    }, { threshold: 0.08 });
-    document.querySelectorAll(".home-portfolio .hp-section h2, .home-portfolio .hp-project, .home-portfolio .hp-creative-project, .home-portfolio .hp-skill-group, .home-portfolio .hp-experience-row, .home-portfolio .hp-certificate").forEach((element) => observer.observe(element));
-    if (!motion.matches && !location.hash) {
-      document.querySelectorAll(".home-portfolio .hp-hero-copy > *").forEach((element, index) => {
-        const animation = element.animate([
-          { opacity: 0, transform: "translateY(10px)" },
-          { opacity: 1, transform: "translateY(0)" },
-        ], { duration: 300, delay: Math.min(index * 45, 225), easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" });
-        animations.add(animation);
-        animation.onfinish = () => animations.delete(animation);
-      });
-    }
-    const stopMotion = () => { if (motion.matches) animations.forEach((animation) => animation.cancel()); };
-    motion.addEventListener("change", stopMotion);
-    return () => {
-      observer.disconnect();
-      motion.removeEventListener("change", stopMotion);
-      animations.forEach((animation) => animation.cancel());
-    };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !Element.prototype.animate) return;
+    const element = document.querySelector(".home-portfolio .hp-hero-copy");
+    const animation = element?.animate([{ opacity: .6, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 280, easing: "cubic-bezier(.22,1,.36,1)" });
+    return () => animation?.cancel();
   }, []);
   useEffect(() => {
     const title = document.title;
@@ -115,7 +86,7 @@ export default function HomePortfolio() {
           <img className="hp-sidebar-portrait" src="/netanel-developer-480.webp" alt="" width="720" height="720" decoding="async" />
           <a className="hp-wordmark" href="#top">Netanel Marchum<span>.</span></a>
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setActive(id)}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
-          <div className="hp-nav-social"><SocialLinks /></div>
+          <div className="hp-nav-social"><SocialLinks /><a href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
           <button className="hp-toggle" ref={buttonRef} aria-expanded={open} aria-controls="hp-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
             <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={open ? "m6 6 12 12M6 18 18 6" : "M4 8h16M4 16h16"} /></svg>
           </button>
@@ -126,21 +97,21 @@ export default function HomePortfolio() {
       <main id="main-content" tabIndex="-1">
         <section className="hp-hero hp-wrap" id="top">
           <div className="hp-hero-copy" id="about">
-            <h1><span className="hp-code-bracket" aria-hidden="true">&lt;</span>Netanel<br /><span>Marchum.</span><span className="hp-code-bracket" aria-hidden="true">/&gt;</span></h1>
+            <h1>Netanel <span>Marchum.</span></h1>
             <p className="hp-hero-role">Computer Science Student<br /><span>& Aspiring Software Developer</span></p>
             <p className="hp-hero-intro">Programming, networks, and web development — with a focus on cybersecurity and a background in design.</p>
-            <div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><a className="hp-resume" href={profile.resume} download>Resume <Arrow down /></a></div><div className="hp-hero-social"><SocialLinks /></div>
-            <p className="hp-study-note">B.Sc. in progress · The Open University of Israel · Cybersecurity track</p>
+            <div className="hp-hero-links"><div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><a className="hp-resume" href={profile.resume} download>Resume <Arrow down /></a></div><div className="hp-hero-social"><SocialLinks /></div>
+            </div><p className="hp-study-note">B.Sc. in progress · The Open University of Israel · Cybersecurity track</p>
           </div>
-          <div className="hp-hero-mark" aria-hidden="true"><Code2 size={56} strokeWidth={1} /><span>Code. Networks. Web.</span></div>
+
         </section>
 
         <section className="hp-section hp-wrap" id="projects">
-          <h2>Selected <span>projects.</span></h2>
+          <h2>Selected projects<span>.</span></h2>
           <div className="hp-project-grid">
             {technicalProjects.map((project) => <article className="hp-project" key={project.title}>
-              <div className={`hp-project-image hp-project-image-${project.type}`}><div className="hp-preview-rail" aria-hidden="true"><span className="hp-ports"><i /><i /><i /></span><span>Project preview</span></div><img src={project.image} alt={`${project.title} project screenshot`} loading="lazy" decoding="async" /></div>
-              <div className="hp-project-copy"><h3>{project.title}</h3><p className="hp-project-description">{project.desc}</p><p className="hp-project-number">{project.type === "network" ? "Networks & security" : project.type === "ml" ? "Python & machine learning" : "Software development"}</p>
+              <div className={`hp-project-image hp-project-image-${project.type}`}><img src={project.image} alt={`${project.title} project screenshot`} loading="lazy" decoding="async" /></div>
+              <div className="hp-project-copy"><h3>{project.title}</h3><p className="hp-project-description">{project.desc}</p>
               <ul className="hp-project-tech" aria-label="Technologies">{project.tech.map((technology) => <li key={technology}>{technology}</li>)}</ul>
               <ProjectActions project={project} /></div>
             </article>)}
@@ -155,26 +126,26 @@ export default function HomePortfolio() {
         </section>
 
         <section className="hp-section hp-wrap" id="skills">
-          <h2>Technical <span>skills.</span></h2>
+          <h2>Technical skills</h2>
           <div className="hp-skills-grid">{skillGroups.map(([title, items], index) => { const Icon = skillIcons[index]; return <div className="hp-skill-group" key={title}><h3><Icon size={20} strokeWidth={1.6} aria-hidden="true" />{title}</h3><p>{items.join(" · ")}</p></div>; })}</div>
           <p className="hp-foundations"><strong>CS foundations:</strong> Data Structures · Algorithms · Operating Systems · Machine Learning</p>
         </section>
 
         <section className="hp-section hp-wrap" id="experience">
-          <h2>Professional <span>experience.</span></h2>
+          <h2>Experience</h2>
           <div className="hp-experience-list">{experience.map(([role, company, dates, description]) => <article className="hp-experience-row" key={company}>
             <div><h3>{role}</h3><p className="hp-experience-company">{company}</p></div><p className="hp-experience-date">{dates}</p><p className="hp-experience-description">{description}</p>
           </article>)}</div>
         </section>
 
         <section className="hp-section hp-wrap" id="education">
-          <h2>Education &<br /><span>certifications.</span></h2>
+          <h2>Education &<br />credentials</h2>
           <div className="hp-education-grid"><div>{education.map((item, i) => <article className="hp-education-row" key={item.title}><h3>{item.title}{i === 0 && " — in progress"}</h3><p className="hp-institution">{item.org}</p><p className="hp-experience-date">{item.date}</p><p className="hp-honor">{item.badge}</p></article>)}<p className="hp-languages">{languages.map((language) => `${language.name}: ${language.tag}`).join(" · ")}</p></div>
             <aside className="hp-certificates" id="certificates" aria-label="Verified certificates">{certificates.map((certificate) => <a className="hp-certificate" key={certificate.title} href={certificate.href} target="_blank" rel="noopener noreferrer"><span className="hp-certificate-preview"><img src={certificate.img} alt={certificate.title} width="1100" height={certificate.img.includes("my-cer") ? 1556 : 1598} loading="lazy" decoding="async" /></span><span>{certificate.title}<small>View certificate <Arrow /></small></span></a>)}</aside>
           </div>
         </section>
 
-        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Let’s <span>connect.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
+        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Get in touch</h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
       </main>
       <footer className="hp-footer hp-wrap"><p>© {new Date().getFullYear()} Netanel Marchum</p><a href="/studio" onClick={(event) => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate("/studio"); }}>Creative Studio <Arrow /></a></footer>
     </div>
