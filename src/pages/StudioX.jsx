@@ -97,7 +97,7 @@ export default function StudioX() {
         {IMAGES.length === 0 ? (
           <p className="sx-empty">Add images to <code>src/assets/work/</code>. They appear here automatically.</p>
         ) : (
-          IMAGES.map((src, i) => ![8, 9, 10, 11, 12, 13, 14, 15].includes(i + 1) && (
+          IMAGES.map((src, i) => ![1, 8, 9, 10, 11, 12, 13, 14, 15].includes(i + 1) && (
             <motion.figure className="sx-tile" key={i} data-cursor
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -6% 0px" }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
