@@ -3,7 +3,6 @@ import { profile, projects, education, certificates, languages } from "../data.j
 import { navigate } from "../router.jsx";
 import { useMobileMenu } from "../useMobileMenu.js";
 import { House, Code2, FolderCode, BriefcaseBusiness, GraduationCap, Mail, Network, Globe, Wrench } from "lucide-react";
-import HomeSystemGraphic from "./HomeSystemGraphic.jsx";
 import "./HomePortfolio.css";
 
 const nav = [["About", "about"], ["Skills", "skills"], ["Projects", "projects"], ["Experience", "experience"], ["Education", "education"], ["Contact", "contact"]];
@@ -82,7 +81,7 @@ export default function HomePortfolio() {
     }, { threshold: 0.08 });
     document.querySelectorAll(".home-portfolio .hp-section h2, .home-portfolio .hp-project, .home-portfolio .hp-creative-project, .home-portfolio .hp-skill-group, .home-portfolio .hp-experience-row, .home-portfolio .hp-certificate").forEach((element) => observer.observe(element));
     if (!motion.matches && !location.hash) {
-      document.querySelectorAll(".home-portfolio .hp-hero-copy > *, .home-portfolio .hp-system").forEach((element, index) => {
+      document.querySelectorAll(".home-portfolio .hp-hero-copy > *").forEach((element, index) => {
         const animation = element.animate([
           { opacity: 0, transform: "translateY(10px)" },
           { opacity: 1, transform: "translateY(0)" },
@@ -127,22 +126,21 @@ export default function HomePortfolio() {
       <main id="main-content" tabIndex="-1">
         <section className="hp-hero hp-wrap" id="top">
           <div className="hp-hero-copy" id="about">
-            <p className="hp-intro-label"><span aria-hidden="true">&lt; / &gt;</span> Software developer portfolio</p>
-            <h1>Netanel<br /><span>Marchum.</span></h1>
+            <h1><span className="hp-code-bracket" aria-hidden="true">&lt;</span>Netanel<br /><span>Marchum.</span><span className="hp-code-bracket" aria-hidden="true">/&gt;</span></h1>
             <p className="hp-hero-role">Computer Science Student<br /><span>& Aspiring Software Developer</span></p>
-            <p className="hp-hero-intro">Projects in programming, networking, and web technologies. A technical direction shaped by a creative background.</p>
-            <div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><SocialLinks /></div>
+            <p className="hp-hero-intro">Programming, networks, and web development — with a focus on cybersecurity and a background in design.</p>
+            <div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><a className="hp-resume" href={profile.resume} download>Resume <Arrow down /></a></div><div className="hp-hero-social"><SocialLinks /></div>
             <p className="hp-study-note">B.Sc. in progress · The Open University of Israel · Cybersecurity track</p>
           </div>
-          <HomeSystemGraphic />
+          <div className="hp-hero-mark" aria-hidden="true"><Code2 size={56} strokeWidth={1} /><span>Code. Networks. Web.</span></div>
         </section>
 
         <section className="hp-section hp-wrap" id="projects">
-          <p className="hp-section-label">01 / Selected work</p><h2>Selected <span>projects.</span></h2>
+          <h2>Selected <span>projects.</span></h2>
           <div className="hp-project-grid">
-            {technicalProjects.map((project, index) => <article className="hp-project" key={project.title}>
+            {technicalProjects.map((project) => <article className="hp-project" key={project.title}>
               <div className={`hp-project-image hp-project-image-${project.type}`}><div className="hp-preview-rail" aria-hidden="true"><span className="hp-ports"><i /><i /><i /></span><span>Project preview</span></div><img src={project.image} alt={`${project.title} project screenshot`} loading="lazy" decoding="async" /></div>
-              <div className="hp-project-copy"><p className="hp-project-number">0{index + 1} / {project.type === "network" ? "Networks & security" : project.type === "ml" ? "Python & machine learning" : "Software development"}</p><h3>{project.title}</h3><p className="hp-project-description">{project.desc}</p>
+              <div className="hp-project-copy"><h3>{project.title}</h3><p className="hp-project-description">{project.desc}</p><p className="hp-project-number">{project.type === "network" ? "Networks & security" : project.type === "ml" ? "Python & machine learning" : "Software development"}</p>
               <ul className="hp-project-tech" aria-label="Technologies">{project.tech.map((technology) => <li key={technology}>{technology}</li>)}</ul>
               <ProjectActions project={project} /></div>
             </article>)}
@@ -157,26 +155,26 @@ export default function HomePortfolio() {
         </section>
 
         <section className="hp-section hp-wrap" id="skills">
-          <p className="hp-section-label">02 / Toolkit</p><h2>Technical <span>skills.</span></h2>
+          <h2>Technical <span>skills.</span></h2>
           <div className="hp-skills-grid">{skillGroups.map(([title, items], index) => { const Icon = skillIcons[index]; return <div className="hp-skill-group" key={title}><h3><Icon size={20} strokeWidth={1.6} aria-hidden="true" />{title}</h3><p>{items.join(" · ")}</p></div>; })}</div>
           <p className="hp-foundations"><strong>CS foundations:</strong> Data Structures · Algorithms · Operating Systems · Machine Learning</p>
         </section>
 
         <section className="hp-section hp-wrap" id="experience">
-          <p className="hp-section-label">03 / Experience</p><h2>Professional <span>experience.</span></h2>
+          <h2>Professional <span>experience.</span></h2>
           <div className="hp-experience-list">{experience.map(([role, company, dates, description]) => <article className="hp-experience-row" key={company}>
             <div><h3>{role}</h3><p className="hp-experience-company">{company}</p></div><p className="hp-experience-date">{dates}</p><p className="hp-experience-description">{description}</p>
           </article>)}</div>
         </section>
 
         <section className="hp-section hp-wrap" id="education">
-          <p className="hp-section-label">04 / Education & certifications</p><h2>Education &<br /><span>certifications.</span></h2>
+          <h2>Education &<br /><span>certifications.</span></h2>
           <div className="hp-education-grid"><div>{education.map((item, i) => <article className="hp-education-row" key={item.title}><h3>{item.title}{i === 0 && " — in progress"}</h3><p className="hp-institution">{item.org}</p><p className="hp-experience-date">{item.date}</p><p className="hp-honor">{item.badge}</p></article>)}<p className="hp-languages">{languages.map((language) => `${language.name}: ${language.tag}`).join(" · ")}</p></div>
             <aside className="hp-certificates" id="certificates" aria-label="Verified certificates">{certificates.map((certificate) => <a className="hp-certificate" key={certificate.title} href={certificate.href} target="_blank" rel="noopener noreferrer"><span className="hp-certificate-preview"><img src={certificate.img} alt={certificate.title} width="1100" height={certificate.img.includes("my-cer") ? 1556 : 1598} loading="lazy" decoding="async" /></span><span>{certificate.title}<small>View certificate <Arrow /></small></span></a>)}</aside>
           </div>
         </section>
 
-        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><p className="hp-section-label">05 / Contact</p><h2>Let’s <span>connect.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
+        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Let’s <span>connect.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
       </main>
       <footer className="hp-footer hp-wrap"><p>© {new Date().getFullYear()} Netanel Marchum</p><a href="/studio" onClick={(event) => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate("/studio"); }}>Creative Studio <Arrow /></a></footer>
     </div>

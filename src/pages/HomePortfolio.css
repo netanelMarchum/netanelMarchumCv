@@ -3,8 +3,9 @@
 @font-face { font-family: 'HP Mono'; src: url('/fonts/jetbrains-mono.woff2') format('woff2'); font-display: swap; }
 .home-portfolio {
   --hp-bg: #fff; --hp-surface: #f6f8fc; --hp-ink: #101828; --hp-muted: #667085;
-  --hp-navy: #0b174f; --hp-light: #8ebeff;
-  --hp-accent: #2348d5; --hp-line: #e5eaf2; --hp-ease: cubic-bezier(.22,1,.36,1);
+  --hp-navy: #100878; --hp-light: #8ebeff;
+  --hp-accent: #100878; --hp-line: #e5eaf2; --hp-ease: cubic-bezier(.22,1,.36,1);
+  --hp-space: 8px; --hp-radius: 4px; --hp-duration: 200ms; --hp-display: clamp(3.5rem,6.5vw,6rem);
   min-height: 100svh; background: var(--hp-bg); color: var(--hp-ink);
   font: 16px/1.65 'HP UI', system-ui, sans-serif; padding: 0 0 0 240px;
 }
@@ -37,14 +38,14 @@
 .home-portfolio .hp-menu { position: absolute; inset: 100% 0 auto; background: #fff; border-bottom: 1px solid var(--hp-line); max-height: calc(100dvh - 72px - env(safe-area-inset-top)); overflow-y: auto; overscroll-behavior: contain; padding-block: 12px max(20px,env(safe-area-inset-bottom)); }
 .home-portfolio .hp-menu nav { display: grid; }
 .home-portfolio .hp-menu a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding-block: 10px; font-size: 18px; }
-.home-portfolio .hp-hero { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr); gap: 24px; align-items: center; padding-block: 56px; position: relative; background: linear-gradient(160deg,#fff 55%,#f6f8fc); }
-.home-portfolio .hp-hero-copy { max-width: 760px; }
+.home-portfolio .hp-hero { display: grid; grid-template-columns: minmax(0,1fr); gap: 24px; align-items: center; padding-block: 64px 56px; position: relative; background: linear-gradient(160deg,#fff 55%,#f6f8fc); }
+.home-portfolio .hp-hero-copy { max-width: 800px; }
 .home-portfolio .hp-intro-label, .home-portfolio .hp-section-label, .home-portfolio .hp-project-number { font: 12px/1.6 'HP Mono', monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--hp-muted); }
 .home-portfolio .hp-intro-label { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .home-portfolio .hp-intro-label > span { flex-shrink: 0; white-space: nowrap; color: var(--hp-accent); font-size: 20px; letter-spacing: -.12em; }
-.home-portfolio .hp-hero h1 { font-size: clamp(3rem,5.8vw,5.5rem); line-height: 1.02; font-weight: 600; letter-spacing: -.06em; }
+.home-portfolio .hp-hero h1 { font-size: var(--hp-display); line-height: 1.02; font-weight: 600; letter-spacing: -.04em; }
 .home-portfolio h1 span, .home-portfolio h2 span { color: var(--hp-accent); }
-.home-portfolio .hp-hero-role { font-size: clamp(1.05rem,1.65vw,1.35rem); font-weight: 500; line-height: 1.5; letter-spacing: -.025em; margin-top: 26px; }
+.home-portfolio .hp-hero-role { font-size: clamp(1.15rem,2vw,1.5rem); font-weight: 500; line-height: 1.5; letter-spacing: -.025em; margin-top: 26px; }
 .home-portfolio .hp-hero-intro { color: var(--hp-muted); font-size: 16px; max-width: 44ch; margin-top: 16px; }
 .home-portfolio .hp-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-top: 26px; }
 .home-portfolio .hp-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; font-size: 14px; font-weight: 500; }
@@ -53,7 +54,7 @@
 .home-portfolio .hp-study-note { color: var(--hp-muted); font-size: 14px; margin-top: 24px; max-width: 48ch; }
 .home-portfolio .hp-section { padding-block: 56px; }
 .home-portfolio .hp-section-label { margin-bottom: 16px; }
-.home-portfolio h2 { font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 600; line-height: 1.08; letter-spacing: -.06em; margin-bottom: 40px; }
+.home-portfolio h2 { font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 600; line-height: 1.08; letter-spacing: -.04em; margin-bottom: 40px; }
 .home-portfolio .hp-project-grid { display: grid; gap: 40px; }
 .home-portfolio .hp-project { min-width: 0; display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 32px; align-items: center; padding-bottom: 40px; border-bottom: 1px solid var(--hp-line); }
 .home-portfolio .hp-project-image { position: relative; aspect-ratio: 16/11; background: var(--hp-surface); overflow: hidden; padding: 48px clamp(12px,2vw,28px) 24px; border: 1px solid var(--hp-line); border-radius: 8px; }
@@ -61,7 +62,7 @@
 .home-portfolio .hp-project-image-game { background: var(--hp-surface); }
 .home-portfolio .hp-project-image img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .25s var(--hp-ease); }
 @media(hover: hover) { .home-portfolio .hp-project:hover .hp-project-image img { transform: scale(1.025); } }
-.home-portfolio .hp-project h3 { font-size: clamp(1.5rem,2.4vw,2rem); line-height: 1.12; font-weight: 600; letter-spacing: -.045em; margin-top: 14px; }
+.home-portfolio .hp-project h3 { font-size: clamp(1.5rem,2.4vw,2rem); line-height: 1.12; font-weight: 600; letter-spacing: -.035em; margin-top: 14px; }
 .home-portfolio .hp-project-description { color: var(--hp-muted); font-size: 15px; margin-top: 16px; max-width: 48ch; }
 .home-portfolio .hp-project-tech { display: flex; flex-wrap: wrap; gap: 6px 12px; list-style: none; padding: 0; margin-top: 18px; }
 .home-portfolio .hp-project-tech li { color: var(--hp-muted); font: 12px/1.7 'HP Mono',monospace; }
@@ -147,7 +148,7 @@ html:has(.home-portfolio) { scroll-behavior: smooth; }
 @media(prefers-reduced-motion:reduce) { html:has(.home-portfolio) { scroll-behavior: auto; } }
 
 /* Connection ports and traces are shared by the illustration and project frames. */
-.home-portfolio .hp-hero { isolation: isolate; overflow: clip; background: radial-gradient(ellipse at 95% 65%,#eaf2ff 0,transparent 52%),linear-gradient(160deg,#fff 55%,var(--hp-surface)); }
+.home-portfolio .hp-hero { isolation: isolate; overflow: clip; background: linear-gradient(180deg,#fff 62%,#edf2ff); }
 .home-portfolio .hp-hero-copy { position: relative; z-index: 1; }
 .home-portfolio .hp-nav a { transition: color 200ms ease, background-color 200ms ease, box-shadow 200ms ease; }
 .home-portfolio .hp-nav-social { width: 100%; padding-top: 16px; border-top: 1px solid var(--hp-line); }
@@ -162,16 +163,6 @@ html:has(.home-portfolio) { scroll-behavior: smooth; }
 }
 @media(prefers-reduced-motion:reduce) { .home-portfolio .hp-certificate:hover img { transform: none; } }
 
-.home-portfolio .hp-system { margin: 0; min-width: 0; --hp-play-state: paused; }
-.home-portfolio .hp-system svg { display: block; width: 100%; height: auto; overflow: visible; fill: var(--hp-navy); }
-.home-portfolio .hp-system-title { font: 600 27px 'HP Display',system-ui,sans-serif; letter-spacing: -.7px; }
-.home-portfolio .hp-system-detail { font: 400 15px 'HP UI',system-ui,sans-serif; }
-.home-portfolio .hp-system-micro { font: 400 10px 'HP Mono',monospace; letter-spacing: .7px; }
-.home-portfolio .hp-system-code, .home-portfolio .hp-system-network, .home-portfolio .hp-system-web { animation: hp-layer-drift 8s ease-in-out infinite; animation-play-state: var(--hp-play-state); }
-.home-portfolio .hp-system-network { animation-delay: -2.5s; }
-.home-portfolio .hp-system-web { animation-delay: -5s; }
-.home-portfolio .hp-system figcaption { display: flex; justify-content: center; align-items: center; gap: 10px; font: 12px/1.6 'HP Mono',monospace; color: var(--hp-muted); }
-.home-portfolio .hp-system figcaption > span { width: 6px; height: 6px; border: 1px solid var(--hp-accent); border-radius: 50%; }
 .home-portfolio .hp-preview-rail { position: absolute; inset: 0 0 auto; height: 32px; display: flex; align-items: center; gap: 16px; padding-inline: 16px; border-bottom: 1px solid var(--hp-line); background: white; font: 10px/1 'HP Mono',monospace; color: var(--hp-muted); }
 .home-portfolio .hp-ports { display: inline-flex; align-items: center; gap: 5px; }
 .home-portfolio .hp-ports i { width: 5px; height: 5px; border: 1px solid #9cb2db; border-radius: 50%; }
@@ -181,11 +172,20 @@ html:has(.home-portfolio) { scroll-behavior: smooth; }
 .home-portfolio .hp-contact .hp-section-label::before { background: #5973a6; box-shadow: -3px 0 0 1px var(--hp-light); }
 .home-portfolio .hp-actions .hp-button { transition: background-color 200ms ease,transform 200ms var(--hp-ease); }
 @media(hover:hover) { .home-portfolio .hp-actions .hp-button:hover { transform: translateY(-2px); } }
-@keyframes hp-layer-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 @media(max-width:700px) {
   .home-portfolio .hp-hero { padding-bottom: 36px; }
-  .home-portfolio .hp-system { width: min(100%,420px); margin-inline: auto; }
-  .home-portfolio .hp-system svg { overflow: hidden; }
-  .home-portfolio .hp-system figcaption { font-size: 11px; }
 }
 @media(prefers-reduced-motion:reduce) { .home-portfolio .hp-actions .hp-button:hover { transform: none; } }
+
+.home-portfolio ::selection { background: #dce5ff; color: var(--hp-navy); }
+.home-portfolio .hp-code-bracket { font-weight: 400; color: #8991a4; font-size: .5em; vertical-align: .18em; letter-spacing: -.04em; }
+.home-portfolio .hp-hero-mark { position: absolute; right: 7%; top: 72px; width: 144px; height: 144px; border-radius: 24px; background: linear-gradient(145deg,#100878,#454fc7); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transform: rotate(8deg); }
+.home-portfolio .hp-hero-mark span { font-size: 10px; letter-spacing: .02em; }
+.home-portfolio .hp-hero-social { display: flex; gap: 24px; margin-top: 16px; }
+.home-portfolio .hp-hero-social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; }
+.home-portfolio .hp-actions .hp-resume { border: 1px solid var(--hp-line); padding-inline: 20px; border-radius: var(--hp-radius); }
+.home-portfolio .hp-project { padding-block: 0 40px; }
+.home-portfolio .hp-project-number { font-family: 'HP UI',system-ui,sans-serif; font-size: 12px; letter-spacing: .02em; }
+.home-portfolio .hp-nav-social a { font-size: 14px; }
+@media(max-width:1200px) { .home-portfolio .hp-hero-mark { right: 5%; width: 100px; height: 100px; top: 56px; } .home-portfolio .hp-hero-mark svg { width: 40px; height: 40px; } .home-portfolio .hp-hero-mark span { display: none; } }
+@media(max-width:700px) { .home-portfolio .hp-hero-mark { display: none; } .home-portfolio .hp-hero h1 { font-size: clamp(3rem,13.5vw,4.75rem); } .home-portfolio .hp-hero-copy { padding-top: 8px; } }
