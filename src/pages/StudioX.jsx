@@ -145,7 +145,10 @@ export default function StudioX() {
                 ["WordPress", "/icons/wordpress.svg"],
               ].map(([name, src]) => (
                 <span className="sx-tool" key={name} data-cursor>
-                  <img src={src} alt={name} loading="eager" />
+                  <span className="sx-tool-icon">
+                    <img className="sx-tool-mono" src={src} alt={name} loading="eager" />
+                    <img className="sx-tool-brand" src={name === "Figma" ? src : src.replace(".svg", "-brand.svg")} alt="" aria-hidden="true" loading="eager" />
+                  </span>
                   <b>{name}</b>
                 </span>
               ))}
