@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Icon } from "../components/Icons.jsx";
 import { profile } from "../data.js";
 import { navigate, hasNavigated } from "../router.jsx";
 import { useMobileMenu } from "../useMobileMenu.js";
@@ -56,7 +57,7 @@ export default function StudioX() {
   const desktop = typeof window !== "undefined" && window.matchMedia("(pointer:fine)").matches;
   const cursorOn = desktop && !reduce;
   const ring = useCursor(cursorOn);
-  const { open, setOpen, buttonRef, menuRef, closeMenu } = useMobileMenu(640);
+  const { open, setOpen, buttonRef, menuRef, closeMenu } = useMobileMenu(640, "(max-width: 640px), (hover: none) and (pointer: coarse)");
   const [preload] = useState(() => !reduce && !hasNavigated && !studioVisited);
   const [loaded, setLoaded] = useState(!preload);
   const year = new Date().getFullYear();
@@ -100,12 +101,29 @@ export default function StudioX() {
         </motion.div>
       )}
 
-      <header className="sx-head">
+      <header className={`sx-head ${open ? "is-menu-open" : ""}`}>
         <a className="sx-logo" href="/studio" onClick={(e) => { e.preventDefault(); navigate("/studio"); }}>Netanel Marchum<span>&nbsp;Studio</span></a>
         <nav className="sx-nav"><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
         <button className={`burger sx-burger ${open ? "open" : ""}`} ref={buttonRef} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="studio-menu" onClick={() => setOpen((value) => !value)}><span /><span /><span /></button>
-        <AnimatePresence>{open && <motion.nav initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="mobile-menu sx-mobile-menu" id="studio-menu" ref={menuRef} role="dialog" aria-modal="true" aria-label="Studio navigation">
-          <ul>{[["Work", "work"], ["About", "about"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id]) => <li key={id}><a href={`#${id}`} onClick={closeMenu}>{label}</a></li>)}</ul>
+        <AnimatePresence>{open && <motion.nav
+          initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, pointerEvents: "none" }}
+          transition={{ duration: reduce ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="mobile-menu sx-mobile-menu" id="studio-menu" ref={menuRef} role="dialog" aria-modal="true" aria-label="Studio navigation">
+          <ul className="sx-mobile-links">
+            {[["Work", "work"], ["About", "about"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id], i) => (
+              <motion.li key={id} initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reduce ? 0 : 0.35, delay: reduce ? 0 : i * 0.04, ease: [0.22, 1, 0.36, 1] }}>
+                <a href={`#${id}`} onClick={closeMenu}><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{label}</a>
+              </motion.li>
+            ))}
+          </ul>
+          <div className="sx-menu-social" aria-label="Social and contact links">
+            <a href={`mailto:${profile.email}`} aria-label="Email" onClick={closeMenu}><Icon.mail width="22" height="22" aria-hidden="true" /></a>
+            <a href="https://www.instagram.com/cover_design.studio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" onClick={closeMenu}>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/netanel-marchum/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onClick={closeMenu}><Icon.linkedin width="22" height="22" aria-hidden="true" /></a>
+          </div>
         </motion.nav>}</AnimatePresence>
       </header>
 

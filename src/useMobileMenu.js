@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useMobileMenu(breakpoint) {
+export function useMobileMenu(breakpoint, mobileQuery) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
@@ -25,8 +25,8 @@ export function useMobileMenu(breakpoint) {
       event.preventDefault();
       items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length]?.focus();
     };
-    const media = window.matchMedia(`(min-width: ${breakpoint + 1}px)`);
-    const onResize = () => { if (media.matches) setOpen(false); };
+    const media = window.matchMedia(mobileQuery || `(max-width: ${breakpoint}px)`);
+    const onResize = () => { if (!media.matches) setOpen(false); };
     document.addEventListener("keydown", onKey);
     media.addEventListener("change", onResize);
     return () => {
@@ -38,7 +38,7 @@ export function useMobileMenu(breakpoint) {
       window.scrollTo({ top: scrollY, behavior: "instant" });
       buttonRef.current?.focus({ preventScroll: true });
     };
-  }, [open, breakpoint]);
+  }, [open, breakpoint, mobileQuery]);
 
   const closeMenu = (event) => {
     setOpen(false);
