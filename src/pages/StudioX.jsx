@@ -45,7 +45,7 @@ export default function StudioX() {
 
   useEffect(() => {
     document.documentElement.classList.add("sx-root");
-    const t = setTimeout(() => setLoaded(true), reduce ? 0 : 1300);
+    const t = setTimeout(() => setLoaded(true), reduce ? 0 : 900);
 
     const preventImageDownload = (e) => {
       if (e.target.tagName === "IMG") {
@@ -75,8 +75,8 @@ export default function StudioX() {
       {cursorOn && <div className="sx-cursor" ref={ring} aria-hidden="true" />}
 
       {!reduce && (
-        <motion.div className="sx-loader" initial={{ y: 0 }} animate={loaded ? { y: "-100%" } : { y: 0 }}
-          transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}>
+        <motion.div className="sx-loader" aria-hidden="true" initial={{ y: 0 }} animate={loaded ? { y: "-100%" } : { y: 0 }}
+          transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}>
           <span className="sx-loader-word">STUDIO</span>
         </motion.div>
       )}

@@ -44,7 +44,25 @@ html.sx-root, html.sx-root body { background: #050505; }
 
 /* loader */
 .sx-loader { position: fixed; inset: 0; z-index: 9998; background: #050505; display: grid; place-items: center; }
-.sx-loader-word { font-family: var(--sx-display); font-size: clamp(3rem, 12vw, 9rem); text-transform: uppercase; letter-spacing: 0.05em; }
+.sx-loader-word {
+  display: block; width: 90vw; text-align: center; line-height: 1.15;
+  font-family: var(--sx-display); font-size: clamp(3rem, 12vw, 9rem);
+  font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em;
+  transform-origin: center; animation: sx-type-cycle 0.9s steps(1, end) both;
+}
+@keyframes sx-type-cycle {
+  0% { font-family: var(--sx-display); font-weight: 400; font-style: normal; transform: scaleX(0.85); letter-spacing: 0.05em; }
+  14% { font-family: var(--sx-serif); font-weight: 400; font-style: italic; transform: scaleX(1.1); letter-spacing: 0.02em; }
+  28% { font-family: var(--sx-sans); font-weight: 800; font-style: normal; transform: scaleX(1.15); letter-spacing: -0.06em; }
+  42% { font-family: var(--sx-mono); font-weight: 400; font-style: normal; transform: scaleX(0.9); letter-spacing: 0.12em; }
+  56% { font-family: var(--sx-serif); font-weight: 400; font-style: normal; transform: scaleX(1.05); letter-spacing: 0.04em; }
+  70% { font-family: var(--sx-sans); font-weight: 500; font-style: italic; transform: scaleX(0.8); letter-spacing: -0.04em; }
+  84%, 100% { font-family: var(--sx-display); font-weight: 400; font-style: normal; transform: scaleX(1); letter-spacing: 0.05em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sx-loader { display: none; }
+  .sx-loader-word { animation: none; }
+}
 
 /* header */
 .sx-head { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem var(--sx-pad); }
