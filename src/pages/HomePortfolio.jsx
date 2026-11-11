@@ -44,6 +44,7 @@ export default function HomePortfolio() {
       <a className="hp-skip" href="#main-content">Skip to content</a>
       <header className="hp-header">
         <div className="hp-wrap hp-header-inner">
+          <img className="hp-sidebar-portrait" src={profile.photo} alt="" width="720" height="720" decoding="async" />
           <a className="hp-wordmark" href="#top">Netanel Marchum<span>.</span></a>
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
           <div className="hp-nav-social"><SocialLinks /></div>
@@ -57,7 +58,8 @@ export default function HomePortfolio() {
       <main id="main-content" tabIndex="-1">
         <section className="hp-hero hp-wrap" id="top">
           <div className="hp-hero-copy" id="about">
-            <h1>Hi, I’m Netanel<span>.</span></h1>
+            <p className="hp-intro-label">Computer science meets creative thinking</p>
+            <h1>Hi, I’m<br /> <span>Netanel.</span></h1>
             <p className="hp-hero-role">Computer Science Student<br /><span>& Aspiring Software Developer</span></p>
             <p className="hp-hero-intro">I build software and work on projects involving programming, networking, and web technologies.</p>
             <div className="hp-actions"><a className="hp-button" href="#projects">View Projects <Arrow /></a><SocialLinks /></div>
