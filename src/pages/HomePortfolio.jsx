@@ -189,7 +189,7 @@ export default function HomePortfolio() {
           </div>
         </section>
 
-        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Let’s talk<span>.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="tel:0552574171">{profile.phone}</a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
+        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Let’s talk<span>.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer">WhatsApp <Arrow /></a></div></div></section>
       </main>
       <footer className="hp-footer hp-wrap"><p>© {new Date().getFullYear()} Netanel Marchum</p><a href="/studio" onClick={(event) => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate("/studio"); }}>Creative Studio <Arrow /></a></footer>
     </div>
