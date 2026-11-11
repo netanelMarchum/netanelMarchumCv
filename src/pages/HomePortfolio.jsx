@@ -63,6 +63,32 @@ export default function HomePortfolio() {
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    if (!("IntersectionObserver" in window) || !Element.prototype.animate) return;
+    const animations = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        if (motion.matches || entry.boundingClientRect.top < 0 || entry.target.contains(document.activeElement)) continue;
+        const animation = entry.target.animate([
+          { opacity: 0, transform: "translateY(12px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ], { duration: 320, easing: "cubic-bezier(.22,1,.36,1)" });
+        animations.add(animation);
+        animation.onfinish = () => animations.delete(animation);
+      }
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".home-portfolio .hp-section h2, .home-portfolio .hp-project, .home-portfolio .hp-creative-project, .home-portfolio .hp-skill-group, .home-portfolio .hp-experience-row, .home-portfolio .hp-certificate").forEach((element) => observer.observe(element));
+    const stopMotion = () => { if (motion.matches) animations.forEach((animation) => animation.cancel()); };
+    motion.addEventListener("change", stopMotion);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", stopMotion);
+      animations.forEach((animation) => animation.cancel());
+    };
+  }, []);
+  useEffect(() => {
     const title = document.title;
     const description = document.querySelector('meta[name="description"]');
     const originalDescription = description?.content;
@@ -78,7 +104,7 @@ export default function HomePortfolio() {
         <div className="hp-wrap hp-header-inner">
           <img className="hp-sidebar-portrait" src="/netanel-developer-480.webp" alt="" width="720" height="720" decoding="async" />
           <a className="hp-wordmark" href="#top">Netanel Marchum<span>.</span></a>
-          <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setActive(id)}><Icon size={19} aria-hidden="true" />{label}</a>; })}</nav>
+          <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setActive(id)}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
           <div className="hp-nav-social"><SocialLinks /></div>
           <button className="hp-toggle" ref={buttonRef} aria-expanded={open} aria-controls="hp-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
             <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={open ? "m6 6 12 12M6 18 18 6" : "M4 8h16M4 16h16"} /></svg>
@@ -135,7 +161,7 @@ export default function HomePortfolio() {
         <section className="hp-section hp-wrap" id="education">
           <p className="hp-section-label">04 / Education & certifications</p><h2>Education &<br /><span>certifications.</span></h2>
           <div className="hp-education-grid"><div>{education.map((item, i) => <article className="hp-education-row" key={item.title}><h3>{item.title}{i === 0 && " — in progress"}</h3><p className="hp-institution">{item.org}</p><p className="hp-experience-date">{item.date}</p><p className="hp-honor">{item.badge}</p></article>)}<p className="hp-languages">{languages.map((language) => `${language.name}: ${language.tag}`).join(" · ")}</p></div>
-            <aside className="hp-certificates" id="certificates" aria-label="Verified certificates">{certificates.map((certificate) => <a className="hp-certificate" key={certificate.title} href={certificate.href} target="_blank" rel="noopener noreferrer"><img src={certificate.img} alt={certificate.title} width="1100" height={certificate.img.includes("my-cer") ? 1556 : 1598} loading="lazy" decoding="async" /><span>{certificate.title}<small>View certificate <Arrow /></small></span></a>)}</aside>
+            <aside className="hp-certificates" id="certificates" aria-label="Verified certificates">{certificates.map((certificate) => <a className="hp-certificate" key={certificate.title} href={certificate.href} target="_blank" rel="noopener noreferrer"><span className="hp-certificate-preview"><img src={certificate.img} alt={certificate.title} width="1100" height={certificate.img.includes("my-cer") ? 1556 : 1598} loading="lazy" decoding="async" /></span><span>{certificate.title}<small>View certificate <Arrow /></small></span></a>)}</aside>
           </div>
         </section>
 
