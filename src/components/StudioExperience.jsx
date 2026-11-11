@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Icon } from "./Icons.jsx";
 import "./StudioExperience.css";
 
 const experience = [
@@ -52,6 +53,12 @@ export default function StudioExperience() {
           </motion.li>
         ))}
       </ol>
+      <p className="sx-experience-certification">
+        <a href="/certs/hubspot-digital-marketing.png" target="_blank" rel="noopener noreferrer" aria-label="Digital Marketing Certified — HubSpot Academy (opens certificate image in a new tab)">
+          <span>Digital Marketing Certified · HubSpot Academy</span>
+          <Icon.arrowUpRight width="16" height="16" aria-hidden="true" />
+        </a>
+      </p>
     </section>
   );
 }
