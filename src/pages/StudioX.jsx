@@ -4,6 +4,7 @@ import { profile } from "../data.js";
 import { navigate, hasNavigated } from "../router.jsx";
 import { useMobileMenu } from "../useMobileMenu.js";
 import imageMetadata from "../studio-images.json";
+import StudioExperience from "../components/StudioExperience.jsx";
 import WhatsAppButton from "../components/WhatsAppButton.jsx";
 import "../studiox.css";
 
@@ -101,10 +102,10 @@ export default function StudioX() {
 
       <header className="sx-head">
         <a className="sx-logo" href="/studio" onClick={(e) => { e.preventDefault(); navigate("/studio"); }}>Netanel Marchum<span>&nbsp;Studio</span></a>
-        <nav className="sx-nav"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+        <nav className="sx-nav"><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
         <button className={`burger sx-burger ${open ? "open" : ""}`} ref={buttonRef} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="studio-menu" onClick={() => setOpen((value) => !value)}><span /><span /><span /></button>
         <AnimatePresence>{open && <motion.nav initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="mobile-menu sx-mobile-menu" id="studio-menu" ref={menuRef} role="dialog" aria-modal="true" aria-label="Studio navigation">
-          <ul>{[["Work", "work"], ["About", "about"], ["Contact", "contact"]].map(([label, id]) => <li key={id}><a href={`#${id}`} onClick={closeMenu}>{label}</a></li>)}</ul>
+          <ul>{[["Work", "work"], ["About", "about"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id]) => <li key={id}><a href={`#${id}`} onClick={closeMenu}>{label}</a></li>)}</ul>
         </motion.nav>}</AnimatePresence>
       </header>
 
@@ -152,6 +153,8 @@ export default function StudioX() {
           </motion.div>
         </div>
       </section>
+
+      <StudioExperience />
 
       {/* Software marquee */}
       <div className="sx-tools" aria-label="Software I work with">

@@ -1,0 +1,21 @@
+.studiox .sx-experience {
+  padding: clamp(4rem, 8vw, 7rem) max(var(--sx-pad), env(safe-area-inset-right)) clamp(4rem, 8vw, 7rem) max(var(--sx-pad), env(safe-area-inset-left));
+}
+.sx-experience .sx-huge { font-size: clamp(2.6rem, 7vw, 7rem); line-height: 0.95; margin-bottom: clamp(2rem, 5vw, 4rem); }
+.sx-experience-list { list-style: none; }
+.sx-experience-row {
+  display: grid; grid-template-columns: 2.5rem minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 3rem); align-items: start;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0; border-top: 1px solid var(--sx-line);
+}
+.sx-experience-row:last-child { border-bottom: 1px solid var(--sx-line); }
+.sx-experience-number, .sx-experience-dates { font-family: var(--sx-mono); font-size: 0.75rem; line-height: 1.7; }
+.sx-experience-number { color: var(--sx-ac); padding-top: 0.2rem; }
+.sx-experience-role h3 { font-family: var(--sx-sans); font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-weight: 600; line-height: 1.3; color: var(--sx-fg); }
+.sx-experience-company { color: var(--sx-fg); font-size: 0.95rem; margin-top: 0.65rem; }
+.sx-experience-dates { color: var(--sx-mut); margin-top: 0.25rem; }
+.sx-experience-description { color: #b8b8b8; font-size: 1rem; line-height: 1.75; max-width: 48ch; }
+@media (max-width: 700px) {
+  .sx-experience-row { grid-template-columns: 1.75rem minmax(0, 1fr); row-gap: 0.9rem; }
+  .sx-experience-description { grid-column: 2; }
+}
