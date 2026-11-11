@@ -23,18 +23,15 @@ export default function LoadingScreen({ onComplete }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        const next = prev + Math.random() * 30;
-        return next > 100 ? 100 : next;
-      });
-    }, 400);
+      setProgress((prev) => Math.min(100, prev + 20));
+    }, 120);
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     if (progress >= 100) {
-      const timer = setTimeout(onComplete, 600);
+      const timer = setTimeout(onComplete, 150);
       return () => clearTimeout(timer);
     }
   }, [progress, onComplete]);
@@ -78,8 +75,9 @@ export default function LoadingScreen({ onComplete }) {
           <div className="loading-progress-container">
             <motion.div
               className="loading-progress-bar"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: progress / 100 }}
+              style={{ width: "100%", transformOrigin: "left" }}
               transition={{ type: "spring", stiffness: 50, damping: 20 }}
             />
           </div>

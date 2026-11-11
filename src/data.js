@@ -5,7 +5,7 @@ import yallaBooth from './assets/work/PROJECT/yalla-booth.png';
 import cisco from './assets/work/PROJECT/cisco.png';
 import medicalCost from './assets/work/PROJECT/medical-cost.png';
 import carRace from './assets/work/PROJECT/car-race.jpg';
-import coverDesign from './assets/work/PROJECT/cover-design-studio.png';
+import coverDesign from './assets/work/PROJECT/cover-design-studio.webp';
 
 export const profile = {
   name: "Netanel Marchum",

@@ -1,0 +1,373 @@
+{
+  "work-01.jpg": {
+    "width": 795,
+    "height": 1200,
+    "variants": []
+  },
+  "work-02.jpg": {
+    "width": 795,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-02-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-02.jpg",
+        "width": 795,
+        "original": true
+      }
+    ]
+  },
+  "work-03.jpg": {
+    "width": 795,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-03-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-03.jpg",
+        "width": 795,
+        "original": true
+      }
+    ]
+  },
+  "work-04.jpg": {
+    "width": 795,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-04-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-04.jpg",
+        "width": 795,
+        "original": true
+      }
+    ]
+  },
+  "work-05.jpg": {
+    "width": 795,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-05-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-05.jpg",
+        "width": 795,
+        "original": true
+      }
+    ]
+  },
+  "work-06.jpg": {
+    "width": 1200,
+    "height": 645,
+    "variants": [
+      {
+        "file": "work-06-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-06.jpg",
+        "width": 1200,
+        "original": true
+      }
+    ]
+  },
+  "work-07.jpg": {
+    "width": 900,
+    "height": 900,
+    "variants": [
+      {
+        "file": "work-07-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-07-900.webp",
+        "width": 900
+      }
+    ]
+  },
+  "work-08.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": []
+  },
+  "work-09.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": []
+  },
+  "work-10.jpg": {
+    "width": 1200,
+    "height": 800,
+    "variants": []
+  },
+  "work-11.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": []
+  },
+  "work-12.jpg": {
+    "width": 1200,
+    "height": 800,
+    "variants": []
+  },
+  "work-13.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": []
+  },
+  "work-14.jpg": {
+    "width": 1200,
+    "height": 800,
+    "variants": []
+  },
+  "work-15.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": []
+  },
+  "work-16.jpg": {
+    "width": 800,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-16-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-16.jpg",
+        "width": 800,
+        "original": true
+      }
+    ]
+  },
+  "work-17.jpg": {
+    "width": 675,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-17.jpg",
+        "width": 675,
+        "original": true
+      }
+    ]
+  },
+  "work-18.jpg": {
+    "width": 848,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-18-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-18.jpg",
+        "width": 848,
+        "original": true
+      }
+    ]
+  },
+  "work-19.jpg": {
+    "width": 678,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "work-19.jpg",
+        "width": 678,
+        "original": true
+      }
+    ]
+  },
+  "work-20.jpg": {
+    "width": 1024,
+    "height": 678,
+    "variants": [
+      {
+        "file": "work-20-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-20.jpg",
+        "width": 1024,
+        "original": true
+      }
+    ]
+  },
+  "work-21.jpg": {
+    "width": 675,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-21.jpg",
+        "width": 675,
+        "original": true
+      }
+    ]
+  },
+  "work-22.jpg": {
+    "width": 857,
+    "height": 1200,
+    "variants": [
+      {
+        "file": "work-22-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-22.jpg",
+        "width": 857,
+        "original": true
+      }
+    ]
+  },
+  "work-23.jpg": {
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "work-23-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-23-1080.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "work-24.jpg": {
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "work-24-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-24.jpg",
+        "width": 1080,
+        "original": true
+      }
+    ]
+  },
+  "work-25.jpg": {
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "work-25-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-25-1080.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "work-26.webp": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "file": "work-26-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-26-1080.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "work-27.jpg": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "file": "work-27-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-27-1080.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "work-28.webp": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "file": "work-28-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-28-1080.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "work-29.jpg": {
+    "width": 1350,
+    "height": 1687,
+    "variants": [
+      {
+        "file": "work-29-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-29-1280.webp",
+        "width": 1280
+      },
+      {
+        "file": "work-29-1350.webp",
+        "width": 1350
+      }
+    ]
+  },
+  "work-30.jpg": {
+    "width": 1350,
+    "height": 1687,
+    "variants": [
+      {
+        "file": "work-30-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-30-1280.webp",
+        "width": 1280
+      },
+      {
+        "file": "work-30-1350.webp",
+        "width": 1350
+      }
+    ]
+  },
+  "work-31.webp": {
+    "width": 6048,
+    "height": 8064,
+    "variants": [
+      {
+        "file": "work-31-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-31-1280.webp",
+        "width": 1280
+      },
+      {
+        "file": "work-31-1920.webp",
+        "width": 1920
+      },
+      {
+        "file": "work-31.webp",
+        "width": 6048,
+        "original": true
+      }
+    ]
+  }
+}

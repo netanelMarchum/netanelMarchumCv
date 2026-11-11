@@ -1,37 +1,13 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { profile } from "../data.js";
 import { Icon } from "./Icons.jsx";
-import { reveal, stagger, spring, viewport } from "../motion.js";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { viewport } from "../motion.js";
 export default function Hero() {
   const reduce = useReducedMotion();
   const ref = useRef(null);
-  const portraitRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const yPortrait = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -40]);
-
-  useEffect(() => {
-    if (reduce || !portraitRef.current) return;
-
-    // Parallax depth effect on portrait
-    gsap.to(portraitRef.current, {
-      y: -150,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ref.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.8
-      }
-    });
-
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
-  }, [reduce]);
 
   return (
     <section className="hero" id="top" ref={ref}>
@@ -75,16 +51,15 @@ export default function Hero() {
           </div>
 
           <motion.div
-            ref={portraitRef}
             className="hero-portrait"
             style={{ y: yPortrait }}
-            initial={{ opacity: 0, y: 24 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="portrait-frame">
-              <img src={profile.photo} alt="Netanel Marchum" width="720" height="900" fetchpriority="high" />
+              <img src={profile.photo} alt="Netanel Marchum" width="720" height="720" fetchPriority="high" />
             </div>
           </motion.div>
         </div>

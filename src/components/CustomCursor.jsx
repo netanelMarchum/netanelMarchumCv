@@ -1,97 +1,56 @@
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export default function CustomCursor() {
+  const reduce = useReducedMotion();
   const cursorRef = useRef(null);
+  const [finePointer, setFinePointer] = useState(() => window.matchMedia("(hover: hover) and (pointer: fine)").matches);
   const [isHovering, setIsHovering] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const posRef = useRef({ x: 0, y: 0 });
-  const targetRef = useRef({ x: 0, y: 0 });
-  const rafRef = useRef(null);
+  const enabled = finePointer && !reduce;
 
   useEffect(() => {
-    const checkTouchDevice = () => {
-      const isTouchDeviceNow =
-        window.matchMedia("(pointer:coarse)").matches ||
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
-      setIsTouchDevice(isTouchDeviceNow);
-    };
-
-    checkTouchDevice();
-    window.addEventListener("touchstart", () => setIsTouchDevice(true));
-
-    return () => {
-      window.removeEventListener("touchstart", () => setIsTouchDevice(true));
-    };
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setFinePointer(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
-    if (isTouchDevice) return;
-
-    const handleMouseMove = (e) => {
-      targetRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    const handleMouseEnter = (e) => {
-      const target = e.target;
-      if (!target || !target.tagName || target === document) return;
-
-      const isInteractive =
-        target.tagName === "A" ||
-        target.tagName === "BUTTON" ||
-        (typeof target.closest === "function" && (target.closest("button") || target.closest("a") || target.closest("[data-cursor]"))) ||
-        (target.classList && (target.classList.contains("interactive") || target.classList.contains("btn")));
-
-      if (isInteractive) setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseenter", handleMouseEnter, true);
-    document.addEventListener("mouseleave", handleMouseLeave, true);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseenter", handleMouseEnter, true);
-      document.removeEventListener("mouseleave", handleMouseLeave, true);
-    };
-  }, [isTouchDevice]);
-
-  useEffect(() => {
-    if (isTouchDevice || !cursorRef.current) return;
-
+    if (!enabled) return;
+    const el = cursorRef.current;
+    let x = -40, y = -40, tx = x, ty = y, raf = null;
     const animate = () => {
-      const dx = targetRef.current.x - posRef.current.x;
-      const dy = targetRef.current.y - posRef.current.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      // Almost instant tracking with only 0.08 easing for subtle smoothing
-      if (distance > 0.1) {
-        posRef.current.x += dx * 0.08;
-        posRef.current.y += dy * 0.08;
-      } else {
-        posRef.current = { ...targetRef.current };
-      }
-
-      cursorRef.current.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0)`;
-      rafRef.current = requestAnimationFrame(animate);
+      x += (tx - x) * 0.08; y += (ty - y) * 0.08;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.1 ? requestAnimationFrame(animate) : null;
     };
+    const move = (event) => {
+      if (event.pointerType === "touch") return;
+      tx = event.clientX; ty = event.clientY;
+      el.style.opacity = "1";
+      document.documentElement.classList.add("has-custom-cursor");
+      if (raf === null) raf = requestAnimationFrame(animate);
+    };
+    const over = (event) => setIsHovering(!!event.target.closest("a, button, [data-cursor], .interactive"));
+    const hide = () => {
+      el.style.opacity = "0";
+      document.documentElement.classList.remove("has-custom-cursor");
+      if (raf !== null) cancelAnimationFrame(raf);
+      raf = null;
+    };
+    const visibility = () => { if (document.hidden) hide(); };
+    document.addEventListener("pointermove", move, { passive: true });
+    document.addEventListener("pointerover", over);
+    document.addEventListener("pointerleave", hide);
+    document.addEventListener("visibilitychange", visibility);
+    return () => {
+      hide();
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerover", over);
+      document.removeEventListener("pointerleave", hide);
+      document.removeEventListener("visibilitychange", visibility);
+    };
+  }, [enabled]);
 
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [isTouchDevice]);
-
-  if (isTouchDevice) return null;
-
-  return (
-    <div
-      ref={cursorRef}
-      className={`custom-cursor ${isHovering ? "hovering" : ""}`}
-    />
-  );
+  return enabled ? <div ref={cursorRef} className={`custom-cursor ${isHovering ? "hovering" : ""}`} style={{ opacity: 0 }} aria-hidden="true" /> : null;
 }

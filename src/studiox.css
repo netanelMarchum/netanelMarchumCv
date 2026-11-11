@@ -45,23 +45,23 @@ html.sx-root, html.sx-root body { background: #050505; }
 /* loader */
 .sx-loader { position: fixed; inset: 0; z-index: 9998; background: #050505; display: grid; place-items: center; }
 .sx-loader-word {
-  display: block; width: 90vw; text-align: center; line-height: 1.15;
+  position: relative; display: block; width: 90vw; height: 1.15em; text-align: center; line-height: 1.15;
   font-family: var(--sx-display); font-size: clamp(3rem, 12vw, 9rem);
   font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em;
-  transform-origin: center; animation: sx-type-cycle 0.9s steps(1, end) both;
 }
-@keyframes sx-type-cycle {
-  0% { font-family: var(--sx-display); font-weight: 400; font-style: normal; transform: scaleX(0.85); letter-spacing: 0.05em; }
-  14% { font-family: var(--sx-serif); font-weight: 400; font-style: italic; transform: scaleX(1.1); letter-spacing: 0.02em; }
-  28% { font-family: var(--sx-sans); font-weight: 800; font-style: normal; transform: scaleX(1.15); letter-spacing: -0.06em; }
-  42% { font-family: var(--sx-mono); font-weight: 400; font-style: normal; transform: scaleX(0.9); letter-spacing: 0.12em; }
-  56% { font-family: var(--sx-serif); font-weight: 400; font-style: normal; transform: scaleX(1.05); letter-spacing: 0.04em; }
-  70% { font-family: var(--sx-sans); font-weight: 500; font-style: italic; transform: scaleX(0.8); letter-spacing: -0.04em; }
-  84%, 100% { font-family: var(--sx-display); font-weight: 400; font-style: normal; transform: scaleX(1); letter-spacing: 0.05em; }
-}
+.sx-loader-style { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; animation: sx-type-frame 0.126s step-end; }
+.sx-loader-style:nth-child(1) { transform: scaleX(0.85); }
+.sx-loader-style:nth-child(2) { font-family: var(--sx-serif); font-style: italic; transform: scaleX(1.1); letter-spacing: 0.02em; animation-delay: 0.126s; }
+.sx-loader-style:nth-child(3) { font-family: var(--sx-sans); font-weight: 800; transform: scaleX(1.15); letter-spacing: -0.06em; animation-delay: 0.252s; }
+.sx-loader-style:nth-child(4) { font-family: var(--sx-mono); transform: scaleX(0.9); letter-spacing: 0.12em; animation-delay: 0.378s; }
+.sx-loader-style:nth-child(5) { font-family: var(--sx-serif); transform: scaleX(1.05); letter-spacing: 0.04em; animation-delay: 0.504s; }
+.sx-loader-style:nth-child(6) { font-family: var(--sx-sans); font-weight: 500; font-style: italic; transform: scaleX(0.8); letter-spacing: -0.04em; animation-delay: 0.63s; }
+.sx-loader-style:nth-child(7) { animation: sx-type-last 0.144s step-end 0.756s forwards; }
+@keyframes sx-type-frame { from { opacity: 1; } to { opacity: 0; } }
+@keyframes sx-type-last { from { opacity: 1; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .sx-loader { display: none; }
-  .sx-loader-word { animation: none; }
+  .sx-loader-style { animation: none; }
 }
 
 /* header */
@@ -270,3 +270,24 @@ html.sx-root, html.sx-root body { background: #050505; }
 .studiox .whatsapp-button svg { display: block; width: 28px; height: 28px; flex-shrink: 0; fill: currentColor; stroke: none; filter: none; box-shadow: none; }
 .studiox .whatsapp-button:hover { background: #152033; transform: translateY(-2px); }
 .studiox .whatsapp-button:focus-visible { outline: 2px solid var(--sx-ac); outline-offset: 4px; }
+
+/* Preserve Studio navigation on touch screens and notched devices. */
+.sx-head {
+  padding-top: calc(1.3rem + env(safe-area-inset-top));
+  padding-left: max(var(--sx-pad), env(safe-area-inset-left));
+  padding-right: max(var(--sx-pad), env(safe-area-inset-right));
+}
+.studiox .sx-burger { display: none; }
+.sx-mobile-menu { top: 100%; background: var(--sx-bg); border-color: var(--sx-line); }
+.sx-mobile-menu a { color: var(--sx-fg); }
+.sx-foot { padding-bottom: max(2rem, env(safe-area-inset-bottom)); }
+@media (max-width: 640px) { .studiox .sx-burger { display: flex; } }
+
+.sx-intro, .sx-about2, .sx-contact2, .sx-foot {
+  padding-left: max(var(--sx-pad), env(safe-area-inset-left));
+  padding-right: max(var(--sx-pad), env(safe-area-inset-right));
+}
+.sx-mobile-menu {
+  max-height: calc(100vh - 2.6rem - 44px - env(safe-area-inset-top));
+  max-height: calc(100dvh - 2.6rem - 44px - env(safe-area-inset-top));
+}

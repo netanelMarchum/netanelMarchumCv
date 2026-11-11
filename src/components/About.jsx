@@ -34,46 +34,50 @@ export default function About() {
 
   useEffect(() => {
     if (reduce) return;
-    const slides = slideEls.current.filter(Boolean);
-    if (slides.length < 2 || !sectionRef.current) return;
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 861px) and (min-height: 600px) and (pointer: fine)", () => {
+      const slides = slideEls.current.filter(Boolean);
+      if (slides.length < 2 || !sectionRef.current) return;
 
-    const words = (i) => slides[i].querySelectorAll(".hl-word");
+      const words = (i) => slides[i].querySelectorAll(".hl-word");
 
-    // Switch from normal flow to stacked "slides" and pin the section full-page.
-    slidesRef.current.classList.add("pinned");
-    gsap.set(slides, { autoAlpha: 0, y: 60, scale: 0.9 });
-    gsap.set(slides[0], { autoAlpha: 1, y: 0, scale: 1 });
-    gsap.set(slidesRef.current.querySelectorAll(".hl-word"), { color: MUTED });
+      // Switch from normal flow to stacked "slides" and pin the section full-page.
+      slidesRef.current.classList.add("pinned");
+      gsap.set(slides, { autoAlpha: 0, y: 60, scale: 0.9 });
+      gsap.set(slides[0], { autoAlpha: 1, y: 0, scale: 1 });
+      gsap.set(slidesRef.current.querySelectorAll(".hl-word"), { color: MUTED });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: () => `+=${slides.length * 100}%`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-      },
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${slides.length * 100}%`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+        },
+      });
+
+      // Highlight the first slide's words as the pin engages.
+      tl.to(words(0), { color: (i, t) => (t.classList.contains("hl-key") ? ACCENT : INK), stagger: 0.04, ease: "none" }, 0);
+
+      slides.forEach((slide, i) => {
+        if (i === 0) return;
+        const label = `s${i}`;
+        tl.addLabel(label)
+          .to(slides[i - 1], { autoAlpha: 0, y: -60, scale: 0.9, duration: 0.5 }, label)
+          .fromTo(slide, { autoAlpha: 0, y: 60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, `${label}+=0.15`)
+          // Sweep colour across the words as the slide reads in.
+          .to(words(i), { color: (idx, t) => (t.classList.contains("hl-key") ? ACCENT : INK), stagger: 0.04, ease: "none" }, `${label}+=0.3`);
+      });
+
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+        slidesRef.current?.classList.remove("pinned");
+      };
     });
-
-    // Highlight the first slide's words as the pin engages.
-    tl.to(words(0), { color: (i, t) => (t.classList.contains("hl-key") ? ACCENT : INK), stagger: 0.04, ease: "none" }, 0);
-
-    slides.forEach((slide, i) => {
-      if (i === 0) return;
-      const label = `s${i}`;
-      tl.addLabel(label)
-        .to(slides[i - 1], { autoAlpha: 0, y: -60, scale: 0.9, duration: 0.5 }, label)
-        .fromTo(slide, { autoAlpha: 0, y: 60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, `${label}+=0.15`)
-        // Sweep colour across the words as the slide reads in.
-        .to(words(i), { color: (idx, t) => (t.classList.contains("hl-key") ? ACCENT : INK), stagger: 0.04, ease: "none" }, `${label}+=0.3`);
-    });
-
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-      slidesRef.current?.classList.remove("pinned");
-    };
+    return () => mm.revert();
   }, [reduce]);
 
   const setSlide = (i) => (el) => (slideEls.current[i] = el);

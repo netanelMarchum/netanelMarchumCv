@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 import { education } from "../data.js";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,16 +7,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Education() {
+  const reduce = useReducedMotion();
   const sectionRef = useRef(null);
   const flowRef = useRef(null);
   const fillRef = useRef(null);
 
   useEffect(() => {
+    if (reduce) return;
     const mm = gsap.matchMedia();
 
     // Desktop: pin the section and build the timeline (line fills, cards rise in) over a
     // fixed scroll distance — so the effect reads even with only a couple of entries.
-    mm.add("(min-width: 861px) and (prefers-reduced-motion: no-preference)", () => {
+    mm.add("(min-width: 861px) and (min-height: 600px) and (pointer: fine)", () => {
       const items = gsap.utils.toArray(flowRef.current.querySelectorAll(".tl-item"));
       gsap.set(items, { opacity: 0, y: 60 });
 
@@ -38,7 +41,7 @@ export default function Education() {
     });
 
     // Mobile / reduced-motion: no pin — just reveal each card as it enters.
-    mm.add("(max-width: 860px), (prefers-reduced-motion: reduce)", () => {
+    mm.add("(max-width: 860px), (max-height: 599px), (pointer: coarse)", () => {
       gsap.utils.toArray(flowRef.current.querySelectorAll(".tl-item")).forEach((el) => {
         gsap.from(el, {
           opacity: 0,
@@ -51,7 +54,7 @@ export default function Education() {
     });
 
     return () => mm.revert();
-  }, []);
+  }, [reduce]);
 
   return (
     <section className="section section--alt" id="education" ref={sectionRef}>

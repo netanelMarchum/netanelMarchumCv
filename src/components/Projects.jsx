@@ -16,29 +16,33 @@ export default function Projects() {
   useEffect(() => {
     if (reduce || !sectionRef.current || !trackRef.current) return;
 
-    // Pin the section and translate the track sideways as the user scrolls,
-    // so each project passes through center to be seen and read.
-    const track = trackRef.current;
-    const distance = () => track.scrollWidth - window.innerWidth;
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 861px) and (pointer: fine)", () => {
+      // Pin the section and translate the track sideways as the user scrolls,
+      // so each project passes through center to be seen and read.
+      const track = trackRef.current;
+      const distance = () => track.scrollWidth - window.innerWidth;
 
-    const tween = gsap.to(track, {
-      x: () => -distance(),
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: () => `+=${distance()}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
+      const tween = gsap.to(track, {
+        x: () => -distance(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${distance()}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
     });
-
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
-    };
+    return () => mm.revert();
   }, [reduce]);
 
   return (
