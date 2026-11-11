@@ -236,3 +236,17 @@ html.sx-root, html.sx-root body { background: #050505; }
 @media (prefers-reduced-motion: reduce) {
   .sx-marquee-track { animation: none; }
 }
+
+/* Studio contact button */
+.studiox .whatsapp-button {
+  width: 56px; height: 56px; padding: 0; box-sizing: border-box;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  color: var(--sx-ac); background: var(--sx-bg);
+  border: 1px solid var(--sx-ac); border-radius: 50%;
+  animation: none; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s, transform 0.2s;
+}
+.studiox .whatsapp-button svg { display: block; width: 28px; height: 28px; flex-shrink: 0; fill: currentColor; }
+.studiox .whatsapp-button:hover { background: #152033; transform: translateY(-2px); }
+.studiox .whatsapp-button:focus-visible { outline: 2px solid var(--sx-ac); outline-offset: 4px; }
