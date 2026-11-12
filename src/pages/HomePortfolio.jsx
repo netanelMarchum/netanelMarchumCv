@@ -8,7 +8,10 @@ import "./HomePortfolio.css";
 const nav = [["Home", "about"], ["Projects", "projects"], ["Skills", "skills"], ["Experience", "experience"], ["Education", "education"], ["Contact", "contact"]];
 const navIcons = { about: House, skills: Code2, projects: FolderCode, experience: BriefcaseBusiness, education: GraduationCap, contact: Mail };
 const technicalProjects = [projects[1], projects[2], projects[3]];
-const creativeProjects = [projects[0], projects[4]];
+const creativeProjects = [
+  { ...projects[0], image: "https://netanel.online/assets/yalla-booth-BX0oDcdM.png" },
+  projects[4],
+];
 const skillGroups = [
   ["Programming", ["C", "Python", "Assembly"]],
   ["Networking & Security", ["Network Security", "VLANs", "OSPF", "Hardening", "Cisco Packet Tracer"]],
