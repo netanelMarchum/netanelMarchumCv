@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { profile, projects, education, certificates, languages } from "../data.js";
 import { navigate } from "../router.jsx";
 import { useMobileMenu } from "../useMobileMenu.js";
-import { House, Code2, FolderCode, BriefcaseBusiness, GraduationCap, Mail } from "lucide-react";
+import { House, Code2, FolderCode, BriefcaseBusiness, GraduationCap, Mail, ArrowDown, ArrowRight, Menu, X } from "lucide-react";
 import "./HomePortfolio.css";
 
 const nav = [["Home", "about"], ["Projects", "projects"], ["Skills", "skills"], ["Experience", "experience"], ["Education", "education"], ["Contact", "contact"]];
@@ -26,8 +26,10 @@ const experience = [
   ["Social Media Manager", "Cubico", "Jan 2025 – May 2025", "Social media, photography, video editing, and Instagram and LinkedIn content."],
 ];
 function Arrow({ down = false }) {
-  return <svg className={`hp-arrow ${down ? "hp-arrow-down" : ""}`} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={down ? "M12 4v15m-6-6 6 6 6-6" : "M5 12h14m-6-6 6 6-6 6"} /></svg>;
+  const Icon = down ? ArrowDown : ArrowRight;
+  return <Icon className={`hp-arrow ${down ? "hp-arrow-down" : ""}`} size={18} strokeWidth={1.6} aria-hidden="true" />;
 }
+
 function Github() {
   return <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2c-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2a4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" /></svg>;
 }
@@ -127,7 +129,7 @@ export default function HomePortfolio() {
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={(event) => { setActive(id); selectSection(event); }}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
           <div className="hp-nav-social"><SocialLinks /><a href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
           <button className="hp-toggle" ref={buttonRef} aria-expanded={open} aria-controls="hp-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
-            <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={open ? "m6 6 12 12M6 18 18 6" : "M4 8h16M4 16h16"} /></svg>
+            {open ? <X size={22} strokeWidth={1.6} aria-hidden="true" /> : <Menu size={22} strokeWidth={1.6} aria-hidden="true" />}
           </button>
         </div>
         {open && <div className="hp-menu" ref={menuRef} id="hp-menu" role="dialog" aria-modal="true" aria-label="Navigation"><nav className="hp-wrap" aria-label="Mobile navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={selectSection}>{label}<Arrow /></a>)}<div className="hp-menu-utilities"><SocialLinks onClick={closeMenu} /><a href={profile.resume} download onClick={closeMenu}>Resume <Arrow down /></a></div></nav></div>}
