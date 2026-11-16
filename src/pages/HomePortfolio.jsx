@@ -9,7 +9,7 @@ const nav = [["Home", "about"], ["Projects", "projects"], ["Skills", "skills"], 
 const navIcons = { about: House, skills: Code2, projects: FolderCode, experience: BriefcaseBusiness, education: GraduationCap, contact: Mail };
 const technicalProjects = [projects[1], projects[2], projects[3]];
 const creativeProjects = [
-  { ...projects[0], image: "https://netanel.online/assets/yalla-booth-BX0oDcdM.png" },
+  projects[0],
   projects[4],
 ];
 const skillGroups = [
@@ -53,21 +53,17 @@ function HomeIntroduction() {
   });
   const skipRef = useRef(null);
   useLayoutEffect(() => {
-    const motion = matchMedia("(prefers-reduced-motion: reduce)");
     if (!visible) return;
-    introductionSeen = true;
-    try { sessionStorage.setItem("nm-home-introduction", "seen"); } catch { /* Private browsing still has the in-memory guard. */ }
-    const animations = [];
-    document.querySelectorAll(".home-portfolio .hp-name-line, .home-portfolio .hp-hero-role, .home-portfolio .hp-hero-intro, .home-portfolio .hp-hero-links, .home-portfolio .hp-project-index").forEach((element, index) => {
-      if (element.animate) animations.push(element.animate([
-        { transform: "translateY(20px)", opacity: .15, clipPath: "inset(0 0 25% 0)" },
-        { transform: "none", opacity: 1, clipPath: "inset(0 0 0% 0)" },
-      ], { duration: 620, delay: 120 + index * 55, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards" }));
-    });
-    const dismiss = () => { setVisible(false); animations.forEach((animation) => animation.cancel()); };
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const dismiss = () => {
+      introductionSeen = true;
+      try { sessionStorage.setItem("nm-home-introduction", "seen"); } catch { /* Storage is optional. */ }
+      setVisible(false);
+    };
     skipRef.current = dismiss;
     const onKey = (event) => { if (["Tab", "Escape", "Enter", " "].includes(event.key)) dismiss(); };
-    const timer = setTimeout(() => setVisible(false), 760);
+    // Match the overlay exit; content underneath stays stable throughout.
+    const timer = setTimeout(dismiss, 1100);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", dismiss, { once: true });
     window.addEventListener("wheel", dismiss, { passive: true, once: true });
@@ -75,14 +71,13 @@ function HomeIntroduction() {
     motion.addEventListener("change", dismiss);
     return () => {
       clearTimeout(timer);
-      animations.forEach((animation) => animation.cancel());
       window.removeEventListener("keydown", onKey, true);
       window.removeEventListener("pointerdown", dismiss);
       window.removeEventListener("wheel", dismiss);
       window.removeEventListener("touchstart", dismiss);
       motion.removeEventListener("change", dismiss);
     };
-  }, []);
+  }, [visible]);
   return visible ? <div className="hp-introduction"><div className="hp-intro-wordmark" aria-hidden="true">Netanel<span>Marchum.</span></div><button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
 }
 export default function HomePortfolio() {
@@ -165,7 +160,7 @@ export default function HomePortfolio() {
               <ProjectActions project={project} /></div>
             </article>)}
             <aside className="hp-creative-work" aria-labelledby="hp-creative-title">
-              <h3 id="hp-creative-title">Web & Creative Work</h3>
+              <h3 id="hp-creative-title">Web <span className="hp-ampersand">&amp;</span> Creative Work</h3>
               {creativeProjects.map((project) => <article className="hp-creative-project" key={project.title}>
                 <img src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" />
                 <div><h4>{project.title}</h4><p>{project.type === "web" ? "Production website with automated lead-generation workflows." : "Cover design for publications and albums."}</p><ProjectActions project={project} /></div>
