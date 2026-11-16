@@ -122,7 +122,6 @@ export default function HomePortfolio() {
       <a className="hp-skip" href="#main-content">Skip to content</a>
       <header className="hp-header">
         <div className="hp-wrap hp-header-inner">
-          <img className="hp-sidebar-portrait" src="/netanel-developer-480.webp" alt="" width="720" height="720" decoding="async" />
           <a className="hp-wordmark" href="#top" onClick={selectSection}>Netanel Marchum<span>.</span></a>
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={(event) => { setActive(id); selectSection(event); }}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
           <div className="hp-nav-social"><SocialLinks /><a href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
