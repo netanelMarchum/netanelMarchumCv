@@ -40,7 +40,7 @@ function Linkedin() {
   return <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.4 7.8H1.8V22h3.6ZM3.6 1.8a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 13.9c0-4.3-2.3-6.3-5.3-6.3a4.6 4.6 0 0 0-4.1 2.2v-2H9.2V22h3.6v-7.9c0-2.1.4-4.1 3-4.1s2.8 2.4 2.8 4.2V22h3.6Z" /></svg>;
 }
 function SocialLinks({ onClick }) {
-  return <><a href={profile.github} target="_blank" rel="noopener noreferrer" onClick={onClick}><Github size={17} aria-hidden="true" />GitHub</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" onClick={onClick}><Linkedin size={17} aria-hidden="true" />LinkedIn</a></>;
+  return <><a className="hp-social-link" href={profile.github} target="_blank" rel="noopener noreferrer" onClick={onClick}><Github size={17} aria-hidden="true" /><span className="hp-social-label">GitHub</span></a><a className="hp-social-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer" onClick={onClick}><Linkedin size={17} aria-hidden="true" /><span className="hp-social-label">LinkedIn</span></a></>;
 }
 function ProjectActions({ project }) {
   return <div className="hp-project-actions">{project.links.map((link) => <a href={link.href} target="_blank" rel="noopener noreferrer" key={link.href}>{project.type === "network" ? "Project details" : link.label} <Arrow /></a>)}</div>;
