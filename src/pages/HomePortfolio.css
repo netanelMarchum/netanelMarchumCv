@@ -246,7 +246,7 @@
 @media(max-width:360px) { .home-portfolio { --hp-gutter:20px; } .home-portfolio .hp-skills-grid { grid-template-columns:minmax(0,1fr); } .home-portfolio .hp-hero-bottom { align-items:start; flex-direction:column; gap:4px; } }
 @media(prefers-reduced-motion:reduce) { .home-portfolio *, .home-portfolio *::before, .home-portfolio *::after { animation:none!important; transition:none!important; } .home-portfolio .hp-introduction { display:none; } .home-portfolio a:hover .hp-arrow, .home-portfolio .hp-project:hover img, .home-portfolio .hp-certificate:hover img { transform:none; } }
 
-/* Compact project media; preserve every source image without cropping. */
+/* Compact project media with consistent frame proportions. */
 .home-portfolio .hp-ampersand { font-family:var(--hp-font-ui); font-weight:500; font-size:.88em; letter-spacing:0; }
 .home-portfolio .hp-project { width:100%; max-width:1120px; margin-inline:auto; grid-template-columns:minmax(0,1fr) minmax(0,.85fr); gap:clamp(28px,4vw,56px); }
 .home-portfolio .hp-project:nth-child(2) { grid-template-columns:minmax(0,.85fr) minmax(0,1fr); }
@@ -271,3 +271,13 @@
  .home-portfolio .hp-certificate img { height:190px; }
  .home-portfolio .hp-index-project:first-child .hp-index-image { aspect-ratio:2; max-height:180px; }
 }
+
+/* Fill every portfolio media frame edge to edge at every breakpoint. */
+.home-portfolio .hp-project-image,
+.home-portfolio .hp-index-image,
+.home-portfolio .hp-certificate-preview,
+.home-portfolio .hp-index-project:first-child .hp-index-image { padding:0; overflow:hidden; }
+.home-portfolio .hp-project-image img,
+.home-portfolio .hp-index-image img,
+.home-portfolio .hp-certificate img { object-fit:cover; object-position:center; }
+.home-portfolio .hp-creative-project > img { padding:0; object-fit:cover; object-position:center; }
