@@ -380,7 +380,6 @@
 .home-portfolio .hp-skill-tooltip { position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(4px); padding:6px 10px; border-radius:6px; background:var(--hp-black); color:var(--hp-white); white-space:nowrap; font:12px/1.4 var(--hp-font-ui); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .18s,transform .18s; z-index:2; }
 .home-portfolio .hp-skill-icon:is(:hover,:focus-visible) .hp-skill-tooltip { opacity:1; visibility:visible; transform:translateX(-50%); }
 .home-portfolio #skills .hp-foundations { text-align:center; margin-top:40px; padding-top:0; }
-.home-portfolio #hp-creative-title .hp-ampersand,
 .home-portfolio .hp-creative-project .hp-project-actions a,
 .home-portfolio .hp-experience-row:nth-child(even) .hp-company-arrow { color:#b776ff; }
 @media(max-width:960px) {
@@ -454,3 +453,5 @@
  .home-portfolio .hp-header-inner { justify-content:flex-start; }
  .home-portfolio .hp-toggle { margin-left:0; }
 }
+
+.home-portfolio #hp-creative-title .hp-ampersand { color:var(--hp-lime); }
