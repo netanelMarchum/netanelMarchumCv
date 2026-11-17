@@ -135,12 +135,12 @@ export default function HomePortfolio() {
       <header className="hp-header">
         <div className="hp-wrap hp-header-inner">
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={(event) => { setActive(id); selectSection(event); }}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
-          <div className="hp-nav-social"><SocialLinks /><a href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
+          <div className="hp-nav-social"><SocialLinks /><a className="hp-nav-resume" href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
           <button className="hp-toggle" ref={buttonRef} aria-expanded={open} aria-controls="hp-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
             {open ? <X size={22} strokeWidth={1.6} aria-hidden="true" /> : <Menu size={22} strokeWidth={1.6} aria-hidden="true" />}
           </button>
         </div>
-        {open && <div className="hp-menu" ref={menuRef} id="hp-menu" role="dialog" aria-modal="true" aria-label="Navigation"><nav className="hp-wrap" aria-label="Mobile navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={selectSection}>{label}<Arrow /></a>)}<div className="hp-menu-utilities"><SocialLinks onClick={closeMenu} /><a href={profile.resume} download onClick={closeMenu}>Resume <Arrow down /></a></div></nav></div>}
+        {open && <div className="hp-menu" ref={menuRef} id="hp-menu" role="dialog" aria-modal="true" aria-label="Navigation"><nav className="hp-wrap" aria-label="Mobile navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={selectSection}>{label}<Arrow /></a>)}<div className="hp-menu-utilities"><SocialLinks onClick={closeMenu} /><a className="hp-nav-resume" href={profile.resume} download onClick={closeMenu}>Resume <Arrow down /></a></div></nav></div>}
       </header>
 
       <main id="main-content" tabIndex="-1">
@@ -157,7 +157,7 @@ export default function HomePortfolio() {
               <span className="hp-index-copy"><span>{projectSubjects[index]}</span><strong>{project.title}</strong></span><Arrow />
             </a>)}
           </aside>
-          <div className="hp-hero-bottom"><p>B.Sc. in progress<br /><span>The Open University of Israel</span></p><a href={profile.resume} download>Download resume <Arrow down /></a></div>
+          
         </section>
 
         <section className="hp-section hp-wrap" id="projects">
