@@ -23,10 +23,10 @@ const projectSubjects = ["Networks & security", "Machine learning", "Interactive
 let introductionSeen = false;
 const cleanText = (value) => value.replace(/\s+[—–]\s+|\s+--\s+/g, ", ");
 const experience = [
-  ["Graphic Designer & Creative", "Cover Design Studio", "Apr 2023 – Present", "Visual identities, music artwork, branding, websites, and digital marketing."],
-  ["Web Designer & Digital Marketing", "Yalla Booth", "Aug 2025 – Present", "Websites, social content, campaigns, and automated lead-generation workflows."],
+  ["Graphic Designer & Creative", "Cover Design Studio", "Apr 2023 – Present", "Visual identities, music artwork, branding, websites, and digital marketing.", "https://studiocoverdesign.com/"],
+  ["Web Designer & Digital Marketing", "Yalla Booth", "Aug 2025 – Present", "Websites, social content, campaigns, and automated lead-generation workflows.", "https://yallabooth.net/"],
   ["Freelance Graphic Designer", "Brainnu", "Jun 2026 – Aug 2026", "Social media visuals and video content for digital campaigns."],
-  ["Social Media Manager", "Cubico", "Jan 2025 – May 2025", "Social media, photography, video editing, and Instagram and LinkedIn content."],
+  ["Social Media Manager", "Cubico", "Jan 2025 – May 2025", "Social media, photography, video editing, and Instagram and LinkedIn content.", "https://www.linkedin.com/company/cubico-soho/"],
 ];
 function Arrow({ down = false }) {
   const Icon = down ? ArrowDown : ArrowRight;
@@ -179,8 +179,8 @@ export default function HomePortfolio() {
 
         <section className="hp-section hp-wrap" id="experience">
           <h2>Experience</h2>
-          <div className="hp-experience-list">{experience.map(([role, company, dates, description]) => <article className="hp-experience-row" key={company}>
-            <div><h3>{role}</h3><p className="hp-experience-company">{company}</p></div><p className="hp-experience-date">{dates.replace(" – ", " to ")}</p><p className="hp-experience-description">{description}</p>
+          <div className="hp-experience-list">{experience.map(([role, company, dates, description, companyUrl]) => <article className="hp-experience-row" key={company}>
+            <div><h3>{role.split(/(&)/).map((part, index) => part === "&" ? <span className="hp-ampersand" key={index}>&amp;</span> : part)}</h3><p className="hp-experience-company">{companyUrl ? <a href={companyUrl} target="_blank" rel="noopener noreferrer">{company}<span className="hp-company-arrow" aria-hidden="true"> ↗</span></a> : company}</p></div><p className="hp-experience-date">{dates.replace(" – ", " to ")}</p><p className="hp-experience-description">{description}</p>
           </article>)}</div>
         </section>
 
