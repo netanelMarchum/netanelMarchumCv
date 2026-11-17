@@ -134,7 +134,6 @@ export default function HomePortfolio() {
       <a className="hp-skip" href="#main-content">Skip to content</a>
       <header className="hp-header">
         <div className="hp-wrap hp-header-inner">
-          <a className="hp-wordmark" href="#top" onClick={selectSection}>Netanel Marchum<span>.</span></a>
           <nav className="hp-nav" aria-label="Primary navigation">{nav.map(([label, id]) => { const Icon = navIcons[id]; return <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={(event) => { setActive(id); selectSection(event); }}><Icon size={19} strokeWidth={1.6} aria-hidden="true" />{label}</a>; })}</nav>
           <div className="hp-nav-social"><SocialLinks /><a href={profile.resume} download>Resume <Arrow down /></a><a href={`mailto:${profile.email}`}>Email <Mail size={16} strokeWidth={1.6} aria-hidden="true" /></a></div>
           <button className="hp-toggle" ref={buttonRef} aria-expanded={open} aria-controls="hp-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
@@ -150,7 +149,7 @@ export default function HomePortfolio() {
             <h1><span className="hp-name-line">Netanel</span><span className="hp-name-line hp-name-accent">Marchum<span className="hp-name-period">.</span></span></h1>
             <p className="hp-hero-role">Aspiring software developer.<br /><span>A creative approach to code.</span></p>
             <p className="hp-hero-intro">Computer Science student focused on cybersecurity, programming, and networks. A background in design.</p>
-            <div className="hp-hero-links"><a className="hp-button" href="#projects" onClick={selectSection}>View Projects <Arrow /></a><div className="hp-hero-social"><SocialLinks /></div></div>
+            <div className="hp-hero-links"><a className="hp-button" href="#projects" onClick={selectSection}>View Projects <Arrow /></a></div>
           </div>
           <aside className="hp-project-index" aria-label="Explore my projects">
             {technicalProjects.map((project, index) => <a className="hp-index-project" href={`#${projectIds[index]}`} onClick={selectSection} key={project.title}>
