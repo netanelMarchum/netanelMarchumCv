@@ -75,7 +75,7 @@ function HomeIntroduction() {
     skipRef.current = dismiss;
     const onKey = (event) => { if (["Tab", "Escape", "Enter", " "].includes(event.key)) dismiss(); };
     // Match the overlay exit; content underneath stays stable throughout.
-    const timer = setTimeout(dismiss, 1800);
+    const timer = setTimeout(dismiss, 2800);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", dismiss, { once: true });
     window.addEventListener("wheel", dismiss, { passive: true, once: true });
@@ -90,7 +90,7 @@ function HomeIntroduction() {
       motion.removeEventListener("change", dismiss);
     };
   }, [visible]);
-  return visible ? <div className="hp-introduction"><div className="hp-intro-wordmark" aria-hidden="true"><span className="hp-intro-line"><span className="hp-intro-word">Netanel</span></span><span className="hp-intro-line"><span className="hp-intro-word">Marchum<span className="hp-intro-dot">.</span></span></span></div><button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
+  return visible ? <div className="hp-introduction"><div className="hp-intro-binary" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <span className="hp-binary-stream" key={index} style={{ "--stream-delay": `${-(index % 7) * 110}ms`, "--stream-opacity": .22 + (index % 4) * .16 }}>{Array.from({ length: 30 }, (_, digit) => ((digit * 7 + index * 3 + Math.floor(digit / 3)) % 2)).join("")}</span>)}</div><div className="hp-intro-wordmark" aria-hidden="true"><span className="hp-intro-line"><span className="hp-intro-word">Netanel</span></span><span className="hp-intro-line"><span className="hp-intro-word">Marchum<span className="hp-intro-dot">.</span></span></span></div><button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
 }
 export default function HomePortfolio() {
   const { open, setOpen, buttonRef, menuRef, closeMenu } = useMobileMenu(960);
