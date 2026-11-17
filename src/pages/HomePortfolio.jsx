@@ -64,6 +64,8 @@ function HomeIntroduction() {
     return !alreadySeen && !matchMedia("(prefers-reduced-motion: reduce)").matches && !location.hash && window.scrollY === 0;
   });
   const skipRef = useRef(null);
+  const dotRef = useRef(null);
+  const [revealPoint, setRevealPoint] = useState(null);
   useLayoutEffect(() => {
     if (!visible) return;
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
@@ -75,7 +77,15 @@ function HomeIntroduction() {
     skipRef.current = dismiss;
     const onKey = (event) => { if (["Tab", "Escape", "Enter", " "].includes(event.key)) dismiss(); };
     // Match the overlay exit; content underneath stays stable throughout.
-    const timer = setTimeout(dismiss, 2800);
+    const timer = setTimeout(dismiss, 3400);
+    const revealTimer = setTimeout(() => {
+      if (!dotRef.current) return;
+      const rect = dotRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 8;
+      setRevealPoint({ "--reveal-x": `${x}px`, "--reveal-y": `${y}px`, "--reveal-radius": `${radius}px` });
+    }, 2050);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", dismiss, { once: true });
     window.addEventListener("wheel", dismiss, { passive: true, once: true });
@@ -83,6 +93,7 @@ function HomeIntroduction() {
     motion.addEventListener("change", dismiss);
     return () => {
       clearTimeout(timer);
+      clearTimeout(revealTimer);
       window.removeEventListener("keydown", onKey, true);
       window.removeEventListener("pointerdown", dismiss);
       window.removeEventListener("wheel", dismiss);
@@ -90,7 +101,7 @@ function HomeIntroduction() {
       motion.removeEventListener("change", dismiss);
     };
   }, [visible]);
-  return visible ? <div className="hp-introduction"><div className="hp-intro-binary" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <span className="hp-binary-stream" key={index} style={{ "--stream-delay": `${-(index % 7) * 110}ms`, "--stream-opacity": .22 + (index % 4) * .16 }}>{Array.from({ length: 30 }, (_, digit) => ((digit * 7 + index * 3 + Math.floor(digit / 3)) % 2)).join("")}</span>)}</div><div className="hp-intro-wordmark" aria-hidden="true"><span className="hp-intro-line"><span className="hp-intro-word">Netanel</span></span><span className="hp-intro-line"><span className="hp-intro-word">Marchum<span className="hp-intro-dot">.</span></span></span></div><button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
+  return visible ? <div className="hp-introduction"><div className="hp-intro-binary" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <span className="hp-binary-stream" key={index} style={{ "--stream-delay": `${-(index % 7) * 110}ms`, "--stream-opacity": .22 + (index % 4) * .16 }}>{Array.from({ length: 30 }, (_, digit) => ((digit * 7 + index * 3 + Math.floor(digit / 3)) % 2)).join("")}</span>)}</div><div className="hp-intro-wordmark" aria-hidden="true"><span className="hp-intro-line"><span className="hp-intro-word">Netanel</span></span><span className="hp-intro-line"><span className="hp-intro-word">Marchum<span className="hp-intro-dot" ref={dotRef} /></span></span></div>{revealPoint && <div className="hp-intro-dot-reveal" style={revealPoint} aria-hidden="true" />}<button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
 }
 export default function HomePortfolio() {
   const { open, setOpen, buttonRef, menuRef, closeMenu } = useMobileMenu(960);
