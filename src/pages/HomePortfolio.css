@@ -139,6 +139,9 @@
 .home-portfolio .hp-experience-row:last-child { border:0; padding-bottom:0; }
 .home-portfolio .hp-experience-row h3 { font-size:clamp(23px,2.2vw,32px); line-height:1.2; }
 .home-portfolio .hp-experience-company { color:var(--hp-lime); font-size:13px; margin-top:10px; }
+.home-portfolio .hp-experience-company a { display:inline-flex; align-items:center; gap:5px; color:inherit; text-decoration:none; transition:color .2s ease; }
+.home-portfolio .hp-experience-company a:hover { color:var(--hp-white); }
+.home-portfolio .hp-company-arrow { font-family:var(--hp-font-ui); font-size:16px; }
 .home-portfolio .hp-experience-date { color:var(--hp-muted); font-size:12px; margin-top:6px; }
 .home-portfolio .hp-experience-description { grid-column:1/-1; color:var(--hp-muted); max-width:60ch; font-size:15px; }
 .home-portfolio #education { align-items:start; }
