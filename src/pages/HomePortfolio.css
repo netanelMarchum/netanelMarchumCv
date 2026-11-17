@@ -390,3 +390,12 @@
  .home-portfolio .hp-skill-icon { width:32px; height:36px; }
  .home-portfolio .hp-skill-icon > :is(svg,img) { width:28px; height:28px; }
 }
+
+/* Keep the navigation centered after removing the wordmark. */
+.home-portfolio .hp-header-inner { justify-content:center; }
+.home-portfolio .hp-nav { margin-left:0; }
+.home-portfolio .hp-nav-social { margin-left:12px; }
+@media(max-width:960px) {
+ .home-portfolio .hp-nav-social { margin-left:0; }
+ .home-portfolio .hp-toggle { margin-left:4px; }
+}
