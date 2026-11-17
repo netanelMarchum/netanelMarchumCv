@@ -43,7 +43,7 @@
 .home-portfolio .hp-nav a[aria-current]::after { width:100%; }
 .home-portfolio .hp-nav-social { margin-left:20px; }
 .home-portfolio .hp-nav-social a { display:none; }
-.home-portfolio .hp-nav-social a:nth-child(3) { display:inline-flex; align-items:center; gap:24px; border:0; border-radius:999px; padding:9px 18px; min-height:44px; font-size:13px; }
+.home-portfolio .hp-nav-social .hp-nav-resume { display:inline-flex; align-items:center; gap:24px; border:0; border-radius:999px; padding:9px 18px; min-height:44px; font-size:13px; }
 .home-portfolio .hp-nav-social a:hover { color:var(--hp-lime); border-color:var(--hp-lime); }
 .home-portfolio .hp-toggle { display:none; margin-left:auto; width:44px; height:44px; align-items:center; justify-content:center; color:inherit; background:none; border:0; border-radius:50%; cursor:pointer; }
 .home-portfolio .hp-menu { position:absolute; top:100%; left:0; right:0; background:var(--hp-black); max-height:calc(100dvh - 80px); overflow-y:auto; border:0; padding-block:20px 32px; animation:hp-menu-enter 220ms var(--hp-ease); }
@@ -301,11 +301,11 @@
 .home-portfolio .hp-nav-social { display:flex; align-items:center; gap:4px; margin-left:16px; }
 .home-portfolio .hp-nav-social .hp-social-link { display:inline-flex; align-items:center; justify-content:center; width:40px; height:44px; padding:0; gap:0; font-size:18px; border:0; border-radius:0; }
 .home-portfolio .hp-nav-social .hp-social-label { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
-.home-portfolio .hp-nav-social a:nth-child(3) { margin-left:12px; padding-inline:8px; gap:12px; }
+.home-portfolio .hp-nav-social .hp-nav-resume { margin-left:12px; padding-inline:8px; gap:12px; }
 .home-portfolio .hp-contact a { color:var(--hp-black); }
 @media(max-width:1100px) {
  .home-portfolio .hp-nav-social { display:flex; }
- .home-portfolio .hp-nav-social a:nth-child(n+3) { display:none; }
+ .home-portfolio .hp-nav-social a:not(.hp-social-link) { display:none; }
 }
 @media(max-width:960px) {
  .home-portfolio .hp-nav-social { margin-left:auto; }
