@@ -335,3 +335,25 @@
  .home-portfolio .hp-contact-links .hp-social-link,
  .home-portfolio .hp-contact-links .hp-contact-whatsapp { min-width:80px; }
 }
+
+/* Education is a standalone chapter, distinct from the experience list. */
+.home-portfolio #education { display:block; background:#151515; padding-block:clamp(72px,7vw,112px); }
+.home-portfolio #education > h2 { max-width:none; margin:0 auto 56px; text-align:center; font-size:clamp(40px,4.8vw,64px); line-height:1.1; color:var(--hp-white); }
+.home-portfolio #education > h2 br { display:none; }
+.home-portfolio #education > h2 .hp-ampersand { color:var(--hp-lime); }
+.home-portfolio #education .hp-education-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr); gap:56px; align-items:start; }
+.home-portfolio #education .hp-education-grid > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
+.home-portfolio #education .hp-education-row { padding-top:8px; }
+.home-portfolio #education .hp-education-row h3 { font-size:clamp(23px,2vw,28px); }
+.home-portfolio #education .hp-languages { margin-top:0; }
+.home-portfolio #education .hp-certificates { max-width:440px; justify-self:end; gap:24px; }
+@media(max-width:960px) {
+ .home-portfolio #education .hp-education-grid { grid-template-columns:minmax(0,1fr); gap:44px; }
+ .home-portfolio #education .hp-certificates { justify-self:center; }
+}
+@media(max-width:700px) {
+ .home-portfolio #education > h2 { margin-bottom:40px; font-size:clamp(36px,8vw,48px); }
+ .home-portfolio #education .hp-education-grid > div { grid-template-columns:minmax(0,1fr); gap:32px; }
+ .home-portfolio #education .hp-education-grid { gap:36px; }
+ .home-portfolio #education .hp-certificates { gap:20px; }
+}
