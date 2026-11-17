@@ -432,3 +432,13 @@
  .home-portfolio .hp-intro-binary { gap:8px; }
  .home-portfolio .hp-binary-stream:nth-child(3n) { display:none; }
 }
+
+/* Mobile header stays minimal; social shortcuts live inside the menu. */
+@media(max-width:960px) {
+ .home-portfolio .hp-header-inner > .hp-nav-social { display:none; }
+ .home-portfolio .hp-toggle { margin-left:0; }
+ .home-portfolio .hp-menu .hp-menu-utilities { align-items:center; gap:12px; }
+ .home-portfolio .hp-menu .hp-menu-utilities .hp-social-link { width:44px; height:44px; min-height:44px; padding:0; display:inline-flex; align-items:center; justify-content:center; gap:0; flex:0 0 44px; }
+ .home-portfolio .hp-menu-utilities .hp-social-link > svg { width:20px; height:20px; flex:none; }
+ .home-portfolio .hp-menu-utilities .hp-social-label { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+}
