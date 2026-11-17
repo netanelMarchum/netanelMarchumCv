@@ -399,3 +399,20 @@
  .home-portfolio .hp-nav-social { margin-left:0; }
  .home-portfolio .hp-toggle { margin-left:4px; }
 }
+
+/* Clear navigation feedback and a distinct resume action. */
+.home-portfolio .hp-nav a,
+.home-portfolio .hp-nav-social a,
+.home-portfolio .hp-menu nav > a { transition:color var(--hp-duration) ease,background-color var(--hp-duration) ease; }
+.home-portfolio .hp-nav a:is(:hover,:focus-visible),
+.home-portfolio .hp-nav-social .hp-social-link:is(:hover,:focus-visible),
+.home-portfolio .hp-menu nav > a:is(:hover,:focus-visible),
+.home-portfolio .hp-menu-utilities .hp-social-link:is(:hover,:focus-visible) { color:#b776ff; }
+.home-portfolio .hp-nav-social .hp-nav-resume,
+.home-portfolio .hp-menu-utilities .hp-nav-resume { border-radius:999px; padding:10px 20px; min-height:44px; background:var(--hp-lime); color:var(--hp-black); gap:12px; }
+.home-portfolio .hp-nav-social .hp-nav-resume:is(:hover,:focus-visible),
+.home-portfolio .hp-menu-utilities .hp-nav-resume:is(:hover,:focus-visible) { background:var(--hp-violet); color:var(--hp-white); }
+.home-portfolio .hp-creative-work { align-items:stretch; }
+.home-portfolio .hp-creative-project { display:flex; flex-direction:column; }
+.home-portfolio .hp-creative-project > div { display:flex; flex-direction:column; flex:1; }
+.home-portfolio .hp-creative-project .hp-project-actions { margin-top:auto; padding-top:16px; }
