@@ -140,6 +140,31 @@ export default function HomePortfolio() {
   const mainRef = useRef(null);
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
+    const section = mainRef.current.querySelector("#experience");
+    const row = section.querySelector("[data-experience-accent]");
+    let observer;
+
+    const observeCenter = () => {
+      observer?.disconnect();
+      const inset = Math.round(window.innerHeight * .46);
+      // Pixel margins keep the active band centered on both wide and tall viewports.
+      observer = new IntersectionObserver(([entry]) => {
+        section.classList.toggle("hp-experience-accent", entry.isIntersecting);
+      }, { rootMargin: `-${inset}px 0px` });
+      observer.observe(row);
+    };
+
+    observeCenter();
+    window.addEventListener("resize", observeCenter);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", observeCenter);
+      section.classList.remove("hp-experience-accent");
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver((entries) => {
       for (const { target, isIntersecting } of entries) {
         if (!isIntersecting) continue;
@@ -254,7 +279,7 @@ export default function HomePortfolio() {
 
         <section className="hp-section hp-wrap" id="experience">
           <h2 data-reveal>Experience</h2>
-          <div className="hp-experience-list">{experience.map(([role, company, dates, description, companyUrl]) => <article className="hp-experience-row" key={company} data-reveal>
+          <div className="hp-experience-list">{experience.map(([role, company, dates, description, companyUrl]) => <article className="hp-experience-row" key={company} data-reveal data-experience-accent={company === "Yalla Booth" ? "" : undefined}>
             <div><h3>{role.split(/(&)/).map((part, index) => part === "&" ? <span className="hp-ampersand" key={index}>&amp;</span> : part)}</h3><p className="hp-experience-company">{companyUrl ? <a href={companyUrl} target="_blank" rel="noopener noreferrer">{company}<span className="hp-company-arrow" aria-hidden="true"> ↗</span></a> : company}</p></div><p className="hp-experience-date">{dates.replace(" – ", " to ")}</p><p className="hp-experience-description">{description}</p>
           </article>)}</div>
         </section>
