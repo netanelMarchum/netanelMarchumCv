@@ -52,12 +52,12 @@
 .home-portfolio .hp-menu a[aria-current] { color:var(--hp-lime); }
 .home-portfolio .hp-menu-utilities { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:20px; }
 .home-portfolio .hp-menu .hp-menu-utilities a { justify-content:flex-start; gap:8px; font-size:14px; border:0; }
-.home-portfolio .hp-introduction { position:fixed; inset:0; z-index:500; background:var(--hp-black); display:grid; place-content:center; overflow:hidden; pointer-events:none; animation:hp-intro-exit 1180ms cubic-bezier(.45,0,.2,1) forwards; }
+.home-portfolio .hp-introduction { position:fixed; inset:0; z-index:500; background:var(--hp-black); display:grid; place-content:center; pointer-events:none; animation:hp-intro-exit 3400ms cubic-bezier(.45,0,.2,1) forwards; }
 .home-portfolio .hp-intro-wordmark { font:400 clamp(3rem,7vw,7rem)/.95 var(--hp-font-display); letter-spacing:-.035em; color:var(--hp-white); }
 .home-portfolio .hp-intro-line { display:block; overflow:hidden; padding:.08em .06em .12em; margin:-.08em -.06em -.12em; }
-.home-portfolio .hp-intro-word { display:block; animation:hp-intro-mark 360ms var(--hp-ease) 160ms both; will-change:transform,opacity; }
+.home-portfolio .hp-intro-word { display:block; animation:hp-intro-mark 780ms cubic-bezier(.16,1,.3,1) 1000ms both; will-change:transform,opacity; }
 .home-portfolio .hp-intro-line + .hp-intro-line { margin-top:.04em; color:var(--hp-lime); }
-.home-portfolio .hp-intro-line + .hp-intro-line .hp-intro-word { animation-delay:220ms; }
+.home-portfolio .hp-intro-line + .hp-intro-line .hp-intro-word { animation-delay:1160ms; }
 .home-portfolio .hp-intro-word .hp-intro-dot { display:inline-block; width:.13em; height:.13em; margin-left:.025em; border-radius:50%; background:#b776ff; vertical-align:baseline; }
 .home-portfolio .hp-introduction button { position:absolute; bottom:28px; right:32px; display:flex; gap:12px; align-items:center; padding:12px; border:0; color:var(--hp-white); background:none; pointer-events:auto; cursor:pointer; }
 /* A typographic opening with the project index as a quieter right column. */
@@ -166,7 +166,7 @@
 .home-portfolio .hp-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px 24px; padding-block:24px max(24px,env(safe-area-inset-bottom)); font-size:12px; color:var(--hp-muted); }
 .home-portfolio .hp-footer a { display:flex; align-items:center; gap:14px; min-height:44px; }
 .home-portfolio .hp-footer a:hover { color:var(--hp-lime); }
-@keyframes hp-intro-exit { 0%,82% {opacity:1} 100% {opacity:0;visibility:hidden} }
+@keyframes hp-intro-exit { 0%,85% {opacity:1} 100% {opacity:0;visibility:hidden} }
 @keyframes hp-intro-mark { from {opacity:0;transform:translate3d(0,105%,0) rotate(2deg)} to {opacity:1;transform:translate3d(0,0,0) rotate(0)} }
 @keyframes hp-menu-enter { from {opacity:0;transform:translateY(-8px)} to {opacity:1;transform:none} }
 @media(hover:hover) { .home-portfolio .hp-certificate:hover img { transform:translateY(-3px); } }
@@ -345,8 +345,8 @@
 .home-portfolio .hp-menu-utilities .hp-nav-resume:is(:hover,:focus-visible) { background:var(--hp-violet); color:var(--hp-white); }
 
 /* Binary rain resolves into the name reveal before the page opens. */
-.home-portfolio .hp-intro-binary { position:absolute; inset:0; overflow:hidden; display:flex; justify-content:space-around; gap:12px; padding-inline:4vw; animation:hp-binary-stage 460ms ease both; }
-.home-portfolio .hp-binary-stream { display:block; flex:0 0 1ch; width:1ch; overflow-wrap:anywhere; color:var(--hp-lime); opacity:var(--stream-opacity); font:400 clamp(16px,1.6vw,23px)/1.65 ui-monospace,SFMono-Regular,Consolas,monospace; animation:hp-binary-fall 980ms linear var(--stream-delay) both; will-change:transform; }
+.home-portfolio .hp-intro-binary { position:absolute; inset:0; overflow:hidden; display:flex; justify-content:space-around; gap:12px; padding-inline:4vw; animation:hp-binary-stage 1100ms ease both; }
+.home-portfolio .hp-binary-stream { display:block; flex:0 0 1ch; width:1ch; overflow-wrap:anywhere; color:var(--hp-lime); opacity:var(--stream-opacity); font:400 clamp(16px,1.6vw,23px)/1.65 ui-monospace,SFMono-Regular,Consolas,monospace; animation:hp-binary-fall 1800ms linear var(--stream-delay) both; will-change:transform; }
 .home-portfolio .hp-binary-stream:nth-child(4n) { color:#b776ff; }
 .home-portfolio .hp-intro-wordmark { position:relative; z-index:1; }
 @keyframes hp-binary-stage { 0% {opacity:0} 15%,60% {opacity:1} 100% {opacity:0;visibility:hidden} }
@@ -367,11 +367,11 @@
 }
 
 /* The surname dot becomes the full-screen transition. */
-.home-portfolio .hp-intro-dot-reveal { position:absolute; z-index:2; border-radius:50%; background:#b776ff; animation:hp-dot-expand 350ms cubic-bezier(.65,0,.25,1) both; }
+.home-portfolio .hp-intro-dot-reveal { position:absolute; inset:0; z-index:2; background:#b776ff; clip-path:circle(0px at var(--reveal-x) var(--reveal-y)); animation:hp-dot-expand 750ms cubic-bezier(.65,0,.25,1) both; }
 .home-portfolio .hp-introduction button { z-index:3; }
 @keyframes hp-dot-expand {
- from { transform:scale(0); }
- to { transform:scale(1); }
+ from { clip-path:circle(0px at var(--reveal-x) var(--reveal-y)); }
+ to { clip-path:circle(var(--reveal-radius) at var(--reveal-x) var(--reveal-y)); }
 }
 @media(max-width:960px) {
  .home-portfolio .hp-header-inner { justify-content:flex-start; }

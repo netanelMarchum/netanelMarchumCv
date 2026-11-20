@@ -78,15 +78,15 @@ function HomeIntroduction() {
     skipRef.current = dismiss;
     const onKey = (event) => { if (["Tab", "Escape", "Enter", " "].includes(event.key)) dismiss(); };
     // Match the overlay exit; content underneath stays stable throughout.
-    const timer = setTimeout(dismiss, 1180);
+    const timer = setTimeout(dismiss, 3400);
     const revealTimer = setTimeout(() => {
       if (!dotRef.current) return;
       const rect = dotRef.current.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
       const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 8;
-      setRevealPoint({ left: x - radius, top: y - radius, width: radius * 2, height: radius * 2 });
-    }, 640);
+      setRevealPoint({ "--reveal-x": `${x}px`, "--reveal-y": `${y}px`, "--reveal-radius": `${radius}px` });
+    }, 2050);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", dismiss, { once: true });
     window.addEventListener("wheel", dismiss, { passive: true, once: true });
