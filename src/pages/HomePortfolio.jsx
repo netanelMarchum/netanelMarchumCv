@@ -29,6 +29,7 @@ function SkillIcon({ name, mark }) {
 }
 const projectIds = ["project-network", "project-ml", "project-game"];
 const projectSubjects = ["Networks & security", "Machine learning", "Interactive development"];
+const projectImageSizes = [[1280, 631], [312, 264], [800, 630]];
 let introductionSeen = false;
 const cleanText = (value) => value.replace(/\s+[—–]\s+|\s+--\s+/g, ", ");
 const experience = [
@@ -77,15 +78,15 @@ function HomeIntroduction() {
     skipRef.current = dismiss;
     const onKey = (event) => { if (["Tab", "Escape", "Enter", " "].includes(event.key)) dismiss(); };
     // Match the overlay exit; content underneath stays stable throughout.
-    const timer = setTimeout(dismiss, 3400);
+    const timer = setTimeout(dismiss, 1180);
     const revealTimer = setTimeout(() => {
       if (!dotRef.current) return;
       const rect = dotRef.current.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
       const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 8;
-      setRevealPoint({ "--reveal-x": `${x}px`, "--reveal-y": `${y}px`, "--reveal-radius": `${radius}px` });
-    }, 2050);
+      setRevealPoint({ left: x - radius, top: y - radius, width: radius * 2, height: radius * 2 });
+    }, 640);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", dismiss, { once: true });
     window.addEventListener("wheel", dismiss, { passive: true, once: true });
@@ -103,6 +104,21 @@ function HomeIntroduction() {
   }, [visible]);
   return visible ? <div className="hp-introduction"><div className="hp-intro-binary" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <span className="hp-binary-stream" key={index} style={{ "--stream-delay": `${-(index % 7) * 110}ms`, "--stream-opacity": .22 + (index % 4) * .16 }}>{Array.from({ length: 30 }, (_, digit) => ((digit * 7 + index * 3 + Math.floor(digit / 3)) % 2)).join("")}</span>)}</div><div className="hp-intro-wordmark" aria-hidden="true"><span className="hp-intro-line"><span className="hp-intro-word">Netanel</span></span><span className="hp-intro-line"><span className="hp-intro-word">Marchum<span className="hp-intro-dot" ref={dotRef} /></span></span></div>{revealPoint && <div className="hp-intro-dot-reveal" style={revealPoint} aria-hidden="true" />}<button onClick={() => skipRef.current?.()}>Skip intro <Arrow /></button></div> : null;
 }
+function setContactPointer(event) {
+  if (event.pointerType !== "mouse" || !matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
+  const link = event.currentTarget;
+  const bounds = link.getBoundingClientRect();
+  const x = ((event.clientX - bounds.left) / bounds.width - .5) * 12;
+  const y = ((event.clientY - bounds.top) / bounds.height - .5) * 12;
+  link.style.setProperty("--hp-pointer-x", `${x}px`);
+  link.style.setProperty("--hp-pointer-y", `${y}px`);
+}
+
+function resetContactPointer({ currentTarget }) {
+  currentTarget.style.removeProperty("--hp-pointer-x");
+  currentTarget.style.removeProperty("--hp-pointer-y");
+}
+
 export default function HomePortfolio() {
   const { open, setOpen, buttonRef, menuRef, closeMenu } = useMobileMenu(960);
   const selectSection = (event) => {
@@ -121,6 +137,20 @@ export default function HomePortfolio() {
     }));
   };
   const [active, setActive] = useState("about");
+  const mainRef = useRef(null);
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) {
+        if (!isIntersecting) continue;
+        target.classList.add("hp-entered");
+        observer.unobserve(target);
+      }
+    }, { rootMargin: "0px 0px -32px" });
+    mainRef.current.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver((entries) => {
@@ -154,7 +184,7 @@ export default function HomePortfolio() {
         {open && <div className="hp-menu" ref={menuRef} id="hp-menu" role="dialog" aria-modal="true" aria-label="Navigation"><nav className="hp-wrap" aria-label="Mobile navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={selectSection}>{label}<Arrow /></a>)}<div className="hp-menu-utilities"><SocialLinks onClick={closeMenu} /><a className="hp-nav-resume" href={profile.resume} download onClick={closeMenu}>Resume <Arrow down /></a></div></nav></div>}
       </header>
 
-      <main id="main-content" tabIndex="-1">
+      <main id="main-content" tabIndex="-1" ref={mainRef}>
         <section className="hp-hero hp-wrap" id="top">
           <div className="hp-hero-copy" id="about">
             <h1><span className="hp-name-line">Netanel</span><span className="hp-name-line hp-name-accent">Marchum<span className="hp-name-period">.</span></span></h1>
@@ -172,45 +202,87 @@ export default function HomePortfolio() {
         </section>
 
         <section className="hp-section hp-wrap" id="projects">
-          <div className="hp-section-heading"><h2>Selected<br /><span>projects.</span></h2><p>Networks, machine learning, and interactive development.<br />A closer look at what I build.</p></div>
+          <div className="hp-section-heading" data-reveal>
+            <h2>Selected<br /><span>projects.</span></h2>
+            <p>Networks, machine learning, and interactive development.</p>
+          </div>
           <div className="hp-project-grid">
-            {technicalProjects.map((project, index) => <article className="hp-project" id={projectIds[index]} key={project.title}>
-              <div className={`hp-project-image hp-project-image-${project.type}`}><img src={project.image} alt={`${project.title} project screenshot`} width="1600" height="1000" loading="lazy" decoding="async" /></div>
-              <div className="hp-project-copy"><h3>{project.title}</h3><p className="hp-project-description">{cleanText(project.desc)}</p>
-              <ul className="hp-project-tech" aria-label="Technologies">{project.tech.map((technology) => <li key={technology}>{technology}</li>)}</ul>
-              <ProjectActions project={project} /></div>
-            </article>)}
+            {technicalProjects.map((project, index) => {
+              const [width, height] = projectImageSizes[index];
+              return (
+                <article className={`hp-project hp-project-${project.type}`} id={projectIds[index]} key={project.title}>
+                  <div className="hp-project-frame">
+                    <div className="hp-project-image">
+                      <img src={project.image} alt={`${project.title} project screenshot`} width={width} height={height} loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                  <div className="hp-project-copy" data-reveal>
+                    <p className="hp-project-subject">{projectSubjects[index]}</p>
+                    <h3>{project.title}</h3>
+                    <p className="hp-project-description">{cleanText(project.desc)}</p>
+                    <ul className="hp-project-tech" aria-label="Technologies">{project.tech.map((technology) => <li key={technology}>{technology}</li>)}</ul>
+                    <ProjectActions project={project} />
+                  </div>
+                </article>
+              );
+            })}
             <aside className="hp-creative-work" aria-labelledby="hp-creative-title">
-              <h3 id="hp-creative-title">Web <span className="hp-ampersand">&amp;</span> Creative Work</h3>
-              {creativeProjects.map((project) => <article className="hp-creative-project" key={project.title}>
-                <img src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" />
-                <div><h4>{project.title}</h4><p>{project.type === "web" ? "Production website with automated lead-generation workflows." : "Cover design for publications and albums."}</p><ProjectActions project={project} /></div>
-              </article>)}
+              <h3 id="hp-creative-title" data-reveal>Web <span className="hp-ampersand">&amp;</span> Creative Work</h3>
+              {creativeProjects.map((project) => (
+                <article className={`hp-creative-project hp-creative-${project.type}`} key={project.title}>
+                  <div className="hp-project-frame">
+                    <div className="hp-project-image">
+                      <img src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                  <div data-reveal>
+                    <h4>{project.title}</h4>
+                    <p>{project.type === "web" ? "Production website with automated lead-generation workflows." : "Cover design for publications and albums."}</p>
+                    <ProjectActions project={project} />
+                  </div>
+                </article>
+              ))}
             </aside>
           </div>
         </section>
 
         <section className="hp-section hp-wrap" id="skills">
-          <h2>Technical skills</h2>
-          <div className="hp-skills-grid">{skillGroups.map(([title, items]) => <div className="hp-skill-group" key={title}><h3>{title}</h3><ul className="hp-skill-icons" aria-label={title}>{items.map(([name, mark]) => <SkillIcon key={name} name={name} mark={mark} />)}</ul></div>)}</div>
+          <h2 data-reveal>Technical skills</h2>
+          <div className="hp-skills-grid">{skillGroups.map(([title, items]) => <div className="hp-skill-group" key={title} data-reveal><h3>{title}</h3><ul className="hp-skill-icons" aria-label={title}>{items.map(([name, mark]) => <SkillIcon key={name} name={name} mark={mark} />)}</ul></div>)}</div>
           <p className="hp-foundations"><strong>CS foundations:</strong> Data Structures · Algorithms · Operating Systems · Machine Learning</p>
         </section>
 
         <section className="hp-section hp-wrap" id="experience">
-          <h2>Experience</h2>
-          <div className="hp-experience-list">{experience.map(([role, company, dates, description, companyUrl]) => <article className="hp-experience-row" key={company}>
+          <h2 data-reveal>Experience</h2>
+          <div className="hp-experience-list">{experience.map(([role, company, dates, description, companyUrl]) => <article className="hp-experience-row" key={company} data-reveal>
             <div><h3>{role.split(/(&)/).map((part, index) => part === "&" ? <span className="hp-ampersand" key={index}>&amp;</span> : part)}</h3><p className="hp-experience-company">{companyUrl ? <a href={companyUrl} target="_blank" rel="noopener noreferrer">{company}<span className="hp-company-arrow" aria-hidden="true"> ↗</span></a> : company}</p></div><p className="hp-experience-date">{dates.replace(" – ", " to ")}</p><p className="hp-experience-description">{description}</p>
           </article>)}</div>
         </section>
 
         <section className="hp-section hp-wrap" id="education">
-          <h2>Education <span className="hp-ampersand">&amp;</span><br /> credentials</h2>
-          <div className="hp-education-grid"><div>{education.map((item, i) => <article className="hp-education-row" key={item.title}><h3>{item.title}{i === 0 && <span className="hp-education-status">In progress</span>}</h3><p className="hp-institution">{item.org}</p><p className="hp-experience-date">{cleanText(item.date.replace(" - ", " to "))}</p><p className="hp-honor">{item.badge.replace(" - ", ", ")}</p></article>)}<p className="hp-languages">{languages.map((language) => `${language.name}: ${language.tag}`).join(" · ")}</p></div>
+          <h2 data-reveal>Education <span className="hp-ampersand">&amp;</span><br /> credentials</h2>
+          <div className="hp-education-grid" data-reveal><div>{education.map((item, i) => <article className="hp-education-row" key={item.title}><h3>{item.title}{i === 0 && <span className="hp-education-status">In progress</span>}</h3><p className="hp-institution">{item.org}</p><p className="hp-experience-date">{cleanText(item.date.replace(" - ", " to "))}</p><p className="hp-honor">{item.badge.replace(" - ", ", ")}</p></article>)}<p className="hp-languages">{languages.map((language) => `${language.name}: ${language.tag}`).join(" · ")}</p></div>
             <aside className="hp-certificates" id="certificates" aria-label="Verified certificates">{certificates.map((certificate) => <a className="hp-certificate" key={certificate.title} href={certificate.href} target="_blank" rel="noopener noreferrer"><span className="hp-certificate-preview"><img src={certificate.img} alt={certificate.title.replace(" - ", ", ")} width="1100" height={certificate.img.includes("my-cer") ? 1556 : 1598} loading="lazy" decoding="async" /></span><span>{certificate.title.replace(" - ", ", ")}<small>View certificate <Arrow /></small></span></a>)}</aside>
           </div>
         </section>
 
-        <section className="hp-contact" id="contact"><div className="hp-wrap hp-contact-grid"><div><h2>Let’s talk<span>.</span></h2><p>Open to internships, junior developer roles, and freelance projects.</p><a className="hp-contact-email" href={`mailto:${profile.email}`}><Mail size={22} strokeWidth={1.7} aria-hidden="true" />{profile.email}</a></div><div className="hp-contact-links"><SocialLinks /><a className="hp-text-link" href={profile.resume} download>Download Resume <Arrow down /></a><a className="hp-contact-whatsapp" href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer"><Whatsapp /><span>WhatsApp</span></a></div></div></section>
+        <section className="hp-contact" id="contact" aria-labelledby="hp-contact-title">
+          <div className="hp-wrap hp-contact-grid">
+            <h2 id="hp-contact-title" data-reveal>Let’s<br />talk.</h2>
+            <div className="hp-contact-details" data-reveal>
+              <p>Open to internships, junior developer roles, and freelance projects.</p>
+              <a className="hp-contact-email" href={`mailto:${profile.email}`} onPointerMove={setContactPointer} onPointerLeave={resetContactPointer}>
+                <span className="hp-contact-email-icon"><Mail size={24} strokeWidth={1.7} aria-hidden="true" /></span>
+                <span>{profile.email}</span>
+              </a>
+              <div className="hp-contact-links">
+                <SocialLinks />
+                <a href="https://wa.me/13472184991" target="_blank" rel="noopener noreferrer"><Whatsapp /><span>WhatsApp</span></a>
+                <a href={profile.resume} download><Arrow down />Download Resume</a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <footer className="hp-footer hp-wrap"><p>© {new Date().getFullYear()} Netanel Marchum</p><a href="/studio" onClick={(event) => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); navigate("/studio"); }}>Creative Studio <Arrow /></a></footer>
     </div>
