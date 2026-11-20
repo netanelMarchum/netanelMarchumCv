@@ -369,5 +369,22 @@
         "original": true
       }
     ]
+  },
+  "work-32.webp": {
+    "width": 1280,
+    "height": 960,
+    "alt": "Yalla Booth business card mockup",
+    "featured": true,
+    "variants": [
+      {
+        "file": "work-32-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-32.webp",
+        "width": 1280,
+        "original": true
+      }
+    ]
   }
 }

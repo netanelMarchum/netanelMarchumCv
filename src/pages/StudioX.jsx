@@ -17,7 +17,8 @@ const IMAGES = Object.keys(modules).sort().map((key, i) => {
   const meta = imageMetadata[name] || { variants: [] };
   return { src: modules[key], number: i + 1, ...meta,
     srcSet: meta.variants.map(({ file, width, original }) => `${original ? modules[key] : responsive[`../assets/work/responsive/${file}`]} ${width}w`).join(", ") };
-}).filter(({ number }) => ![1, 8, 9, 10, 11, 12, 13, 14, 15].includes(number));
+}).filter(({ number }) => ![1, 8, 9, 10, 11, 12, 13, 14, 15].includes(number))
+  .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
 let studioVisited = false;
 
 function useCursor(enabled) {
@@ -138,11 +139,11 @@ export default function StudioX() {
         {IMAGES.length === 0 ? (
           <p className="sx-empty">Add images to <code>src/assets/work/</code>. They appear here automatically.</p>
         ) : (
-          IMAGES.map(({ src, srcSet, width, height, number }, i) => (
+          IMAGES.map(({ src, srcSet, width, height, number, alt }, i) => (
             <motion.figure className="sx-tile" key={number} data-cursor
               initial={reduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -6% 0px" }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-              <img src={src} srcSet={srcSet} sizes="(max-width: 520px) calc(100vw - 24px), (max-width: 820px) calc((100vw - 36px) / 2), (min-width: 1500px) calc((100vw - 60px) / 4), calc((100vw - 48px) / 3)" width={width} height={height} alt={`Selected work ${number}`} loading={i < 4 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} decoding="async" />
+              <img src={src} srcSet={srcSet} sizes="(max-width: 520px) calc(100vw - 24px), (max-width: 820px) calc((100vw - 36px) / 2), (min-width: 1500px) calc((100vw - 60px) / 4), calc((100vw - 48px) / 3)" width={width} height={height} alt={alt || `Selected work ${number}`} loading={i < 4 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} decoding="async" />
               <span className="sx-tile-n">{String(number).padStart(2, "0")}</span>
             </motion.figure>
           ))
