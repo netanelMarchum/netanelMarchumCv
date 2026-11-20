@@ -136,7 +136,15 @@
 }
 .home-portfolio #experience.hp-experience-accent .hp-experience-company a:hover { text-decoration:underline; }
 @media(prefers-reduced-motion:no-preference) {
- .home-portfolio #experience { transition:background-color 180ms ease-out; }
+ .home-portfolio #experience {
+  --hp-experience-duration:740ms;
+  transition:background-color var(--hp-experience-duration) ease-in-out, color var(--hp-experience-duration) steps(2,jump-none);
+ }
+ .home-portfolio #experience.hp-experience-accent { --hp-experience-duration:620ms; }
+ /* Switch ink at the color midpoint to keep text legible during the fade. */
+ .home-portfolio #experience :is(h2,.hp-experience-company,.hp-experience-company a,.hp-company-arrow,.hp-experience-date,.hp-experience-description) {
+  transition:color var(--hp-experience-duration) steps(2,jump-none);
+ }
 }
 
 .home-portfolio .hp-experience-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px 24px; padding-block:32px; border:0; }
