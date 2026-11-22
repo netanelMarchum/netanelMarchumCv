@@ -386,5 +386,22 @@
         "original": true
       }
     ]
+  },
+  "work-33.webp": {
+    "width": 1462,
+    "height": 2048,
+    "alt": "Yalla Booth Chanukah campaign poster",
+    "featured": true,
+    "variants": [
+      {
+        "file": "work-33-640.webp",
+        "width": 640
+      },
+      {
+        "file": "work-33.webp",
+        "width": 1462,
+        "original": true
+      }
+    ]
   }
 }
